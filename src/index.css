@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ec662d;
+  --color-primary-hover: #d45a25;
+  --color-primary-light: rgba(236, 102, 45, 0.3);
+  --color-dark: #521800;
+  --color-body: #4d4d4d;
+  --color-muted: #646464;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-impact: 'Impact', 'Arial Black', sans-serif;
+
+  --text-display-lg: 96px;
+  --text-display-lg--line-height: 1.1;
+  --text-display-md: 45px;
+  --text-display-md--line-height: 1.1;
+  --text-heading-xl: 36px;
+  --text-heading-xl--line-height: 43.6px;
+  --text-heading-lg: 32px;
+  --text-heading-lg--line-height: 38.7px;
+  --text-heading-md: 24px;
+  --text-heading-md--line-height: 29.1px;
+  --text-heading-sm: 20px;
+  --text-heading-sm--line-height: 24.2px;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 21.8px;
+  --text-body-md: 16px;
+  --text-body-md--line-height: 21.6px;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 18px;
+  --text-stat: 40px;
+  --text-stat--line-height: 48.4px;
+
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-128: 32rem;
+  --spacing-page-x: 100px;
+
+  --radius-btn: 5px;
+  --radius-card: 12px;
+
+  --max-w-page: 1240px;
+  --max-w-content: 800px;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #4d4d4d;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ec662d;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d45a25;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #ec662d #f1f1f1;
+  }
+}
+
+@layer components {
+  .page {
+    min-height: 100vh;
+  }
+}
