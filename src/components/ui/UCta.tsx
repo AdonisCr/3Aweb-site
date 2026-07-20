@@ -13,33 +13,30 @@ interface UCtaProps {
 
 export default function UCta({ title, subtitle, actions, image, imageAlt = '', children }: UCtaProps) {
   return (
-    <section className="bg-white" style={{ padding: '80px 0' }}>
-      <div className="mx-auto" style={{ width: '85%' }}>
-        <div className="flex items-center justify-between" style={{ gap: '16px' }}>
-          {/* Left: title + subtitle + actions */}
-          <div className="flex-1 flex flex-col items-start" style={{ gap: '32px', maxWidth: '600px' }}>
+    <section className="bg-white py-12 lg:py-20">
+      <div className="mx-auto w-[92%] md:w-[85%]">
+        <div className="flex flex-col items-stretch gap-8 md:flex-row md:items-center md:justify-between md:gap-4">
+          <div className="flex max-w-[600px] flex-1 flex-col items-start gap-6 lg:gap-8">
             <UHeading level={2} color="primary">{title || children}</UHeading>
             {subtitle && (
               <p className="text-body-md text-dark">{subtitle}</p>
             )}
             {actions && (
-              <div className="flex items-center" style={{ gap: '16px' }}>
+              <div className="flex w-full flex-col items-stretch gap-4 sm:w-auto sm:flex-row sm:items-center sm:gap-7">
                 {actions}
               </div>
             )}
           </div>
 
-          {/* Right: image */}
-          <div className="hidden md:block flex-1" style={{ maxWidth: '636px' }}>
+          <div className="w-full flex-1 md:max-w-[636px]">
             {image ? (
               <img
                 src={image}
                 alt={imageAlt}
-                className="w-full h-auto object-cover rounded-card"
-                style={{ aspectRatio: '636 / 385' }}
+                className="aspect-[636/385] w-full rounded-card object-cover"
               />
             ) : (
-              <UPlaceholder ratio="636/385" label="rejoignez-nous.png" />
+              <UPlaceholder ratio="636/385" label="rejoignez-nous.png" className="w-full" />
             )}
           </div>
         </div>

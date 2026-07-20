@@ -1,33 +1,54 @@
-import DarkHero from '@/components/layout/DarkHero'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import UButton from '@/components/ui/UButton'
-import USection from '@/components/ui/USection'
 import UHeading from '@/components/ui/UHeading'
 import UCta from '@/components/ui/UCta'
+import UPlaceholder from '@/components/ui/UPlaceholder'
+
+/** Remplacer par l'URL YouTube réelle dès qu'elle est disponible. */
+const MISSION_VIDEO_URL = 'https://www.youtube.com/'
 
 const values = [
   {
     title: 'Solidarité',
     desc: "Face aux obstacles d'accès à la formation, l'assistanat n'est pas une solution durable. La solidarité, elle, crée du lien et de l'autonomie.",
+    image: '/assets/association/valeurs.jpg',
   },
   {
     title: 'Engagement',
     desc: "Nous agissons concrètement et durablement pour accompagner les talents locaux vers l'autonomie professionnelle.",
+    image: '/assets/association/valeurs.jpg',
   },
   {
     title: 'Coopération',
     desc: 'Nous favorisons les échanges entre acteurs du Bénin et de France pour créer des ponts durables.',
+    image: '/assets/association/valeurs.jpg',
   },
   {
     title: 'Éducation',
     desc: "L'éducation est au cœur de notre mission. Nous croyons en son pouvoir transformateur pour les communautés.",
+    image: '/assets/association/valeurs.jpg',
   },
 ]
 
-const team = [
-  { name: 'Franca Sornin', role: 'Directrice' },
-  { name: 'Membre', role: 'Président' },
-  { name: 'Membre', role: 'Trésorier' },
-  { name: 'Membre', role: 'Secrétaire' },
+type TeamRegion = 'fr' | 'bj'
+
+interface TeamMember {
+  name: string
+  role: string
+  region: TeamRegion
+  image?: string
+}
+
+const team: TeamMember[] = [
+  { name: 'Franca Sornin', role: 'Directrice', region: 'fr' },
+  { name: 'Membre', role: 'Président', region: 'fr' },
+  { name: 'Membre', role: 'Trésorier', region: 'fr' },
+  { name: 'Membre', role: 'Secrétaire', region: 'fr' },
+  { name: 'Membre', role: 'Président', region: 'bj' },
+  { name: 'Membre', role: 'Vice-président', region: 'bj' },
+  { name: 'Membre', role: 'Trésorier', region: 'bj' },
+  { name: 'Membre', role: 'Secrétaire', region: 'bj' },
 ]
 
 const PARTNER_SVG = (
@@ -37,96 +58,287 @@ const PARTNER_SVG = (
 )
 
 export default function Association() {
+  const [activeValue, setActiveValue] = useState(0)
+  const [teamRegion, setTeamRegion] = useState<TeamRegion>('fr')
+  const [teamPage, setTeamPage] = useState(0)
+
+  const filteredTeam = team.filter((m) => m.region === teamRegion)
+  const teamPageSize = 4
+  const teamPageCount = Math.max(1, Math.ceil(filteredTeam.length / teamPageSize))
+  const visibleTeam = filteredTeam.slice(teamPage * teamPageSize, teamPage * teamPageSize + teamPageSize)
+
+  function setRegion(region: TeamRegion) {
+    setTeamRegion(region)
+    setTeamPage(0)
+  }
+
+  function prevTeam() {
+    setTeamPage((prev) => (prev - 1 + teamPageCount) % teamPageCount)
+  }
+
+  function nextTeam() {
+    setTeamPage((prev) => (prev + 1) % teamPageCount)
+  }
+
   return (
-    <div className="page">
-      <DarkHero title="Qui sommes-nous ?" />
+    <div className="page pt-20">
+      {/* PAGE TITLE */}
+      <section className="relative overflow-hidden bg-white py-10 lg:py-12">
+        <img
+          src="/assets/association/title-watermark.svg"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute right-0 top-0 h-full w-auto max-w-[55%] object-contain object-right opacity-15"
+        />
+        <div className="relative z-10 mx-auto w-[92%] md:w-[85%]">
+          <div className="flex items-center gap-2">
+            <Link to="/" className="flex shrink-0 items-center text-primary" aria-label="Retour à l'accueil">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+            <UHeading level={1} color="primary" className="!text-[28px] !leading-tight lg:!text-[36px] lg:!leading-[43.6px]">
+              Qui sommes-nous ?
+            </UHeading>
+          </div>
+        </div>
+      </section>
 
-      <USection>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <UHeading level={2} color="dark" className="mb-6">Notre histoire</UHeading>
-            <div className="space-y-4 text-body-md text-dark">
+      {/* HERO IMAGE */}
+      <section className="w-full">
+        <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
+          <img
+            src="/assets/association/hero.jpg"
+            alt="Enfants regardant le paysage au Bénin"
+            className="size-full object-cover"
+          />
+        </div>
+      </section>
+
+      {/* NOTRE HISTOIRE */}
+      <section className="bg-white py-10 lg:py-16">
+        <div className="mx-auto flex w-[92%] flex-col items-start justify-between gap-10 md:w-[85%] lg:flex-row lg:gap-16">
+          <div className="flex max-w-[564px] flex-col gap-8 lg:gap-10">
+            <UHeading level={2} color="primary">Notre histoire</UHeading>
+            <div className="space-y-4 text-body-md tracking-[-0.32px] text-body">
               <p>
-                Lors d'un voyage solidaire au Bénin en 2015, Franca Sornin fonde Alliance Actions
-                Afrique pour soutenir des projets locaux d'éducation et d'entrepreneuriat. L'association
-                agit en complément des politiques publiques afin de favoriser la création de richesse au
-                Bénin, en accompagnant des talents issus de milieux défavorisés dans leur formation et
-                leur insertion professionnelle.
+                Lors d&apos;un voyage solidaire au Bénin en 2015, Franca Sornin fonde Alliance Actions
+                Afrique pour soutenir des projets locaux d&apos;éducation et d&apos;entrepreneuriat.
+                L&apos;association agit en complément des politiques publiques afin de favoriser la
+                création de richesse au Bénin, en accompagnant des talents issus de milieux
+                défavorisés dans leur formation et leur insertion professionnelle.
               </p>
               <p>
-                Portée par l'engagement de Franca Sornin, directrice de l'équipe France et
-                vice-présidente de l'équipe Bénin, Alliance Actions Afrique fédère de nombreuses
-                initiatives individuelles. Elle s'engage à travers des partenariats durables, fondés sur
-                des conventions pluriannuelles et un soutien humain et financier aux projets, notamment
-                au sein de l'Université Esperanza à Cotonou.
+                Portée par l&apos;engagement de Franca Sornin, directrice de l&apos;équipe France et
+                vice-présidente de l&apos;équipe Bénin, Alliance Actions Afrique fédère de nombreuses
+                initiatives individuelles. Elle s&apos;engage à travers des partenariats durables,
+                fondés sur des conventions pluriannuelles et un soutien humain et financier aux
+                projets, notamment au sein de l&apos;Université Esperanza à Cotonou.
               </p>
             </div>
           </div>
-          <div className="rounded-card overflow-hidden">
-            <img src="/assets/who-are-we.png" alt="Notre histoire" className="w-full h-auto object-cover" />
+          <div className="w-full max-w-[352px] shrink-0 self-center lg:self-start">
+            <div className="aspect-[352/313] w-full overflow-hidden">
+              <img
+                src="/assets/association/histoire.png"
+                alt="Membres de l'association"
+                className="size-full object-cover"
+              />
+            </div>
+            <div className="mt-8 h-px w-full bg-gray-200 lg:mt-[62px]" />
           </div>
         </div>
-      </USection>
+      </section>
 
-      <USection>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="rounded-card overflow-hidden">
-            <img src="/assets/about-map.png" alt="Notre mission" className="w-full h-auto object-cover" />
-          </div>
-          <div>
-            <UHeading level={2} color="dark" className="mb-6">Notre mission</UHeading>
-            <p className="mb-8 text-body-md text-dark">
-              Les missions de Alliance Actions Afrique sont d'accompagner et financer des programmes
-              d'éducation, développer des compétences professionnelles et soutenir l'esprit
-              d'entreprendre au Bénin.
+      {/* NOTRE MISSION */}
+      <section className="bg-white py-10 lg:py-16">
+        <div className="mx-auto flex w-[92%] flex-col gap-10 md:w-[85%] lg:gap-20">
+          <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
+            <UHeading level={2} color="primary" className="shrink-0">Notre mission</UHeading>
+            <p className="max-w-[564px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right">
+              Les missions de Alliance Actions Afrique sont d&apos;
+              <strong>accompagner et financer des programmes d&apos;éducation</strong>
+              {', '}
+              <strong>développer des compétences professionnelles</strong>
+              {' et '}
+              <strong>soutenir l&apos;esprit d&apos;entreprendre au Bénin.</strong>
             </p>
-            <UButton to="/don" variant="primary">Nous soutenir avec un don</UButton>
+          </div>
+
+          <a
+            href={MISSION_VIDEO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block aspect-video w-full overflow-hidden rounded-[10px]"
+            aria-label="Voir la vidéo de présentation sur YouTube"
+          >
+            <img
+              src="/assets/association/mission-video.png"
+              alt="Présentation Alliance Actions Afrique"
+              className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span className="relative h-[45px] w-16 shrink-0">
+                <img
+                  src="/assets/association/youtube-icon.svg"
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 size-full"
+                />
+                <img
+                  src="/assets/association/youtube-play.svg"
+                  alt=""
+                  aria-hidden
+                  className="absolute left-[40%] top-[28%] h-[44%] w-[26%]"
+                />
+              </span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      {/* NOS VALEURS */}
+      <section className="bg-white py-10 lg:py-20">
+        <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
+          <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
+            <UHeading level={2} color="primary" className="shrink-0">Nos valeurs</UHeading>
+            <p className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right">
+              Nos actions s&apos;inscrivent dans une vision durable du développement, portée par des
+              valeurs qui guident chacune de nos décisions et de nos engagements sur le terrain.
+            </p>
+          </div>
+
+          <div className="h-[200px] w-full overflow-hidden rounded-[15px] md:h-[319px]">
+            <img
+              src={values[activeValue].image}
+              alt={values[activeValue].title}
+              className="size-full object-cover"
+            />
+          </div>
+
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+            <div className="flex items-center gap-2">
+              {values.map((value, i) => (
+                <button
+                  key={value.title}
+                  type="button"
+                  className={`rounded-full bg-dark transition-all ${i === activeValue ? 'h-2.5 w-2.5' : 'h-2 w-2'}`}
+                  style={{ opacity: i === activeValue ? 1 : Math.max(0.2, 1 - Math.abs(i - activeValue) * 0.3) }}
+                  aria-label={`Aller à la valeur ${value.title}`}
+                  onClick={() => setActiveValue(i)}
+                />
+              ))}
+            </div>
+            <div className="flex max-w-[339px] flex-col gap-4 text-left sm:items-end sm:text-right sm:gap-6">
+              <UHeading level={2} color="dark" className="!text-[28px] lg:!text-[32px]">
+                {values[activeValue].title}
+              </UHeading>
+              <p className="text-body-md tracking-[-0.48px] text-black">
+                {values[activeValue].desc}
+              </p>
+            </div>
           </div>
         </div>
-      </USection>
+      </section>
 
-      <USection>
-        <UHeading level={2} color="dark" className="mb-6">Nos valeurs</UHeading>
-        <p className="mb-12 max-w-[800px] text-body-md text-dark">
-          Nos actions s'inscrivent dans une vision durable du développement, portée par des valeurs
-          qui guident chacune de nos décisions et de nos engagements sur le terrain.
-        </p>
-        <div className="grid md:grid-cols-2 gap-8">
-          {values.map((value) => (
-            <div key={value.title} className="p-8 rounded-card bg-gray-50">
-              <h3 className="mb-3 text-heading-sm text-primary">{value.title}</h3>
-              <p className="text-body-md text-body">{value.desc}</p>
-            </div>
-          ))}
-        </div>
-      </USection>
+      {/* NOTRE ÉQUIPE */}
+      <section className="bg-white py-10 lg:py-16">
+        <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
+          <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
+            <UHeading level={2} color="primary" className="shrink-0">Notre équipe</UHeading>
+            <p className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right">
+              Alliance Actions Afrique est portée par une équipe franco-béninoise engagée et réunie
+              par une volonté commune d&apos;agir concrètement et durablement au service des talents
+              locaux.
+            </p>
+          </div>
 
-      <USection>
-        <UHeading level={2} color="dark" className="mb-6">Notre équipe</UHeading>
-        <p className="mb-12 max-w-[800px] text-body-md text-dark">
-          Alliance Actions Afrique est portée par une équipe franco-béninoise engagée et réunie par
-          une volonté commune d'agir concrètement et durablement au service des talents locaux.
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {team.map((m) => (
-            <div key={m.name} className="text-center">
-              <div className="w-32 h-32 rounded-full bg-gray-200 mx-auto mb-4 overflow-hidden flex items-center justify-center">
-                <img src="/assets/logo.png" alt="" className="w-16 h-16 object-contain opacity-30" />
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
+            {visibleTeam.map((member, index) => (
+              <div key={`${member.region}-${member.role}-${index}`} className="flex flex-col gap-3">
+                {member.image ? (
+                  <div className="aspect-[253/318] w-full overflow-hidden rounded">
+                    <img src={member.image} alt={member.name} className="size-full object-cover" />
+                  </div>
+                ) : (
+                  <UPlaceholder
+                    ratio="253/318"
+                    label="photo.jpg"
+                    className="w-full !rounded"
+                  />
+                )}
+                <div className="flex flex-col gap-2">
+                  <p className="text-heading-sm font-bold text-primary">{member.name}</p>
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="shrink-0 text-body-md font-bold tracking-[-0.48px] text-body">
+                      {member.role}
+                    </p>
+                    <div className="h-px min-w-0 flex-1 bg-gray-300" />
+                  </div>
+                </div>
               </div>
-              <h4 className="text-heading-sm text-primary">{m.name}</h4>
-              <p className="text-body-md text-body">{m.role}</p>
-            </div>
-          ))}
-        </div>
-      </USection>
+            ))}
+          </div>
 
+          <div className="flex justify-center lg:justify-end">
+            <div className="inline-flex items-center gap-4 rounded-lg border border-primary px-1.5 py-1.5">
+              <button
+                type="button"
+                className="flex items-center justify-center rounded border border-primary p-1.5 text-primary hover:bg-primary hover:text-white transition-colors"
+                aria-label="Membres précédents"
+                onClick={prevTeam}
+              >
+                <svg className="h-3 w-2" fill="none" viewBox="0 0 8 14" stroke="currentColor" strokeWidth={2}>
+                  <path d="M7 1L1 7l6 6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  className={`transition-opacity ${teamRegion === 'fr' ? 'opacity-100' : 'opacity-30'}`}
+                  aria-label="Équipe France"
+                  aria-pressed={teamRegion === 'fr'}
+                  onClick={() => setRegion('fr')}
+                >
+                  <img src="/assets/association/flag-fr.svg" alt="" className="h-[11px] w-[15px]" />
+                </button>
+                <button
+                  type="button"
+                  className={`transition-opacity ${teamRegion === 'bj' ? 'opacity-100' : 'opacity-30'}`}
+                  aria-label="Équipe Bénin"
+                  aria-pressed={teamRegion === 'bj'}
+                  onClick={() => setRegion('bj')}
+                >
+                  <img src="/assets/association/flag-bj.svg" alt="" className="h-[11px] w-[15px]" />
+                </button>
+              </div>
+
+              <button
+                type="button"
+                className="flex items-center justify-center rounded border border-primary p-1.5 text-primary hover:bg-primary hover:text-white transition-colors"
+                aria-label="Membres suivants"
+                onClick={nextTeam}
+              >
+                <svg className="h-3 w-2" fill="none" viewBox="0 0 8 14" stroke="currentColor" strokeWidth={2}>
+                  <path d="M1 1l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
       <UCta
         title="Rejoignez-nous !"
         subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
+        image="/assets/association/rejoignez-nous.jpg"
+        imageAlt="Poignée de main professionnelle"
         actions={
           <>
             <UButton to="/partenariat" variant="primary">Devenir partenaire {PARTNER_SVG}</UButton>
-            <UButton to="/don" variant="white">Faire un don</UButton>
+            <UButton to="/don" variant="dark">Faire un don</UButton>
           </>
         }
       />
