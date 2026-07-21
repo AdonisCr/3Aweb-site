@@ -18,7 +18,15 @@ const navLinks: NavItem[] = [
       { label: 'Nos partenaires', to: '/partenariat' },
     ],
   },
-  { label: 'Projets phares', to: '/projets' },
+  {
+    label: 'Projets phares',
+    to: '/projets',
+    children: [
+      { label: 'Regards croisés', to: '/projets/regards-croises' },
+      { label: 'Parrainage', to: '/projets/parrainage' },
+      { label: 'Accompagnement professionnel', to: '/projets/accompagnement-professionnel' },
+    ],
+  },
   { label: 'Actualités', to: '/actualites' },
   { label: 'Contact', to: '/contact' },
 ]
@@ -43,6 +51,10 @@ export default function NavBar() {
   const linkFontSize = 'text-[15px] xl:text-[18px]'
 
   function isActive(path: string) {
+    if (path === '/projets') return location.pathname.startsWith('/projets')
+    if (path === '/association') {
+      return location.pathname === '/association' || location.pathname === '/partenariat'
+    }
     return location.pathname === path
   }
 

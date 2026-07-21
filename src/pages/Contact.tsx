@@ -1,16 +1,7 @@
-import DarkHero from '@/components/layout/DarkHero'
+import { Link } from 'react-router-dom'
 import UButton from '@/components/ui/UButton'
-import USection from '@/components/ui/USection'
 import UHeading from '@/components/ui/UHeading'
 import UCta from '@/components/ui/UCta'
-
-const fields = [
-  { name: 'email', label: 'Email', type: 'email', placeholder: 'entrez votre email' },
-  { name: 'nom', label: 'Nom', type: 'text', placeholder: 'entrez votre nom' },
-  { name: 'prenom', label: 'Prénom', type: 'text', placeholder: 'entrez votre prénom' },
-  { name: 'sujet', label: 'Sujet', type: 'text', placeholder: 'entrez un sujet' },
-  { name: 'message', label: 'Message', type: 'textarea', placeholder: 'entrez votre message' },
-]
 
 const PARTNER_SVG = (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -18,81 +9,168 @@ const PARTNER_SVG = (
   </svg>
 )
 
+const contactInfos = [
+  {
+    icon: '/assets/contact/icon-mail.svg',
+    label: 'alliance.actions.afrique@gmail.com',
+    href: 'mailto:alliance.actions.afrique@gmail.com',
+    underline: true,
+  },
+  {
+    icon: '/assets/contact/icon-phone.svg',
+    label: '+33661802724',
+    href: 'tel:+33661802724',
+  },
+  {
+    icon: '/assets/contact/icon-chat.svg',
+    label: '+22964684479',
+    href: 'tel:+22964684479',
+  },
+  {
+    icon: '/assets/contact/icon-location.svg',
+    label: '12 rue des Capucins – 69001 Lyon',
+  },
+]
+
+const inputClass =
+  'h-[42px] w-full border-0 border-b border-black bg-transparent px-2.5 py-2.5 text-body-md text-dark outline-none transition-colors placeholder:text-dark/40 focus:border-primary'
+
 export default function Contact() {
   return (
-    <div className="page">
-      <DarkHero title="Contact" />
-
-      <USection>
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Formulaire */}
-          <div>
-            <UHeading level={2} color="dark" className="mb-2">Formulaire de contact</UHeading>
-            <p className="mb-8 text-body-md text-dark">
-              Si vous souhaitez nous aider ou soutenir nos actions, n'hésitez pas à nous contacter
-              via ce formulaire.
-            </p>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              {fields.map((field) => (
-                <div key={field.name}>
-                  <label className="block mb-2 text-body-md font-semibold text-dark">{field.label}</label>
-                  {field.type !== 'textarea' ? (
-                    <input
-                      type={field.type}
-                      placeholder={field.placeholder}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary text-body-md"
-                    />
-                  ) : (
-                    <textarea
-                      placeholder={field.placeholder}
-                      rows={5}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary resize-none text-body-md"
-                    />
-                  )}
-                </div>
-              ))}
-              <UButton to="#" variant="primary">Envoyer</UButton>
-            </form>
-          </div>
-
-          {/* Infos */}
-          <div>
-            <div className="rounded-card p-8 mb-8 bg-gray-50">
-              <h3 className="mb-4 text-heading-sm text-primary">Envie d'en savoir plus ?</h3>
-              <p className="mb-4 text-body-md text-dark">
-                Contactez-nous directement par téléphone, par mail ou via nos réseaux sociaux.
-              </p>
-              <p className="mb-4 text-body-md text-dark">
-                Téléphone :{' '}
-                <a href="tel:+33658617366" className="font-bold text-primary">06 58 61 73 66</a>
-              </p>
-              <p className="mb-4 text-body-md text-dark">
-                Mail :{' '}
-                <a href="mailto:contact@alliance-actions-afrique.org" className="font-bold text-primary">
-                  contact@alliance-actions-afrique.org
-                </a>
-              </p>
-              <p className="text-body-md text-dark">
-                Siège :{' '}
-                <span className="font-bold text-primary">
-                  Alliance Actions Afrique, 25 rue Clisson, 75013 Paris
-                </span>
-              </p>
-            </div>
-            <div className="rounded-card overflow-hidden" style={{ height: 250 }}>
-              <img src="/assets/contact-map.jpg" alt="Localisation" className="w-full h-full object-cover" />
-            </div>
+    <div className="page pt-20">
+      {/* PAGE TITLE */}
+      <section className="relative overflow-hidden bg-white py-10 lg:py-12">
+        <img
+          src="/assets/association/title-watermark.svg"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute right-0 top-0 h-full w-auto max-w-[55%] object-contain object-right opacity-15"
+        />
+        <div className="relative z-10 mx-auto w-[92%] md:w-[85%]">
+          <div className="flex items-center gap-2">
+            <Link to="/" className="flex shrink-0 items-center text-primary" aria-label="Retour à l'accueil">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+            <UHeading level={1} color="primary" className="!text-[28px] !leading-tight lg:!text-[36px] lg:!leading-[43.6px]">
+              Gardons contact
+            </UHeading>
           </div>
         </div>
-      </USection>
+      </section>
+
+      {/* MAP + INFOS + FORM */}
+      <section className="bg-white py-10 lg:py-16">
+        <div className="mx-auto flex w-[92%] max-w-[1001px] flex-col items-center gap-[50px] md:w-[85%]">
+          {/* Address card — Figma 980×296, map 405 + panel 575 */}
+          <div className="flex w-full max-w-[980px] flex-col overflow-hidden rounded-[20px] shadow-[0px_4px_12.5px_rgba(0,0,0,0.25)] lg:flex-row lg:rounded-[50px]">
+            <div className="h-[220px] w-full shrink-0 overflow-hidden lg:h-[296px] lg:w-[405px]">
+              <img
+                src="/assets/contact/map.jpg"
+                alt="Localisation — 12 rue des Capucins, Lyon"
+                className="size-full object-cover"
+              />
+            </div>
+
+            <div className="relative flex h-auto min-h-[240px] w-full items-center overflow-hidden bg-[#351000] px-6 py-8 lg:h-[296px] lg:w-[575px] lg:px-10">
+              <div className="relative z-10 flex w-full max-w-[440px] flex-col items-start justify-between gap-8 sm:flex-row sm:items-center lg:mx-auto">
+                <img
+                  src="/assets/contact/logo-white.svg"
+                  alt="Alliance Actions Afrique"
+                  className="h-[48px] w-auto object-contain lg:h-[59px] lg:w-[114px]"
+                />
+                <ul className="flex w-full max-w-[251px] flex-col gap-3.5">
+                  {contactInfos.map((item) => (
+                    <li key={item.label} className="flex items-center gap-3">
+                      <span className="flex size-4 shrink-0 items-center justify-center overflow-hidden">
+                        <img
+                          src={item.icon}
+                          alt=""
+                          aria-hidden
+                          className="size-full object-contain brightness-0 invert"
+                        />
+                      </span>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          className={`text-[14px] leading-normal text-white ${item.underline ? 'underline underline-offset-2' : ''}`}
+                        >
+                          {item.label}
+                        </a>
+                      ) : (
+                        <span className="text-[14px] leading-normal text-white">{item.label}</span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Form — Figma ~1001px, fields 460px, gap 73px */}
+          <form
+            className="flex w-full max-w-[1001px] flex-col items-end gap-10"
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <div className="flex w-full flex-col gap-10">
+              <div className="flex w-full flex-col gap-10 lg:flex-row lg:gap-[73px]">
+                <label className="flex w-full flex-col items-start lg:w-[460px]">
+                  <span className="px-2.5 py-2.5 text-body-md font-medium text-dark">
+                    Nom, prénom et poste*
+                  </span>
+                  <input
+                    type="text"
+                    name="identity"
+                    required
+                    className={inputClass}
+                    aria-label="Nom, prénom et poste"
+                  />
+                </label>
+                <label className="flex w-full flex-col items-start lg:w-[460px]">
+                  <span className="px-2.5 py-2.5 text-body-md font-medium text-dark">
+                    Adresse mail*
+                  </span>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    className={inputClass}
+                    aria-label="Adresse mail"
+                  />
+                </label>
+              </div>
+
+              <label className="flex w-full flex-col items-start">
+                <span className="px-2.5 py-2.5 text-body-md font-medium text-dark">Message*</span>
+                <textarea
+                  name="message"
+                  required
+                  className="min-h-[148px] w-full resize-none border-0 border-b border-black bg-transparent px-2.5 py-2.5 text-body-md text-dark outline-none transition-colors focus:border-primary"
+                  aria-label="Message"
+                />
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              className="inline-flex h-[42px] w-[194px] items-center justify-center rounded-[5px] bg-primary px-4 py-2.5 text-[18px] font-semibold text-white transition-colors hover:bg-primary-hover"
+            >
+              Envoyer
+            </button>
+          </form>
+        </div>
+      </section>
 
       <UCta
         title="Rejoignez-nous !"
         subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
+        image="/assets/home/rejoignez-nous.jpg"
+        imageAlt="Poignée de main professionnelle"
         actions={
           <>
             <UButton to="/partenariat" variant="primary">Devenir partenaire {PARTNER_SVG}</UButton>
-            <UButton to="/don" variant="white">Faire un don</UButton>
+            <UButton to="/don" variant="dark">Faire un don</UButton>
           </>
         }
       />

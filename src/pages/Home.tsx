@@ -1,7 +1,7 @@
 import { useState } from 'react'
+import { Link } from "react-router-dom";
 import UButton from '@/components/ui/UButton'
-import UHeading from '@/components/ui/UHeading'
-import UPlaceholder from '@/components/ui/UPlaceholder'
+import UHeading from "@/components/ui/UHeading";
 import UCta from '@/components/ui/UCta'
 
 const stats = [
@@ -11,49 +11,67 @@ const stats = [
 ]
 
 interface Project {
-  id: string
-  title: string
-  image?: string
-  link: string
+  id: string;
+  title: string;
+  image: string;
+  link: string;
 }
 
 const projects: Project[] = [
-  { id: 'regards-croises', title: 'Regards croisés', image: undefined, link: '/projets/regards-croises' },
-  { id: 'parrainage', title: 'Parrainage', image: undefined, link: '/projets/parrainage' },
-]
+  {
+    id: "accompagnement",
+    title: "Accompagnement professionnel",
+    image: "/assets/home/accomp-pro.png",
+    link: "/projets/accompagnement-professionnel",
+  },
+  {
+    id: "regards-croises",
+    title: "Regards croisés",
+    image: "/assets/home/projetmanq1.png",
+    link: "/projets/regards-croises",
+  },
+  {
+    id: "parrainage",
+    title: "Parrainage",
+    image: "/assets/home/projetmanq2.png",
+    link: "/projets/parrainage",
+  },
+];
 
 const featuredArticle = {
   title: "Titre de l'article",
-  date: '12 juin',
+  date: "12 juin",
   excerpt:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-  image: undefined as string | undefined,
-}
+    "Lorem ipsum dolor sit amet. Ut dolorum modi sit nihil autem rem autem delectus ea corporis quia ea veniam velit et doloribus sapiente. Sed aperiam molestiae sit veniam omnis et velit omnis et quisquam quos aut doloremque maxime cum obcaecati sint. Qui molestias fuga qui aperiam sunt aut quibusdam soluta hic dicta magnam sed repellat doloribus ut nobis dolorum et cupiditate magni. Quo dolor beatae rem repellendus excepturi qui obcaecati ipsam rem dolor explicabo.",
+  image: "/assets/home/article-featured.png",
+};
 
 const partnersRow1 = [
-  { name: "L'Oasis", logo: '/assets/partners/loasis.png' },
-  { name: 'Malia', logo: '/assets/partners/malia.png' },
-  { name: 'Fondation Guy Seb', logo: '/assets/partners/fondation-guy-seb.png' },
-  { name: 'FormaSup Odyssée', logo: '/assets/partners/formasup-odyssee.png' },
-  { name: 'Fondation Voltaire', logo: '/assets/partners/fondation-voltaire.png' },
-  { name: '2 Minutes Max', logo: '/assets/partners/2-minutes-max.png' },
-  { name: 'Générale Société', logo: '/assets/partners/generale-societe.png' },
-  { name: 'AAA', logo: '/assets/partners/aaa-mark-black.png' },
-  { name: 'Sir John Concept Store', logo: '/assets/partners/sir-john.png' },
-  { name: 'Lillybelle', logo: '/assets/partners/lillybelle.png' },
-]
+  { name: "Partner 1", logo: "/assets/home/partners/p01.png" },
+  { name: "Partner 2", logo: "/assets/home/partners/p02.png" },
+  { name: "Partner 3", logo: "/assets/home/partners/p03.png" },
+  { name: "Partner 4", logo: "/assets/home/partners/p04.png" },
+  { name: "Partner 5", logo: "/assets/home/partners/p05.png" },
+  { name: "Partner 6", logo: "/assets/home/partners/p06.png" },
+  { name: "Partner 7", logo: "/assets/home/partners/p07.png" },
+  { name: "Partner 8", logo: "/assets/home/partners/p08.png" },
+  { name: "Partner 9", logo: "/assets/home/partners/p09.png" },
+  { name: "Partner 10", logo: "/assets/home/partners/p10.png" },
+  { name: "Partner 11", logo: "/assets/home/partners/p11.png" },
+];
 
 const partnersRow2 = [
-  { name: 'Ambassade de France au Bénin', logo: '/assets/partners/ambassade-france-benin.png' },
-  { name: 'CPME 69', logo: '/assets/partners/cpme69.png' },
-  { name: 'Métropole Grand Lyon', logo: '/assets/partners/metropole-grand-lyon.png' },
-  { name: 'Ville de Lyon', logo: '/assets/partners/ville-de-lyon.png' },
-  { name: 'AAA', logo: '/assets/partners/aaa-mark-gray.png' },
-  { name: 'Bulltech', logo: '/assets/partners/bulltech.png' },
-  { name: 'Seal Partner', logo: '/assets/partners/seal-partner.png' },
-  { name: 'SSA Ecore', logo: '/assets/partners/ssa-ecore.png' },
-  { name: 'Design Vebca', logo: '/assets/partners/design-vebca.png' },
-]
+  { name: "Partner 12", logo: "/assets/home/partners/p00.png" },
+  { name: "Partner 13", logo: "/assets/home/partners/p12.png" },
+  { name: "Partner 14", logo: "/assets/home/partners/p13.png" },
+  { name: "Partner 15", logo: "/assets/home/partners/p14.png" },
+  { name: "Partner 16", logo: "/assets/home/partners/p15.png" },
+  { name: "Partner 17", logo: "/assets/home/partners/p16.png" },
+  { name: "Partner 18", logo: "/assets/home/partners/p17.png" },
+  { name: "Partner 19", logo: "/assets/home/partners/p18.png" },
+  { name: "Partner 20", logo: "/assets/home/partners/p19.png" },
+  { name: "Partner 21", logo: "/assets/home/partners/p20.png" },
+];
 
 const PARTNER_SVG = (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -62,10 +80,20 @@ const PARTNER_SVG = (
 )
 
 const BackArrow = () => (
-  <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="#521800" strokeWidth={2.5}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M19 12H5M12 19l-7-7 7-7" />
+  <svg
+    className="mr-2 h-4 w-4"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="#521800"
+    strokeWidth={2.5}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M19 12H5M12 19l-7-7 7-7"
+    />
   </svg>
-)
+);
 
 export default function Home() {
   const [activeProject, setActiveProject] = useState(0)
@@ -81,62 +109,98 @@ export default function Home() {
   return (
     <div className="page">
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center">
+      <section className="relative flex min-h-[100svh] items-center lg:min-h-[814px]">
         <div className="absolute inset-0">
-          <img src="/assets/hero-bg.jpg" alt="" className="w-full h-full object-cover" />
+          <img
+            src="/assets/home/hero-bg.jpg"
+            alt=""
+            className="size-full object-cover"
+          />
           <div
             className="absolute inset-0 opacity-30"
-            style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.7) 100%)' }}
+            style={{
+              background:
+                "radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.7) 100%)",
+            }}
           />
         </div>
-        <div className="relative z-10 mx-auto" style={{ width: '85%' }}>
-          <div className="flex items-end justify-between">
-            <div className="flex flex-col items-start" style={{ width: '1100px', gap: '48px' }}>
+
+        <div className="relative z-10 mx-auto w-[92%] py-28 md:w-[85%] lg:py-0">
+          <div className="flex items-end justify-between gap-8">
+            <div className="flex max-w-[875px] flex-col items-start gap-8 lg:gap-12">
               <h1 className="text-white" style={{ lineHeight: 1.25 }}>
-                <span style={{ fontFamily: "Impact, 'Arial Black', sans-serif", fontSize: '120px', fontWeight: 400 }}>10</span>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '56px', fontWeight: 600 }}>
-                  {' '}ans d'intelligence collective au service de la coopération.
+                <span className="font-impact text-[48px] font-normal sm:text-[64px] lg:text-[96px]">
+                  10 ans
+                </span>{" "}
+                <span className="text-[24px] font-semibold sm:text-[32px] lg:text-[45px]">
+                  d&apos;intelligence collective au service de la coopération.
                 </span>
               </h1>
-              <p className="text-white" style={{ width: '650px', fontFamily: 'Inter, sans-serif', fontSize: '24px', fontWeight: 600, lineHeight: 'normal' }}>
-                Alliance Actions Afrique accompagne les populations défavorisées, enfants,
-                adolescent(e)s, étudiant(e)s de la formation à l'insertion professionnelle au
-                Bénin.
+              <p className="max-w-[518px] text-[16px] font-semibold text-white sm:text-[18px] lg:text-[20px]">
+                Alliance Actions Afrique accompagne les populations
+                défavorisées, enfants, adolescent(e)s, étudiant(e)s de la
+                formation à l&apos;insertion professionnelle au Bénin.
               </p>
-              <div className="flex items-center" style={{ gap: '16px' }}>
+              <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:items-center">
                 <UButton to="/partenariat" variant="primary">
                   Devenir partenaire {PARTNER_SVG}
                 </UButton>
-                <UButton to="/don" variant="white">Faire un don</UButton>
+                <UButton to="/don" variant="white">
+                  Faire un don
+                </UButton>
               </div>
             </div>
 
-            {/* Partnership logos */}
-            <div className="hidden xl:flex flex-col items-center" style={{ gap: '8px' }}>
+            <Link
+              to="/partenariat"
+              className="hidden flex-col items-center gap-3 xl:flex"
+            >
               <div className="flex items-center">
-                <img src="/figma-export/partner-0%3A418.png" className="object-cover rounded-full bg-white" style={{ width: 42, height: 42, position: 'relative', zIndex: 3 }} alt="" />
-                <img src="/figma-export/partner-0%3A419.png" className="object-cover rounded-full bg-white" style={{ width: 42, height: 42, marginLeft: -10, position: 'relative', zIndex: 2 }} alt="" />
-                <img src="/figma-export/partner-0%3A420.png" className="object-cover rounded-full bg-white" style={{ width: 42, height: 42, marginLeft: -10, position: 'relative', zIndex: 1 }} alt="" />
+                <img
+                  src="/assets/home/partner-avatar-1.png"
+                  alt=""
+                  className="relative z-[3] size-[42px] rounded-full bg-white object-cover"
+                />
+                <img
+                  src="/assets/home/partner-avatar-2.png"
+                  alt=""
+                  className="relative z-[2] -ml-2.5 size-[42px] rounded-full bg-white object-cover"
+                />
+                <img
+                  src="/assets/home/partner-avatar-3.png"
+                  alt=""
+                  className="relative z-[1] -ml-2.5 size-[42px] rounded-full bg-white object-cover"
+                />
               </div>
-              <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', fontWeight: 700, color: '#FFF', lineHeight: 'normal' }}>
+              <span className="text-[16px] font-bold text-white">
                 + 25 partenaires
               </span>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* MISSION & STATS */}
-      <section className="bg-white" style={{ padding: '60px 0' }}>
-        <div className="flex items-center mx-auto" style={{ gap: '150px', width: '85%' }}>
-          <p className="text-body-md text-dark" style={{ maxWidth: '360px' }}>
-            Nos missions sont d'<strong>accompagner et financer des programmes d'éducation,
-            développer des compétences professionnelles</strong> et <strong>soutenir l'esprit
-            d'entreprendre</strong> au Bénin.
+      <section className="bg-white py-10 lg:py-[60px]">
+        <div className="mx-auto flex w-[92%] flex-col items-start gap-10 md:w-[85%] lg:flex-row lg:items-center lg:gap-[150px]">
+          <p className="max-w-[416px] text-body-md text-dark">
+            Nos missions sont d&apos;
+            <strong>
+              accompagner et financer des programmes d&apos;éducation
+            </strong>
+            {", "}
+            <strong>développer des compétences professionnelles</strong>
+            {" et "}
+            <strong>
+              soutenir l&apos;esprit d&apos;entreprendre au Bénin.
+            </strong>
           </p>
-          <div className="grid grid-cols-3 gap-8 flex-1">
+          <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-5 lg:flex-1">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
+              <div
+                key={stat.label}
+                className="flex flex-col items-center justify-center gap-4 text-center lg:gap-6"
+              >
                 <div className="text-stat text-dark">{stat.value}</div>
                 <div className="text-body-lg text-dark">{stat.label}</div>
               </div>
@@ -146,120 +210,195 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="relative bg-white" style={{ padding: '80px 0 80px 140px' }}>
-        <div style={{ maxWidth: '600px' }}>
-          <UHeading level={2} color="primary" className="mb-10">Qui sommes nous ?</UHeading>
-          <p className="mb-10 text-body-md text-body" style={{ letterSpacing: '-0.32px' }}>
-            Alliance Actions Afrique s'engage au Bénin à travers des réponses aux appels à
-            projet, des conventions signées sur 3 ans et une participation à la fois humaine et
-            financière aux projets. L'association entend développer des partenariats pérennes,
-            tournés vers l'avenir.
-          </p>
-          <UButton to="/association" variant="primary">Découvrez l'association</UButton>
+      <section className="relative overflow-hidden bg-white py-10 lg:py-16">
+        <div className="mx-auto flex w-[92%] flex-col items-start gap-10 md:w-[85%] lg:flex-row lg:items-center lg:justify-between lg:gap-20">
+          <div className="flex max-w-[441px] flex-col items-start gap-8 lg:gap-10">
+            <UHeading level={2} color="primary">
+              Qui sommes nous ?
+            </UHeading>
+            <p className="text-body-md tracking-[-0.32px] text-body">
+              Alliance Actions Afrique s&apos;engage au Bénin à travers des
+              réponses aux appels à projet, des conventions signées sur 3 ans et
+              une participation à la fois humaine et financière aux projets.
+              L&apos;association entend développer des partenariats pérennes,
+              tournés vers l&apos;avenir.
+            </p>
+            <UButton to="/association" variant="primary">
+              Découvrir l&apos;association
+            </UButton>
+          </div>
+          <div className="w-full max-w-[593px] shrink-0 lg:w-[45%]">
+            <img
+              src="/assets/home/africa-map.png"
+              alt="Carte de l'Afrique, Bénin surligné"
+              className="h-auto w-full object-contain object-bottom"
+            />
+          </div>
         </div>
-        <img
-          src="/assets/about-map.png"
-          alt="Carte de l'Afrique, Bénin surligné"
-          className="absolute top-1/2 -translate-y-1/2 right-0 object-cover"
-          style={{ width: 593, height: 503, aspectRatio: '119/101', objectPosition: '-71.028px center' }}
-        />
       </section>
 
-      {/* PROJECTS (3-row stacked) */}
-      <section className="bg-white" style={{ padding: '40px 0' }}>
-        <div className="flex flex-col items-start mx-auto" style={{ gap: '40px', width: '85%' }}>
-          {/* Row 1: title + arrows */}
-          <div className="flex items-center justify-between w-full">
-            <UHeading level={2} color="primary">Nos projets manquants</UHeading>
-            <div className="inline-flex items-center rounded-xl border-2 border-primary overflow-hidden">
-              <button type="button" className="w-10 h-9 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors" aria-label="Projet précédent" onClick={prevProject}>
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+      {/* PROJECTS */}
+      <section className="bg-white py-10 lg:py-16">
+        <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
+          <div className="flex items-center justify-between gap-4">
+            <UHeading level={2} color="primary">
+              Nos projets marquants
+            </UHeading>
+            <div className="inline-flex items-center gap-4 rounded-lg border border-primary px-1.5 py-1.5">
+              <button
+                type="button"
+                className="flex items-center justify-center rounded border border-primary p-1.5 text-primary transition-colors hover:bg-primary hover:text-white"
+                aria-label="Projet précédent"
+                onClick={prevProject}
+              >
+                <svg
+                  className="h-3 w-2"
+                  fill="none"
+                  viewBox="0 0 8 14"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    d="M7 1L1 7l6 6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </button>
-              <div className="w-px self-stretch bg-primary/30" />
-              <button type="button" className="w-10 h-9 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors" aria-label="Projet suivant" onClick={nextProject}>
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <button
+                type="button"
+                className="flex items-center justify-center rounded border border-primary p-1.5 text-primary transition-colors hover:bg-primary hover:text-white"
+                aria-label="Projet suivant"
+                onClick={nextProject}
+              >
+                <svg
+                  className="h-3 w-2"
+                  fill="none"
+                  viewBox="0 0 8 14"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    d="M1 1l6 6-6 6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </button>
             </div>
           </div>
 
-          {/* Row 2: full-width image */}
-          {!projects[activeProject].image ? (
-            <UPlaceholder ratio="1200/350" label={`${projects[activeProject].id}.jpg`} className="w-full" rounded={false} />
-          ) : (
-            <div className="w-full overflow-hidden" style={{ height: 350 }}>
-              <img src={projects[activeProject].image} alt={projects[activeProject].title} className="w-full h-full object-cover" />
-            </div>
-          )}
+          <div className="relative h-[240px] overflow-visible rounded-2xl sm:h-[300px] md:h-[380px]">
+            <img
+              src={projects[activeProject].image}
+              alt={projects[activeProject].title}
+              className="size-full object-cover"
+            />
+          </div>
 
-          {/* Row 3: dots + title & CTA */}
-          <div className="flex items-start justify-between w-full">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex items-center gap-2">
               {projects.map((project, i) => (
                 <button
                   key={project.id}
                   type="button"
-                  className={`rounded-full bg-dark transition-all ${i === activeProject ? 'w-2.5 h-2.5' : 'w-2 h-2'}`}
-                  style={{ opacity: i === activeProject ? 1 : Math.max(0.2, 1 - Math.abs(i - activeProject) * 0.3) }}
-                  aria-label={`Aller au projet ${i + 1}`}
+                  className={`rounded-full bg-dark transition-all ${i === activeProject ? "h-2.5 w-2.5" : "h-2 w-2"}`}
+                  style={{
+                    opacity:
+                      i === activeProject
+                        ? 1
+                        : Math.max(0.2, 1 - Math.abs(i - activeProject) * 0.3),
+                  }}
+                  aria-label={`Aller au projet ${project.title}`}
                   onClick={() => setActiveProject(i)}
                 />
               ))}
             </div>
-            <div className="flex flex-col items-end" style={{ gap: '16px' }}>
-              <UHeading level={3} color="dark">{projects[activeProject].title}</UHeading>
-              <UButton to={projects[activeProject].link} variant="primary">Découvrir ce projet</UButton>
+            <div className="flex flex-col items-start gap-4 sm:items-end sm:gap-6">
+              <UHeading
+                level={2}
+                color="dark"
+                className="!text-[24px] lg:!text-[32px]"
+              >
+                {projects[activeProject].title}
+              </UHeading>
+              <UButton to={projects[activeProject].link} variant="primary">
+                Découvrir ce projet
+              </UButton>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ARTICLES (single featured) */}
-      <section className="bg-white" style={{ padding: '40px 0' }}>
-        <div className="flex flex-col items-start mx-auto" style={{ gap: '40px', width: '85%' }}>
-          <UHeading level={2} color="primary">À la une :</UHeading>
-          <div className="grid md:grid-cols-2 gap-8 items-center w-full">
-            {!featuredArticle.image ? (
-              <UPlaceholder ratio="574/258" label="article-featured.jpg" />
-            ) : (
-              <div className="rounded-card overflow-hidden" style={{ height: 350 }}>
-                <img src={featuredArticle.image} alt={featuredArticle.title} className="w-full h-full object-cover" />
+      {/* ARTICLES */}
+      <section className="bg-white py-10 lg:py-16">
+        <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
+          <UHeading level={2} color="primary">
+            À la une :
+          </UHeading>
+          <div className="flex w-full flex-col items-stretch gap-8 lg:flex-row lg:items-center lg:gap-10">
+            <div className="aspect-[637/283] w-full overflow-hidden rounded-lg bg-gray-100 lg:flex-1">
+              <img
+                src={featuredArticle.image}
+                alt={featuredArticle.title}
+                className="size-full object-cover"
+              />
+            </div>
+            <div className="flex w-full max-w-[510px] flex-col items-start gap-6 lg:gap-10">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-[24px] font-bold text-primary lg:text-[32px]">
+                  {featuredArticle.title}
+                </h3>
+                <p className="text-body-md font-bold text-dark">
+                  Publié le {featuredArticle.date}
+                </p>
               </div>
-            )}
-            <div>
-              <UHeading level={3} color="dark" className="mb-2">{featuredArticle.title}</UHeading>
-              <p className="mb-4 text-body-sm font-bold text-dark">Publié le {featuredArticle.date}</p>
-              <p className="mb-6 text-body-md text-body">{featuredArticle.excerpt}</p>
-              <UButton to="#" variant="primary">Lire l'article</UButton>
+              <p className="text-body-md tracking-[-0.32px] text-body">
+                {featuredArticle.excerpt}
+              </p>
+              <UButton to="/actualites/titre-de-l-article" variant="primary">
+                Lire l&apos;article
+              </UButton>
             </div>
           </div>
-          <UButton to="/actualites" variant="text" className="!text-dark" style={{ color: '#521800' }}>
-            <BackArrow />Voir les articles plus anciens
+          <UButton to="/actualites" variant="text" className="!text-dark">
+            <BackArrow />
+            Voir tous les articles
           </UButton>
         </div>
       </section>
 
       {/* PARTNERS */}
-      <section className="bg-white" style={{ padding: '80px 0' }}>
-        <div className="flex flex-col items-start mx-auto" style={{ gap: '80px', width: '85%' }}>
-          <UHeading level={2} color="primary">Accompagnés par des visionnaires</UHeading>
-          <div className="flex flex-col w-full" style={{ gap: '40px' }}>
-            <div className="flex items-center justify-between w-full flex-wrap gap-y-6">
+      <section className="bg-white py-10 lg:py-20">
+        <div className="mx-auto flex w-[92%] flex-col gap-10 md:w-[85%] lg:gap-20">
+          <UHeading level={2} color="primary">
+            Accompagnés par des visionnaires
+          </UHeading>
+          <div className="flex w-full flex-col gap-6 lg:gap-4">
+            <div className="flex w-full flex-wrap items-center justify-between gap-x-6 gap-y-6">
               {partnersRow1.map((partner) => (
-                <img key={partner.logo} src={partner.logo} alt={partner.name} className="h-10 w-auto object-contain shrink-0 bg-gray-100 rounded p-1" />
+                <img
+                  key={partner.logo}
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="h-10 w-auto max-w-[120px] shrink-0 object-contain sm:h-12 lg:h-14"
+                />
               ))}
             </div>
-            <div className="flex items-center justify-between w-full flex-wrap gap-y-6">
+            <div className="flex w-full flex-wrap items-center justify-between gap-x-6 gap-y-6">
               {partnersRow2.map((partner) => (
-                <img key={partner.logo} src={partner.logo} alt={partner.name} className="h-10 w-auto object-contain shrink-0 bg-gray-100 rounded p-1" />
+                <img
+                  key={partner.logo}
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="h-10 w-auto max-w-[140px] shrink-0 object-contain sm:h-12 lg:h-14"
+                />
               ))}
             </div>
           </div>
-          <UButton to="/partenariat" variant="text" className="!text-dark" style={{ color: '#521800' }}>
-            <BackArrow />Découvrir la liste complète de nos partenaires
+          <UButton to="/partenariat" variant="text" className="!text-dark">
+            <BackArrow />
+            Découvrir la liste complète de nos partenaires
           </UButton>
         </div>
       </section>
@@ -268,13 +407,19 @@ export default function Home() {
       <UCta
         title="Rejoignez-nous !"
         subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
+        image="/assets/home/rejoignez-nous.jpg"
+        imageAlt="Poignée de main professionnelle"
         actions={
           <>
-            <UButton to="/partenariat" variant="primary">Devenir partenaire {PARTNER_SVG}</UButton>
-            <UButton to="/don" variant="dark">Faire un don</UButton>
+            <UButton to="/partenariat" variant="primary">
+              Devenir partenaire {PARTNER_SVG}
+            </UButton>
+            <UButton to="/don" variant="dark">
+              Faire un don
+            </UButton>
           </>
         }
       />
     </div>
-  )
+  );
 }
