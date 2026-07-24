@@ -2,34 +2,36 @@ import UButton from '@/components/ui/UButton'
 import UCta from '@/components/ui/UCta'
 import PartnerIcon from '@/components/ui/PartnerIcon'
 import PageTitle from '@/components/layout/PageTitle'
-
-const contactInfos = [
-  {
-    icon: '/assets/contact/icon-mail.svg',
-    label: 'alliance.actions.afrique@gmail.com',
-    href: 'mailto:alliance.actions.afrique@gmail.com',
-    underline: true,
-  },
-  {
-    icon: '/assets/contact/icon-phone.svg',
-    label: '+33661802724',
-    href: 'tel:+33661802724',
-  },
-  {
-    icon: '/assets/contact/icon-chat.svg',
-    label: '+22964684479',
-    href: 'tel:+22964684479',
-  },
-  {
-    icon: '/assets/contact/icon-location.svg',
-    label: '12 rue des Capucins – 69001 Lyon',
-  },
-]
+import { useSmartContact } from '@/hooks/useSmartData'
 
 const inputClass =
   'h-[42px] w-full border-0 border-b border-black bg-transparent px-2.5 py-2.5 text-body-md text-dark outline-none transition-colors placeholder:text-dark/40 focus:border-primary'
 
 export default function Contact() {
+  const { contact } = useSmartContact()
+
+  const contactInfos = [
+    {
+      icon: '/assets/contact/icon-mail.svg',
+      label: contact.email ?? 'alliance.actions.afrique@gmail.com',
+      href: `mailto:${contact.email ?? 'alliance.actions.afrique@gmail.com'}`,
+      underline: true,
+    },
+    {
+      icon: '/assets/contact/icon-phone.svg',
+      label: contact.phoneFr ?? '+33661802724',
+      href: `tel:${contact.phoneFr?.replace(/\s/g, '') ?? '+33661802724'}`,
+    },
+    {
+      icon: '/assets/contact/icon-chat.svg',
+      label: contact.phoneBj ?? '+22964684479',
+      href: `tel:${contact.phoneBj?.replace(/\s/g, '') ?? '+22964684479'}`,
+    },
+    {
+      icon: '/assets/contact/icon-location.svg',
+      label: contact.address ?? '12 rue des Capucins – 69001 Lyon',
+    },
+  ]
   return (
     <div className="page pt-28">
       <PageTitle title="Gardons contact" />

@@ -1,9 +1,10 @@
 import UButton from "@/components/ui/UButton";
 import UHeading from "@/components/ui/UHeading";
 import UCta from "@/components/ui/UCta";
-import { articles, YOUTUBE_10_ANS_URL } from "@/data/articles";
+import { YOUTUBE_10_ANS_URL } from "@/data/articles";
 import PartnerIcon from '@/components/ui/PartnerIcon';
 import PageTitle from '@/components/layout/PageTitle';
+import { useSmartPosts } from '@/hooks/useSmartData';
 
 const ASSETS = "/assets/projects/regards-croises";
 function YoutubePlay() {
@@ -82,6 +83,8 @@ function ArticleCard({
 }
 
 export default function News() {
+  const { posts } = useSmartPosts(20)
+
   return (
     <div className="page pt-28">
       <PageTitle title="Actualités" />
@@ -151,17 +154,22 @@ export default function News() {
       {/* ARTICLES LIST */}
       <section className="bg-white py-10 lg:py-12">
         <div className="mx-auto flex w-[92%] flex-col gap-16 md:w-[85%] lg:gap-[100px]">
-          {articles.map((article, index) => (
+          {posts.map((post, index) => (
             <ArticleCard
-              key={article.slug}
-              slug={article.slug}
-              title={article.title}
-              date={article.date}
-              excerpt={article.excerpt}
-              image={article.image}
+              key={post.id}
+              slug={post.slug}
+              title={post.title}
+              date={post.date}
+              excerpt={post.excerpt}
+              image={post.featuredImage?.node?.sourceUrl ?? "/assets/news/hero.jpg"}
               imageRight={index % 2 === 1}
             />
           ))}
+          {posts.length === 0 && (
+            <p className="text-center text-body text-gray-500">
+              Aucun article pour le moment.
+            </p>
+          )}
         </div>
       </section>
 

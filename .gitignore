@@ -21,9 +21,6 @@ Assets AAA website/
 # Zip files (generated locally)
 *.zip
 
-# WordPress build output (uploaded via File Manager)
-wordpress-plugin/alliance-react-app/
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -34,3 +31,4 @@ wordpress-plugin/alliance-react-app/
 *.njsproj
 *.sln
 *.sw?
+.vercel

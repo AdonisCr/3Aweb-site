@@ -111,8 +111,14 @@ export function useTeamMembers(first = 20) {
   )
 
   const members = data?.teamMembers?.nodes ?? []
-  const frMembers = members.filter((m) => m.teamMemberFields?.region === 'fr')
-  const bjMembers = members.filter((m) => m.teamMemberFields?.region === 'bj')
+  const frMembers = members.filter((m) => {
+    const region = m.teamMemberFields?.region
+    return Array.isArray(region) ? region.includes('fr') : region === 'fr'
+  })
+  const bjMembers = members.filter((m) => {
+    const region = m.teamMemberFields?.region
+    return Array.isArray(region) ? region.includes('bj') : region === 'bj'
+  })
 
   return {
     members,

@@ -4,6 +4,7 @@ import UButton from '@/components/ui/UButton'
 import UHeading from "@/components/ui/UHeading";
 import UCta from '@/components/ui/UCta'
 import PartnerIcon from '@/components/ui/PartnerIcon'
+import { useSmartPosts } from '@/hooks/useSmartData'
 
 const stats = [
   { value: '500+', label: 'De bénéficiaires' },
@@ -92,6 +93,8 @@ const BackArrow = () => (
 
 export default function Home() {
   const [activeProject, setActiveProject] = useState(0)
+  const { posts } = useSmartPosts(3)
+  const featuredPost = posts[0]
 
   function nextProject() {
     setActiveProject((prev) => (prev + 1) % projects.length)
@@ -331,31 +334,33 @@ export default function Home() {
           <UHeading level={2} color="primary">
             À la une :
           </UHeading>
-          <div className="flex w-full flex-col items-stretch gap-8 lg:flex-row lg:items-center lg:gap-10">
-            <div className="aspect-[637/283] w-full overflow-hidden rounded-lg bg-gray-100 lg:flex-1">
-              <img
-                src={featuredArticle.image}
-                alt={featuredArticle.title}
-                className="size-full object-cover"
-              />
-            </div>
-            <div className="flex w-full max-w-[510px] flex-col items-start gap-6 lg:gap-10">
-              <div className="flex flex-col gap-2">
-                <h3 className="text-[24px] font-bold text-primary lg:text-[32px]">
-                  {featuredArticle.title}
-                </h3>
-                <p className="text-body-md font-bold text-dark">
-                  Publié le {featuredArticle.date}
-                </p>
+          {featuredPost && (
+            <div className="flex w-full flex-col items-stretch gap-8 lg:flex-row lg:items-center lg:gap-10">
+              <div className="aspect-[637/283] w-full overflow-hidden rounded-lg bg-gray-100 lg:flex-1">
+                <img
+                  src={featuredPost.featuredImage?.node?.sourceUrl ?? "/assets/home/article-featured.png"}
+                  alt={featuredPost.title}
+                  className="size-full object-cover"
+                />
               </div>
-              <p className="text-body-md tracking-[-0.32px] text-body">
-                {featuredArticle.excerpt}
-              </p>
-              <UButton to="/actualites/titre-de-l-article" variant="primary">
-                Lire l&apos;article
-              </UButton>
+              <div className="flex w-full max-w-[510px] flex-col items-start gap-6 lg:gap-10">
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-[24px] font-bold text-primary lg:text-[32px]">
+                    {featuredPost.title}
+                  </h3>
+                  <p className="text-body-md font-bold text-dark">
+                    Publié le {featuredPost.date}
+                  </p>
+                </div>
+                <p className="text-body-md tracking-[-0.32px] text-body">
+                  {featuredPost.excerpt}
+                </p>
+                <UButton to={`/actualites/${featuredPost.slug}`} variant="primary">
+                  Lire l&apos;article
+                </UButton>
+              </div>
             </div>
-          </div>
+          )}
           <UButton to="/actualites" variant="text" className="!text-dark">
             <BackArrow />
             Voir tous les articles

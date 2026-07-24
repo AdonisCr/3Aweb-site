@@ -5,32 +5,17 @@ import UHeading from '@/components/ui/UHeading'
 import UCta from '@/components/ui/UCta'
 import PartnerIcon from '@/components/ui/PartnerIcon'
 import PageTitle from '@/components/layout/PageTitle'
+import { useSmartProjects } from '@/hooks/useSmartData'
 
-const projects = [
-  {
-    id: 'regards-croises',
-    title: 'Regards croisés',
-    desc: "Ce projet vise à faciliter et à valoriser la compréhension mutuelle entre les cultures française et béninoise en mettant en lumière des initiatives et des acteurs qui œuvrent pour le développement.",
-    image: '/assets/gallery-13-4246.jpg',
-    route: '/projets/regards-croises',
-  },
-  {
-    id: 'parrainage',
-    title: 'Le parrainage',
-    desc: "Le programme de parrainage connecte les étudiants béninois avec des professionnels français pour des échanges réguliers, du mentorat et un soutien personnalisé vers l'autonomie.",
-    image: '/assets/gallery-13-4250.jpg',
-    route: '/projets/parrainage',
-  },
-  {
-    id: 'partenaires',
-    title: 'Partenaires',
-    desc: "Alliance Actions Afrique s'appuie sur un réseau solide de partenaires institutionnels, privés et associatifs pour financer et pérenniser ses projets d'éducation et d'insertion.",
-    image: '/assets/hero-bg.jpg',
-    route: '/partenariat',
-  },
-]
+const ROUTE_MAP: Record<string, string> = {
+  'regards-croises': '/projets/regards-croises',
+  'parrainage': '/projets/parrainage',
+  'accompagnement-professionnel': '/projets/accompagnement-professionnel',
+}
 
 export default function Projects() {
+  const { projects } = useSmartProjects(10)
+
   return (
     <div className="page pt-28">
       <PageTitle title="Nos projets phares" />
@@ -40,15 +25,15 @@ export default function Projects() {
           {projects.map((project) => (
             <Link
               key={project.id}
-              to={project.route}
+              to={ROUTE_MAP[project.slug] ?? `/projets/${project.slug}`}
               className="flex flex-col items-start gap-6 cursor-pointer group no-underline lg:flex-row lg:items-center lg:gap-12"
             >
               <div className="w-full flex-1 rounded-card overflow-hidden lg:h-[300px]">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={project.featuredImage?.node?.sourceUrl ?? '/assets/gallery-13-4246.jpg'} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="w-full flex-1">
                 <UHeading level={2} color="dark" className="mb-4">{project.title}</UHeading>
-                <p className="mb-6 text-body-md text-body">{project.desc}</p>
+                <p className="mb-6 text-body-md text-body" dangerouslySetInnerHTML={{ __html: project.excerpt }} />
                 <span className="inline-flex items-center text-primary font-semibold">
                   Découvrir
                   <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

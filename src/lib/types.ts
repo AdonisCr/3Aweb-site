@@ -67,7 +67,7 @@ export interface WPTeamMember {
   } | null
   teamMemberFields?: {
     role: string
-    region: 'fr' | 'bj'
+    region: 'fr' | 'bj' | string[]
     order: number
   }
 }

@@ -43,27 +43,6 @@ function aaa_register_post_types() {
         'rewrite'      => [ 'slug' => 'projets' ],
     ] );
 
-    // — Partenaires —
-    register_post_type( 'partner', [
-        'labels'       => [
-            'name'               => 'Partenaires',
-            'singular_name'      => 'Partenaire',
-            'add_new_item'       => 'Ajouter un partenaire',
-            'edit_item'          => 'Modifier le partenaire',
-            'all_items'          => 'Tous les partenaires',
-            'menu_name'          => 'Partenaires',
-        ],
-        'public'       => true,
-        'has_archive'  => true,
-        'show_in_rest' => true,
-        'show_in_graphql' => true,
-        'graphql_single_name' => 'partner',
-        'graphql_plural_name' => 'partners',
-        'supports'     => [ 'title', 'thumbnail' ],
-        'menu_icon'    => 'dashicons-groups',
-        'rewrite'      => [ 'slug' => 'partenaires' ],
-    ] );
-
     // — Membres de l'équipe —
     register_post_type( 'team_member', [
         'labels'       => [
@@ -85,47 +64,6 @@ function aaa_register_post_types() {
         'rewrite'      => [ 'slug' => 'equipe' ],
     ] );
 
-    // — Valeurs —
-    register_post_type( 'value', [
-        'labels'       => [
-            'name'               => 'Valeurs',
-            'singular_name'      => 'Valeur',
-            'add_new_item'       => 'Ajouter une valeur',
-            'edit_item'          => 'Modifier la valeur',
-            'all_items'          => 'Toutes les valeurs',
-            'menu_name'          => 'Valeurs',
-        ],
-        'public'       => true,
-        'has_archive'  => true,
-        'show_in_rest' => true,
-        'show_in_graphql' => true,
-        'graphql_single_name' => 'value',
-        'graphql_plural_name' => 'values',
-        'supports'     => [ 'title', 'editor', 'thumbnail', 'page-attributes' ],
-        'menu_icon'    => 'dashicons-star-filled',
-        'rewrite'      => [ 'slug' => 'valeurs' ],
-    ] );
-
-    // — Paliers de don —
-    register_post_type( 'donation_tier', [
-        'labels'       => [
-            'name'               => 'Paliers de don',
-            'singular_name'      => 'Palier de don',
-            'add_new_item'       => 'Ajouter un palier',
-            'edit_item'          => 'Modifier le palier',
-            'all_items'          => 'Tous les paliers',
-            'menu_name'          => 'Paliers de don',
-        ],
-        'public'       => true,
-        'has_archive'  => true,
-        'show_in_rest' => true,
-        'show_in_graphql' => true,
-        'graphql_single_name' => 'donationTier',
-        'graphql_plural_name' => 'donationTiers',
-        'supports'     => [ 'title', 'page-attributes' ],
-        'menu_icon'    => 'dashicons-heart',
-        'rewrite'      => [ 'slug' => 'dons' ],
-    ] );
 }
 add_action( 'init', 'aaa_register_post_types' );
 
@@ -160,40 +98,6 @@ add_action( 'init', 'aaa_register_taxonomies' );
 if ( ! function_exists( 'acf_add_local_field_group' ) ) {
     return; // ACF n'est pas installé, on arrête ici.
 }
-
-/* ---------- 3.1 Partenaires ---------- */
-acf_add_local_field_group( [
-    'key'      => 'group_partner_fields',
-    'title'    => 'Champs partenaire',
-    'fields'   => [
-        [
-            'key'          => 'field_partner_category',
-            'label'        => 'Catégorie',
-            'name'         => 'category',
-            'type'         => 'text',
-            'required'     => 1,
-            'instructions' => 'Ex : "Institutions & entreprises", "Écoles & centres de formation", "Partenaires projets", "Ils nous ont fait confiance"',
-        ],
-        [
-            'key'          => 'field_partner_website',
-            'label'        => 'Site web',
-            'name'         => 'website',
-            'type'         => 'url',
-            'required'     => 0,
-        ],
-    ],
-    'location' => [
-        [
-            [
-                'param'    => 'post_type',
-                'operator' => '==',
-                'value'    => 'partner',
-            ],
-        ],
-    ],
-    'show_in_graphql' => true,
-    'graphql_field_name' => 'partnerFields',
-] );
 
 /* ---------- 3.2 Membres de l'équipe ---------- */
 acf_add_local_field_group( [
@@ -242,77 +146,7 @@ acf_add_local_field_group( [
     'graphql_field_name' => 'teamMemberFields',
 ] );
 
-/* ---------- 3.3 Valeurs ---------- */
-acf_add_local_field_group( [
-    'key'      => 'group_value_fields',
-    'title'    => 'Champs valeur',
-    'fields'   => [
-        [
-            'key'          => 'field_value_order',
-            'label'        => 'Ordre d\'affichage',
-            'name'         => 'order',
-            'type'         => 'number',
-            'default_value' => 0,
-            'min'          => 0,
-        ],
-        [
-            'key'          => 'field_value_description',
-            'label'        => 'Description courte',
-            'name'         => 'description',
-            'type'         => 'textarea',
-            'required'     => 0,
-            'rows'         => 3,
-        ],
-    ],
-    'location' => [
-        [
-            [
-                'param'    => 'post_type',
-                'operator' => '==',
-                'value'    => 'value',
-            ],
-        ],
-    ],
-    'show_in_graphql' => true,
-    'graphql_field_name' => 'valueFields',
-] );
-
-/* ---------- 3.4 Paliers de don ---------- */
-acf_add_local_field_group( [
-    'key'      => 'group_donation_tier_fields',
-    'title'    => 'Champs palier de don',
-    'fields'   => [
-        [
-            'key'          => 'field_dt_amount',
-            'label'        => 'Montant (€)',
-            'name'         => 'amount',
-            'type'         => 'number',
-            'required'     => 1,
-            'min'          => 1,
-        ],
-        [
-            'key'          => 'field_dt_description',
-            'label'        => 'Description',
-            'name'         => 'description',
-            'type'         => 'text',
-            'required'     => 1,
-            'instructions' => 'Ex : "Finance 3 mois de fournitures scolaires"',
-        ],
-    ],
-    'location' => [
-        [
-            [
-                'param'    => 'post_type',
-                'operator' => '==',
-                'value'    => 'donation_tier',
-            ],
-        ],
-    ],
-    'show_in_graphql' => true,
-    'graphql_field_name' => 'donationTierFields',
-] );
-
-/* ---------- 3.5 Page Contact ---------- */
+/* ---------- 3.3 Page Contact ---------- */
 acf_add_local_field_group( [
     'key'      => 'group_contact_info_fields',
     'title'    => 'Informations de contact',
@@ -376,7 +210,7 @@ acf_add_local_field_group( [
     'graphql_field_name' => 'contactInfoFields',
 ] );
 
-/* ---------- 3.6 Page d'accueil ---------- */
+/* ---------- 3.4 Page d'accueil ---------- */
 acf_add_local_field_group( [
     'key'      => 'group_home_page_fields',
     'title'    => 'Champs page d\'accueil',
@@ -516,7 +350,7 @@ acf_add_local_field_group( [
     'graphql_field_name' => 'homePageFields',
 ] );
 
-/* ---------- 3.7 Paramètres globaux ---------- */
+/* ---------- 3.5 Paramètres globaux ---------- */
 acf_add_local_field_group( [
     'key'      => 'group_global_settings_fields',
     'title'    => 'Paramètres du site',

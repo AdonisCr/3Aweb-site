@@ -5,59 +5,27 @@ import UCta from '@/components/ui/UCta'
 import UPlaceholder from '@/components/ui/UPlaceholder'
 import PartnerIcon from '@/components/ui/PartnerIcon'
 import PageTitle from '@/components/layout/PageTitle'
-
-/** Remplacer par l'URL YouTube réelle dès qu'elle est disponible. */
-const MISSION_VIDEO_URL = 'https://www.youtube.com/'
-
-const values = [
-  {
-    title: 'Solidarité',
-    desc: "Face aux obstacles d'accès à la formation, l'assistanat n'est pas une solution durable. La solidarité, elle, crée du lien et de l'autonomie.",
-    image: '/assets/association/valeurs.jpg',
-  },
-  {
-    title: 'Engagement',
-    desc: "Nous agissons concrètement et durablement pour accompagner les talents locaux vers l'autonomie professionnelle.",
-    image: '/assets/association/valeurs.jpg',
-  },
-  {
-    title: 'Coopération',
-    desc: 'Nous favorisons les échanges entre acteurs du Bénin et de France pour créer des ponts durables.',
-    image: '/assets/association/valeurs.jpg',
-  },
-  {
-    title: 'Éducation',
-    desc: "L'éducation est au cœur de notre mission. Nous croyons en son pouvoir transformateur pour les communautés.",
-    image: '/assets/association/valeurs.jpg',
-  },
-]
+import { useSmartTeamMembers } from '@/hooks/useSmartData'
+import { useGlobalSettings } from '@/hooks/useWordPress'
 
 type TeamRegion = 'fr' | 'bj'
 
-interface TeamMember {
-  name: string
-  role: string
-  region: TeamRegion
-  image?: string
-}
-
-const team: TeamMember[] = [
-  { name: 'Franca Sornin', role: 'Directrice', region: 'fr' },
-  { name: 'Membre', role: 'Président', region: 'fr' },
-  { name: 'Membre', role: 'Trésorier', region: 'fr' },
-  { name: 'Membre', role: 'Secrétaire', region: 'fr' },
-  { name: 'Membre', role: 'Président', region: 'bj' },
-  { name: 'Membre', role: 'Vice-président', region: 'bj' },
-  { name: 'Membre', role: 'Trésorier', region: 'bj' },
-  { name: 'Membre', role: 'Secrétaire', region: 'bj' },
+const values = [
+  { id: 'v1', title: 'Solidarité', content: "Face aux obstacles d'accès à la formation, l'assistanat n'est pas une solution durable. La solidarité, elle, crée du lien et de l'autonomie.", image: '/assets/association/valeurs.jpg' },
+  { id: 'v2', title: 'Engagement', content: 'Nous agissons concrètement et durablement pour accompagner les talents locaux vers l\'autonomie professionnelle.', image: '/assets/association/valeurs.jpg' },
+  { id: 'v3', title: 'Coopération', content: 'Nous favorisons les échanges entre acteurs du Bénin et de France pour créer des ponts durables.', image: '/assets/association/valeurs.jpg' },
+  { id: 'v4', title: 'Éducation', content: "L'éducation est au cœur de notre mission. Nous croyons en son pouvoir transformateur pour les communautés.", image: '/assets/association/valeurs.jpg' },
 ]
 
 export default function Association() {
   const [activeValue, setActiveValue] = useState(0)
   const [teamRegion, setTeamRegion] = useState<TeamRegion>('fr')
   const [teamPage, setTeamPage] = useState(0)
+  const { missionVideoUrl } = useGlobalSettings()
 
-  const filteredTeam = team.filter((m) => m.region === teamRegion)
+  const { frMembers, bjMembers } = useSmartTeamMembers(20)
+
+  const filteredTeam = teamRegion === 'fr' ? frMembers : bjMembers
   const teamPageSize = 4
   const teamPageCount = Math.max(1, Math.ceil(filteredTeam.length / teamPageSize))
   const visibleTeam = filteredTeam.slice(teamPage * teamPageSize, teamPage * teamPageSize + teamPageSize)
@@ -141,7 +109,7 @@ export default function Association() {
           </div>
 
           <a
-            href={MISSION_VIDEO_URL}
+            href={missionVideoUrl ?? 'https://www.youtube.com/'}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative block aspect-video w-full overflow-hidden rounded-[10px]"
@@ -195,7 +163,7 @@ export default function Association() {
             <div className="flex items-center gap-2">
               {values.map((value, i) => (
                 <button
-                  key={value.title}
+                  key={value.id}
                   type="button"
                   className={`rounded-full bg-dark transition-all ${i === activeValue ? 'h-2.5 w-2.5' : 'h-2 w-2'}`}
                   style={{ opacity: i === activeValue ? 1 : Math.max(0.2, 1 - Math.abs(i - activeValue) * 0.3) }}
@@ -209,7 +177,7 @@ export default function Association() {
                 {values[activeValue].title}
               </UHeading>
               <p className="text-body-md tracking-[-0.48px] text-black">
-                {values[activeValue].desc}
+                {values[activeValue].content}
               </p>
             </div>
           </div>
@@ -229,11 +197,11 @@ export default function Association() {
           </div>
 
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
-            {visibleTeam.map((member, index) => (
-              <div key={`${member.region}-${member.role}-${index}`} className="flex flex-col gap-3">
-                {member.image ? (
+            {visibleTeam.map((member) => (
+              <div key={member.id} className="flex flex-col gap-3">
+                {member.featuredImage?.node?.sourceUrl ? (
                   <div className="aspect-[253/318] w-full overflow-hidden rounded">
-                    <img src={member.image} alt={member.name} className="size-full object-cover" />
+                    <img src={member.featuredImage.node.sourceUrl} alt={member.title} className="size-full object-cover" />
                   </div>
                 ) : (
                   <UPlaceholder
@@ -243,10 +211,10 @@ export default function Association() {
                   />
                 )}
                 <div className="flex flex-col gap-2">
-                  <p className="text-heading-sm font-bold text-primary">{member.name}</p>
+                  <p className="text-heading-sm font-bold text-primary">{member.title}</p>
                   <div className="flex items-center justify-between gap-2">
                     <p className="shrink-0 text-body-md font-bold tracking-[-0.48px] text-body">
-                      {member.role}
+                      {member.teamMemberFields?.role ?? ''}
                     </p>
                     <div className="h-px min-w-0 flex-1 bg-gray-300" />
                   </div>
