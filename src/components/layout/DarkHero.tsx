@@ -17,7 +17,7 @@ interface DarkHeroProps {
 export default function DarkHero({ title, breadcrumbs = [], description, cta }: DarkHeroProps) {
   return (
     <section className="relative py-20 bg-dark">
-      <div className="max-w-[1240px] mx-auto px-page-x">
+      <div className="mx-auto w-[92%] md:w-[85%]">
         {breadcrumbs.length > 0 && <div className="mb-4"><UBreadcrumb items={breadcrumbs} /></div>}
         <UHeading level={1} color="primary">{title}</UHeading>
         {description && (

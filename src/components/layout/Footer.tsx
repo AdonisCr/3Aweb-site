@@ -91,7 +91,7 @@ export default function Footer() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto" style={{ width: '85%' }}>
+      <div className="relative z-10 mx-auto w-[92%] md:w-[85%]">
         {/* Top row */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-10 mb-14">
           <a href="/" className="inline-block">

@@ -12,6 +12,18 @@ dist
 dist-ssr
 *.local
 
+# Environment
+.env
+
+# Design assets (too large for git)
+Assets AAA website/
+
+# Zip files (generated locally)
+*.zip
+
+# WordPress build output (uploaded via File Manager)
+wordpress-plugin/alliance-react-app/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

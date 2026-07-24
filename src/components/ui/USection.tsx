@@ -14,8 +14,8 @@ const bgClasses: Record<string, string> = {
 
 export default function USection({ bg = 'white', containerClass = '', children }: USectionProps) {
   return (
-    <section className={`py-20 bg-white ${bgClasses[bg]}`}>
-      <div className={`mx-auto px-page-x ${containerClass}`} style={{ width: '85%' }}>
+    <section className={`py-10 lg:py-20 bg-white ${bgClasses[bg]}`}>
+      <div className={`mx-auto w-[92%] md:w-[85%] ${containerClass}`}>
         {children}
       </div>
     </section>
