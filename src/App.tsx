@@ -15,7 +15,6 @@ import Partnership from '@/pages/Partnership'
 import News from '@/pages/News'
 import ArticleDetail from '@/pages/ArticleDetail'
 import Contact from '@/pages/Contact'
-import Don from '@/pages/Don'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -42,7 +41,6 @@ function AppLayout() {
           <Route path="/actualites" element={<News />} />
           <Route path="/actualites/:slug" element={<ArticleDetail />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/don" element={<Don />} />
         </Routes>
       </main>
       <Footer />
