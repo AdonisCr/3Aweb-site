@@ -3,50 +3,59 @@ import UCta from "@/components/ui/UCta";
 import PartnerIcon from '@/components/ui/PartnerIcon';
 import PageTitle from '@/components/layout/PageTitle';
 
-const LOGOS = "/assets/partnership/logos";
+const LOGOS = "/assets/partners/Coloured";
 
 const partnerSections = [
   {
     title: "Institutions & entreprises",
     logos: [
-      { name: "L'Oasis", src: `${LOGOS}/loasis.png` },
-      { name: "Seal Partner", src: `${LOGOS}/seal.png` },
-      { name: "Fondation", src: `${LOGOS}/fondation.png` },
-      { name: "FormaSup Odyssée", src: `${LOGOS}/formasup-odyssee.png` },
-      { name: "Théâtre", src: `${LOGOS}/theatre.png` },
-      { name: "2 Minutes Max", src: `${LOGOS}/2-minutes-max.png` },
-      { name: "Mark H", src: `${LOGOS}/mark-h.png` },
-      { name: "Sir John Concept Store", src: `${LOGOS}/sir-john.png` },
-      { name: "Lillybelle", src: `${LOGOS}/lillybelle.png` },
+      { name: "L'Oasis", src: `${LOGOS}/image 28.png` },
+      { name: "Seal Partner", src: `${LOGOS}/image 25.png` },
+      { name: "Fondation", src: `${LOGOS}/image 30.png` },
+      { name: "FormaSup Odyssée", src: `${LOGOS}/image 27.png` },
+      { name: "Théâtre", src: `${LOGOS}/image 26.png` },
+      { name: "2 Minutes Max", src: `${LOGOS}/image 29.png` },
+      { name: "Mark H", src: `${LOGOS}/image 31.png` },
+      { name: "Sir John Concept Store", src: `${LOGOS}/image 32.png` },
+      { name: "Lillybelle", src: `${LOGOS}/image 33.png` },
     ],
   },
   {
     title: "Écoles & centres de formation",
     logos: [
-      { name: "Africa Design School", src: `${LOGOS}/africa-design-school.png` },
-      { name: "Epitech", src: `${LOGOS}/epitech.png` },
-      { name: "Esperanza Joie", src: `${LOGOS}/esperanza.png` },
-      { name: "École 229", src: `${LOGOS}/ecole-229.png` },
+      {
+        name: "Africa Design School",
+        src: `${LOGOS}/image 37.png`,
+      },
+      { name: "Epitech", src: `${LOGOS}/image 34.png` },
+      { name: "Esperanza Joie", src: `${LOGOS}/image 36.png` },
+      { name: "École 229", src: `${LOGOS}/image 35.png` },
     ],
   },
   {
     title: "Partenaires projets",
     logos: [
-      { name: "Caritas Abomey", src: `${LOGOS}/caritas-abomey.png` },
-      { name: "Epitech", src: `${LOGOS}/epitech.png` },
-      { name: "Esperanza Joie", src: `${LOGOS}/esperanza.png` },
-      { name: "École 229", src: `${LOGOS}/ecole-229.png` },
-      { name: "10 000 Codeurs", src: `${LOGOS}/10000-codeurs.png` },
+      { name: "Caritas Abomey", src: `${LOGOS}/image 38.png` },
+      { name: "Epitech", src: `${LOGOS}/image 34.png` },
+      { name: "Esperanza Joie", src: `${LOGOS}/image 36.png` },
+      { name: "École 229", src: `${LOGOS}/image 35.png` },
+      { name: "10 000 Codeurs", src: `${LOGOS}/image 39.png` },
     ],
   },
   {
     title: "Ils nous ont fait confiance",
     logos: [
-      { name: "Ambassade de France au Bénin", src: `${LOGOS}/ambassade-france-benin.png` },
-      { name: "CPME 69", src: `${LOGOS}/cpme69.png` },
-      { name: "Ville de Lyon", src: `${LOGOS}/ville-de-lyon.png` },
-      { name: "Métropole Grand Lyon", src: `${LOGOS}/metropole-grand-lyon.png` },
-      { name: "Société Générale", src: `${LOGOS}/societe-generale.png` },
+      {
+        name: "Ambassade de France au Bénin",
+        src: `${LOGOS}/image 42.png`,
+      },
+      { name: "CPME 69", src: `${LOGOS}/image 41.png` },
+      { name: "Ville de Lyon", src: `${LOGOS}/image 43.png` },
+      {
+        name: "Métropole Grand Lyon",
+        src: `${LOGOS}/image 44.png`,
+      },
+      { name: "Société Générale", src: `${LOGOS}/image 40.png` },
     ],
   },
 ];
