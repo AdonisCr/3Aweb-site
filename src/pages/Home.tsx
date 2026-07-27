@@ -47,30 +47,30 @@ const featuredArticle = {
 };
 
 const partnersRow1 = [
-  { name: "Partner 1", logo: "/assets/home/partners/p01.png" },
-  { name: "Partner 2", logo: "/assets/home/partners/p02.png" },
-  { name: "Partner 3", logo: "/assets/home/partners/p03.png" },
-  { name: "Partner 4", logo: "/assets/home/partners/p04.png" },
-  { name: "Partner 5", logo: "/assets/home/partners/p05.png" },
-  { name: "Partner 6", logo: "/assets/home/partners/p06.png" },
-  { name: "Partner 7", logo: "/assets/home/partners/p07.png" },
-  { name: "Partner 8", logo: "/assets/home/partners/p08.png" },
-  { name: "Partner 9", logo: "/assets/home/partners/p09.png" },
-  { name: "Partner 10", logo: "/assets/home/partners/p10.png" },
-  { name: "Partner 11", logo: "/assets/home/partners/p11.png" },
+  { name: "Partner 4", logo: "/assets/partners/Coloured/image 28.png" },
+  { name: "Partner 1", logo: "/assets/partners/Coloured/image 25.png" },
+  { name: "Partner 6", logo: "/assets/partners/Coloured/image 30.png" },
+  { name: "Partner 3", logo: "/assets/partners/Coloured/image 27.png" },
+  { name: "Partner 2", logo: "/assets/partners/Coloured/image 26.png" },
+  { name: "Partner 5", logo: "/assets/partners/Coloured/image 29.png" },
+  { name: "Partner 16", logo: "/assets/partners/Coloured/image 40.png" },
+  { name: "Partner 7", logo: "/assets/partners/Coloured/image 31.png" },
+  { name: "Partner 8", logo: "/assets/partners/Coloured/image 32.png" },
+  { name: "Partner 9", logo: "/assets/partners/Coloured/image 33.png" },
+  { name: "Partner 14", logo: "/assets/partners/Coloured/image 38.png" },
 ];
 
 const partnersRow2 = [
-  { name: "Partner 12", logo: "/assets/home/partners/p00.png" },
-  { name: "Partner 13", logo: "/assets/home/partners/p12.png" },
-  { name: "Partner 14", logo: "/assets/home/partners/p13.png" },
-  { name: "Partner 15", logo: "/assets/home/partners/p14.png" },
-  { name: "Partner 16", logo: "/assets/home/partners/p15.png" },
-  { name: "Partner 17", logo: "/assets/home/partners/p16.png" },
-  { name: "Partner 18", logo: "/assets/home/partners/p17.png" },
-  { name: "Partner 19", logo: "/assets/home/partners/p18.png" },
-  { name: "Partner 20", logo: "/assets/home/partners/p19.png" },
-  { name: "Partner 21", logo: "/assets/home/partners/p20.png" },
+  { name: "Partner 18", logo: "/assets/partners/Coloured/image 42.png" },
+  { name: "Partner 17", logo: "/assets/partners/Coloured/image 41.png" },
+  { name: "Partner 20", logo: "/assets/partners/Coloured/image 44.png" },
+  { name: "Partner 19", logo: "/assets/partners/Coloured/image 43.png" },
+  { name: "Partner 21", logo: "/assets/partners/Coloured/image 31.png" },
+  { name: "Partner 11", logo: "/assets/partners/Coloured/image 34.png" },
+  { name: "Partner 10", logo: "/assets/partners/Coloured/image 35.png" },
+  { name: "Partner 12", logo: "/assets/partners/Coloured/image 36.png" },
+  { name: "Partner 13", logo: "/assets/partners/Coloured/image 37.png" },
+  { name: "Partner 15", logo: "/assets/partners/Coloured/image 39.png" },
 ];
 
 const PARTNER_SVG = (
@@ -374,8 +374,8 @@ export default function Home() {
           <UHeading level={2} color="primary">
             Accompagnés par des visionnaires
           </UHeading>
-          <div className="flex w-full flex-col gap-6 lg:gap-4">
-            <div className="flex w-full flex-wrap items-center justify-between gap-x-6 gap-y-6">
+          <div className="flex w-full flex-col gap-10 lg:gap-4">
+            <div className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-6 mb-10">
               {partnersRow1.map((partner) => (
                 <img
                   key={partner.logo}
@@ -396,7 +396,11 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <UButton to="/partenariat" variant="text" className="!text-dark">
+          <UButton
+            to="/partenariat"
+            variant="text"
+            className="!text-dark self-start"
+          >
             <BackArrow />
             Découvrir la liste complète de nos partenaires
           </UButton>
