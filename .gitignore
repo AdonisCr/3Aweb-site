@@ -8,14 +8,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
-dist-ssr
-*.local
 
 # Environment
 .env
 .env.*
 !.env.example
+*.local
 
 # Design assets (too large for git)
 Assets AAA website/
