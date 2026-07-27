@@ -14,12 +14,22 @@ dist-ssr
 
 # Environment
 .env
+.env.*
+!.env.example
 
 # Design assets (too large for git)
 Assets AAA website/
+public/figma-export/
+
+# WordPress setup (not part of React frontend)
+wordpress-setup/
 
 # Zip files (generated locally)
 *.zip
+
+# Build artifacts
+dist/
+dist-ssr/
 
 # Editor directories and files
 .vscode/*
