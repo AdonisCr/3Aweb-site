@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { ApolloProvider } from '@apollo/client/react'
+import { apolloClient } from '@/lib/client'
 import NavBar from '@/components/layout/NavBar'
 import Footer from '@/components/layout/Footer'
 import Home from '@/pages/Home'
@@ -50,9 +52,11 @@ function AppLayout() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <AppLayout />
-    </BrowserRouter>
+    <ApolloProvider client={apolloClient}>
+      <BrowserRouter>
+        <ScrollToTop />
+        <AppLayout />
+      </BrowserRouter>
+    </ApolloProvider>
   )
 }

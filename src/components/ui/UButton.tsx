@@ -1,4 +1,5 @@
 import { type ReactNode, type CSSProperties } from 'react'
+import { Link } from 'react-router-dom'
 
 interface UButtonProps {
   children: ReactNode
@@ -36,10 +37,17 @@ export default function UButton({
   const classes = `inline-flex items-center justify-center font-semibold transition-all duration-300 rounded-btn whitespace-nowrap ${variantClasses[variant]} ${variant !== 'text' ? sizeClasses[size] : ''} ${className}`
 
   if (to) {
+    if (to.startsWith('http') || to.startsWith('mailto:') || to.startsWith('tel:')) {
+      return (
+        <a href={to} className={classes} style={style} onClick={onClick} target="_blank" rel="noopener noreferrer">
+          {children}
+        </a>
+      )
+    }
     return (
-      <a href={to} className={classes} style={style} onClick={onClick}>
+      <Link to={to} className={classes} style={style} onClick={onClick}>
         {children}
-      </a>
+      </Link>
     )
   }
 

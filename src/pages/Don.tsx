@@ -14,8 +14,8 @@ export default function Don() {
   const [selected, setSelected] = useState(50)
 
   return (
-    <div className="page">
-      <DarkHero title="Faire un don" />
+    <div className="page pt-28">
+      <DarkHero title="Faire un don" breadcrumbs={[{ label: "Accueil", to: "/" }, { label: "Faire un don" }]} />
 
       <USection>
         <div className="max-w-[800px] mx-auto text-center">
@@ -26,16 +26,25 @@ export default function Don() {
             vies.
           </p>
 
-          <div className="grid grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12" role="radiogroup" aria-label="Choix du montant du don">
             {donationOptions.map((option) => (
               <div
                 key={option.amount}
-                className={`p-6 rounded-card border-2 cursor-pointer transition-all text-center ${
+                role="radio"
+                aria-checked={selected === option.amount}
+                tabIndex={0}
+                className={`p-6 rounded-card border-2 cursor-pointer transition-all text-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                   selected === option.amount
                     ? 'border-primary bg-primary/5'
                     : 'border-gray-200 hover:border-primary/50'
                 }`}
                 onClick={() => setSelected(option.amount)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    setSelected(option.amount)
+                  }
+                }}
               >
                 <div className="text-[32px] font-bold text-primary">{option.amount} €</div>
                 <p className="mt-2 text-body-sm text-body">{option.desc}</p>

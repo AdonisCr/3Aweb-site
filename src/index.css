@@ -92,5 +92,17 @@
 @layer components {
   .page {
     min-height: 100vh;
+    overflow-x: hidden;
   }
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+html, body, #root, .page {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  width: 100% !important;
 }
