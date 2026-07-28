@@ -1,16 +1,17 @@
-import { useState } from 'react'
 import { Link } from "react-router-dom";
-import UButton from '@/components/ui/UButton'
+import UButton from "@/components/ui/UButton";
 import UHeading from "@/components/ui/UHeading";
-import UCta from '@/components/ui/UCta'
-import PartnerIcon from '@/components/ui/PartnerIcon'
-import { useSmartPosts } from '@/hooks/useSmartData'
+import UCta from "@/components/ui/UCta";
+import PartnerIcon from "@/components/ui/PartnerIcon";
+import { useSmartPosts } from "@/hooks/useSmartData";
+import { useCountUp } from "@/hooks/useCountUp";
+import { useAutoSlide } from "@/hooks/useAutoSlide";
 
 const stats = [
-  { value: '500+', label: 'De bénéficiaires' },
-  { value: '100%', label: "D'insertion Professionnelle" },
-  { value: '30+', label: 'Partenaires' },
-]
+  { target: 500, suffix: "+", label: "De bénéficiaires" },
+  { target: 100, suffix: "%", label: "D'insertion Professionnelle" },
+  { target: 30, suffix: "+", label: "Partenaires" },
+];
 
 interface Project {
   id: string;
@@ -39,14 +40,6 @@ const projects: Project[] = [
     link: "/projets/parrainage",
   },
 ];
-
-const featuredArticle = {
-  title: "Titre de l'article",
-  date: "12 juin",
-  excerpt:
-    "Lorem ipsum dolor sit amet. Ut dolorum modi sit nihil autem rem autem delectus ea corporis quia ea veniam velit et doloribus sapiente. Sed aperiam molestiae sit veniam omnis et velit omnis et quisquam quos aut doloremque maxime cum obcaecati sint. Qui molestias fuga qui aperiam sunt aut quibusdam soluta hic dicta magnam sed repellat doloribus ut nobis dolorum et cupiditate magni. Quo dolor beatae rem repellendus excepturi qui obcaecati ipsam rem dolor explicabo.",
-  image: "/assets/home/article-featured.png",
-};
 
 const partnersRow1 = [
   { name: "Partner 4", logo: "/assets/partners/Coloured/image 28.png" },
@@ -91,18 +84,71 @@ const BackArrow = () => (
   </svg>
 );
 
+function StatItem({
+  target,
+  suffix,
+  label,
+  delay,
+}: {
+  target: number;
+  suffix: string;
+  label: string;
+  delay: number;
+}) {
+  const { count, ref } = useCountUp({ target, start: 10, durationMs: 1800 });
+
+  return (
+    <div
+      ref={ref}
+      className="flex flex-col items-center justify-center gap-4 text-center lg:gap-6"
+      data-aos="fade-up"
+      data-aos-duration="800"
+      data-aos-delay={delay}
+    >
+      <div className="text-stat text-dark tabular-nums">
+        {count}
+        {suffix}
+      </div>
+      <div className="text-body-lg text-dark">{label}</div>
+    </div>
+  );
+}
+
+function PartnersMarquee({
+  partners,
+  direction,
+}: {
+  partners: { name: string; logo: string }[];
+  direction: "ltr" | "rtl";
+}) {
+  const loop = [...partners, ...partners];
+
+  return (
+    <div className={`partners-marquee partners-marquee-${direction}`}>
+      <div className="partners-marquee-track py-2">
+        {loop.map((partner, i) => (
+          <img
+            key={`${partner.logo}-${i}`}
+            src={partner.logo}
+            alt={partner.name}
+            className="h-10 w-auto cursor-pointer max-w-[140px] shrink-0 object-contain sm:h-12 lg:h-14 hover:grayscale-100 transition-all duration-300"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
-  const [activeProject, setActiveProject] = useState(0)
-  const { posts } = useSmartPosts(3)
-  const featuredPost = posts[0]
-
-  function nextProject() {
-    setActiveProject((prev) => (prev + 1) % projects.length)
-  }
-
-  function prevProject() {
-    setActiveProject((prev) => (prev - 1 + projects.length) % projects.length)
-  }
+  const {
+    index: activeProject,
+    goTo: goToProject,
+    next: nextProject,
+    prev: prevProject,
+  } = useAutoSlide({ length: projects.length, intervalMs: 45000 })
+  const { posts } = useSmartPosts(3);
+  const featuredPost = posts[0];
+  const project = projects[activeProject];
 
   return (
     <div className="page">
@@ -179,9 +225,17 @@ export default function Home() {
       </section>
 
       {/* MISSION & STATS */}
-      <section className="bg-white py-10 lg:py-[60px]">
+      <section
+        className="bg-white py-10 lg:py-[60px]"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <div className="mx-auto flex w-[92%] flex-col items-start gap-10 md:w-[85%] lg:flex-row lg:items-center lg:gap-16">
-          <p className="max-w-[416px] text-body-md text-dark">
+          <p
+            className="max-w-[416px] text-body-md text-dark"
+            data-aos="fade-up"
+            data-aos-duration="800"
+          >
             Nos missions sont d&apos;
             <strong>
               accompagner et financer des programmes d&apos;éducation
@@ -194,23 +248,31 @@ export default function Home() {
             </strong>
           </p>
           <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-5 lg:flex-1">
-            {stats.map((stat) => (
-              <div
+            {stats.map((stat, i) => (
+              <StatItem
                 key={stat.label}
-                className="flex flex-col items-center justify-center gap-4 text-center lg:gap-6"
-              >
-                <div className="text-stat text-dark">{stat.value}</div>
-                <div className="text-body-lg text-dark">{stat.label}</div>
-              </div>
+                target={stat.target}
+                suffix={stat.suffix}
+                label={stat.label}
+                delay={i * 100}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* ABOUT */}
-      <section className="relative overflow-hidden bg-white py-10 lg:py-16">
+      <section
+        className="relative overflow-hidden bg-white py-10 lg:py-16"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <div className="mx-auto flex w-[92%] flex-col items-start gap-10 md:w-[85%] lg:flex-row lg:items-center lg:justify-between lg:gap-20">
-          <div className="flex max-w-[441px] flex-col items-start gap-8 lg:gap-10">
+          <div
+            className="flex max-w-[441px] flex-col items-start gap-8 lg:gap-10"
+            data-aos="fade-up"
+            data-aos-duration="800"
+          >
             <UHeading level={2} color="primary">
               Qui sommes nous ?
             </UHeading>
@@ -225,7 +287,12 @@ export default function Home() {
               Découvrir l&apos;association
             </UButton>
           </div>
-          <div className="w-full max-w-[593px] shrink-0 lg:w-[45%]">
+          <div
+            className="w-full max-w-[593px] shrink-0 lg:w-[45%]"
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="150"
+          >
             <img
               src="/assets/home/africa-map.png"
               alt="Carte de l'Afrique, Bénin surligné"
@@ -235,8 +302,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROJECTS */}
-      <section className="bg-white py-10 lg:py-16">
+      {/* PROJECTS slider */}
+      <section
+        className="bg-white py-10 lg:py-16"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div className="flex items-center justify-between gap-4">
             <UHeading level={2} color="primary">
@@ -287,18 +358,23 @@ export default function Home() {
           </div>
 
           <div className="relative h-[240px] overflow-hidden rounded-2xl sm:h-[300px] md:h-[380px]">
-            <img
-              src={projects[activeProject].image}
-              alt={projects[activeProject].title}
-              className="size-full object-cover"
-            />
+            {projects.map((p, i) => (
+              <img
+                key={p.id}
+                src={p.image}
+                alt={p.title}
+                className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ease-out ${
+                  i === activeProject ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
           </div>
 
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex items-center gap-2">
-              {projects.map((project, i) => (
+              {projects.map((p, i) => (
                 <button
-                  key={project.id}
+                  key={p.id}
                   type="button"
                   className={`rounded-full bg-dark transition-all ${i === activeProject ? "h-2.5 w-2.5" : "h-2 w-2"}`}
                   style={{
@@ -307,8 +383,8 @@ export default function Home() {
                         ? 1
                         : Math.max(0.2, 1 - Math.abs(i - activeProject) * 0.3),
                   }}
-                  aria-label={`Aller au projet ${project.title}`}
-                  onClick={() => setActiveProject(i)}
+                  aria-label={`Aller au projet ${p.title}`}
+                  onClick={() => goToProject(i)}
                 />
               ))}
             </div>
@@ -316,11 +392,12 @@ export default function Home() {
               <UHeading
                 level={2}
                 color="dark"
-                className="!text-[24px] lg:!text-[32px]"
+                className="!text-[24px] transition-opacity duration-500 lg:!text-[32px]"
+                key={project.id}
               >
-                {projects[activeProject].title}
+                {project.title}
               </UHeading>
-              <UButton to={projects[activeProject].link} variant="primary">
+              <UButton to={project.link} variant="primary">
                 Découvrir ce projet
               </UButton>
             </div>
@@ -329,21 +406,37 @@ export default function Home() {
       </section>
 
       {/* ARTICLES */}
-      <section className="bg-white py-10 lg:py-16">
+      <section
+        className="bg-white py-10 lg:py-16"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <UHeading level={2} color="primary">
             À la une :
           </UHeading>
           {featuredPost && (
             <div className="flex w-full flex-col items-stretch gap-8 lg:flex-row lg:items-center lg:gap-10">
-              <div className="aspect-[637/283] w-full overflow-hidden rounded-lg bg-gray-100 lg:flex-1">
+              <div
+                className="aspect-[637/283] w-full overflow-hidden rounded-lg bg-gray-100 lg:flex-1"
+                data-aos="fade-up"
+                data-aos-duration="800"
+              >
                 <img
-                  src={featuredPost.featuredImage?.node?.sourceUrl ?? "/assets/home/article-featured.png"}
+                  src={
+                    featuredPost.featuredImage?.node?.sourceUrl ??
+                    "/assets/home/article-featured.png"
+                  }
                   alt={featuredPost.title}
                   className="size-full object-cover"
                 />
               </div>
-              <div className="flex w-full max-w-[510px] flex-col items-start gap-6 lg:gap-10">
+              <div
+                className="flex w-full max-w-[510px] flex-col items-start gap-6 lg:gap-10"
+                data-aos="fade-up"
+                data-aos-duration="800"
+                data-aos-delay="100"
+              >
                 <div className="flex flex-col gap-2">
                   <h3 className="text-[24px] font-bold text-primary lg:text-[32px]">
                     {featuredPost.title}
@@ -355,13 +448,20 @@ export default function Home() {
                 <p className="text-body-md tracking-[-0.32px] text-body">
                   {featuredPost.excerpt}
                 </p>
-                <UButton to={`/actualites/${featuredPost.slug}`} variant="primary">
+                <UButton
+                  to={`/actualites/${featuredPost.slug}`}
+                  variant="primary"
+                >
                   Lire l&apos;article
                 </UButton>
               </div>
             </div>
           )}
-          <UButton to="/actualites" variant="text" className="!text-dark">
+          <UButton
+            to="/actualites"
+            variant="text"
+            className="!text-dark self-start"
+          >
             <BackArrow />
             Voir tous les articles
           </UButton>
@@ -369,32 +469,18 @@ export default function Home() {
       </section>
 
       {/* PARTNERS */}
-      <section className="bg-white py-10 lg:py-20">
-        <div className="mx-auto flex w-[92%] flex-col gap-10 md:w-[85%] lg:gap-20">
+      <section
+        className="bg-white py-10 lg:py-20"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
+        <div className="mx-auto flex w-[92%] flex-col gap-10 md:w-[85%] lg:gap-16">
           <UHeading level={2} color="primary">
             Accompagnés par des visionnaires
           </UHeading>
-          <div className="flex w-full flex-col gap-10 lg:gap-4">
-            <div className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-6 mb-10">
-              {partnersRow1.map((partner) => (
-                <img
-                  key={partner.logo}
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-10 w-auto max-w-[120px] shrink-0 object-contain sm:h-12 lg:h-14"
-                />
-              ))}
-            </div>
-            <div className="flex w-full flex-wrap items-center justify-between gap-x-6 gap-y-6">
-              {partnersRow2.map((partner) => (
-                <img
-                  key={partner.logo}
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-10 w-auto max-w-[140px] shrink-0 object-contain sm:h-12 lg:h-14"
-                />
-              ))}
-            </div>
+          <div className="flex w-full flex-col gap-8 lg:gap-10">
+            <PartnersMarquee partners={partnersRow1} direction="ltr" />
+            <PartnersMarquee partners={partnersRow2} direction="rtl" />
           </div>
           <UButton
             to="/partenariat"
@@ -408,22 +494,24 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <UCta
-        title="Rejoignez-nous !"
-        subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-        image="/assets/home/rejoignez-nous.jpg"
-        imageAlt="Poignée de main professionnelle"
-        actions={
-          <>
-            <UButton to="/partenariat" variant="primary">
-              Devenir partenaire <PartnerIcon />
-            </UButton>
-            <UButton to="/don" variant="dark">
-              Faire un don
-            </UButton>
-          </>
-        }
-      />
+      <div data-aos="fade-up" data-aos-duration="800">
+        <UCta
+          title="Rejoignez-nous !"
+          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
+          image="/assets/home/rejoignez-nous.jpg"
+          imageAlt="Poignée de main professionnelle"
+          actions={
+            <>
+              <UButton to="/partenariat" variant="primary">
+                Devenir partenaire <PartnerIcon />
+              </UButton>
+              <UButton to="/don" variant="dark">
+                Faire un don
+              </UButton>
+            </>
+          }
+        />
+      </div>
     </div>
   );
 }

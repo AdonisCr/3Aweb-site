@@ -12,7 +12,7 @@ import {
 import type { WPPartner } from '@/lib/types'
 
 export function useSmartPosts(first = 10) {
-  const { posts: wpPosts, loading, error } = usePosts(first)
+  const { posts: wpPosts, loading, error: _error } = usePosts(first)
   const posts = useMemo(() => {
     if (wpPosts.length > 0) return wpPosts
     return FALLBACK_POSTS
@@ -21,7 +21,7 @@ export function useSmartPosts(first = 10) {
 }
 
 export function useSmartProjects(first = 10) {
-  const { projects: wpProjects, loading, error } = useProjects(first)
+  const { projects: wpProjects, loading, error: _error } = useProjects(first)
   const projects = useMemo(() => {
     if (wpProjects.length > 0) return wpProjects
     return FALLBACK_PROJECTS
@@ -30,7 +30,7 @@ export function useSmartProjects(first = 10) {
 }
 
 export function useSmartPartners(first = 50) {
-  const { partners: wpPartners, grouped: wpGrouped, loading, error } = usePartners(first)
+  const { partners: wpPartners, grouped: wpGrouped, loading, error: _error } = usePartners(first)
   const result = useMemo(() => {
     if (wpPartners.length > 0) return { partners: wpPartners, grouped: wpGrouped }
     const grouped = FALLBACK_PARTNERS.reduce<Record<string, WPPartner[]>>((acc, p) => {
@@ -45,7 +45,7 @@ export function useSmartPartners(first = 50) {
 }
 
 export function useSmartTeamMembers(first = 20) {
-  const { members: wpMembers, frMembers: wpFr, bjMembers: wpBj, loading, error } = useTeamMembers(first)
+  const { members: wpMembers, frMembers: wpFr, bjMembers: wpBj, loading, error: _error } = useTeamMembers(first)
   const result = useMemo(() => {
     if (wpMembers.length > 0) return { members: wpMembers, frMembers: wpFr, bjMembers: wpBj }
     const fr = FALLBACK_TEAM.filter((m) => m.teamMemberFields?.region === 'fr')
@@ -56,7 +56,7 @@ export function useSmartTeamMembers(first = 20) {
 }
 
 export function useSmartValues(first = 10) {
-  const { values: wpValues, loading, error } = useValues(first)
+  const { values: wpValues, loading, error: _error } = useValues(first)
   const values = useMemo(() => {
     if (wpValues.length > 0) return wpValues
     return FALLBACK_VALUES
@@ -65,7 +65,7 @@ export function useSmartValues(first = 10) {
 }
 
 export function useSmartDonationTiers(first = 10) {
-  const { tiers: wpTiers, loading, error } = useDonationTiers(first)
+  const { tiers: wpTiers, loading, error: _error } = useDonationTiers(first)
   const tiers = useMemo(() => {
     if (wpTiers.length > 0) return wpTiers
     return FALLBACK_DONATION_TIERS
@@ -74,7 +74,7 @@ export function useSmartDonationTiers(first = 10) {
 }
 
 export function useSmartContact() {
-  const { contact: wpContact, loading, error } = useContactInfo()
+  const { contact: wpContact, loading, error: _error } = useContactInfo()
   const contact = useMemo(() => {
     if (wpContact) return wpContact
     return FALLBACK_CONTACT

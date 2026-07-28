@@ -17,13 +17,13 @@ export const apolloClient = new ApolloClient({
         fields: {
           posts: {
             keyArgs: false,
-            merge(existing, incoming) {
+            merge(_existing, incoming) {
               return incoming
             },
           },
           projects: {
             keyArgs: false,
-            merge(existing, incoming) {
+            merge(_existing, incoming) {
               return incoming
             },
           },

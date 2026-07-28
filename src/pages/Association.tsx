@@ -7,6 +7,7 @@ import PartnerIcon from '@/components/ui/PartnerIcon'
 import PageTitle from '@/components/layout/PageTitle'
 import { useSmartTeamMembers } from '@/hooks/useSmartData'
 import { useGlobalSettings } from '@/hooks/useWordPress'
+import { useAutoSlide } from '@/hooks/useAutoSlide'
 
 type TeamRegion = 'fr' | 'bj'
 
@@ -18,7 +19,10 @@ const values = [
 ]
 
 export default function Association() {
-  const [activeValue, setActiveValue] = useState(0)
+  const {
+    index: activeValue,
+    goTo: goToValue,
+  } = useAutoSlide({ length: values.length, intervalMs: 60000 })
   const [teamRegion, setTeamRegion] = useState<TeamRegion>('fr')
   const [teamPage, setTeamPage] = useState(0)
   const { missionVideoUrl } = useGlobalSettings()
@@ -29,6 +33,7 @@ export default function Association() {
   const teamPageSize = 4
   const teamPageCount = Math.max(1, Math.ceil(filteredTeam.length / teamPageSize))
   const visibleTeam = filteredTeam.slice(teamPage * teamPageSize, teamPage * teamPageSize + teamPageSize)
+  const currentValue = values[activeValue]
 
   function setRegion(region: TeamRegion) {
     setTeamRegion(region)
@@ -48,7 +53,7 @@ export default function Association() {
       <PageTitle title="Qui sommes-nous ?" />
 
       {/* HERO IMAGE */}
-      <section className="w-full">
+      <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
           <img
             src="/assets/association/hero.jpg"
@@ -59,10 +64,12 @@ export default function Association() {
       </section>
 
       {/* NOTRE HISTOIRE */}
-      <section className="bg-white py-10 lg:py-16">
+      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
         <div className="mx-auto flex w-[92%] flex-col items-start justify-between gap-10 md:w-[85%] lg:flex-row lg:gap-16">
-          <div className="flex max-w-[564px] flex-col gap-8 lg:gap-10">
-            <UHeading level={2} color="primary">Notre histoire</UHeading>
+          <div className="flex max-w-[564px] flex-col gap-8 lg:gap-10" data-aos="fade-right" data-aos-duration="1500">
+            <div data-aos="fade-up" data-aos-duration="1200">
+              <UHeading level={2} color="primary">Notre histoire</UHeading>
+            </div>
             <div className="space-y-4 text-body-md tracking-[-0.32px] text-body">
               <p>
                 Lors d&apos;un voyage solidaire au Bénin en 2015, Franca Sornin fonde Alliance Actions
@@ -80,7 +87,7 @@ export default function Association() {
               </p>
             </div>
           </div>
-          <div className="w-full max-w-[352px] shrink-0 self-center lg:self-start">
+          <div className="w-full max-w-[352px] shrink-0 self-center lg:self-start" data-aos="fade-left" data-aos-duration="1500">
             <div className="aspect-[352/313] w-full overflow-hidden">
               <img
                 src="/assets/association/histoire.png"
@@ -94,11 +101,13 @@ export default function Association() {
       </section>
 
       {/* NOTRE MISSION */}
-      <section className="bg-white py-10 lg:py-16">
+      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
         <div className="mx-auto flex w-[92%] flex-col gap-10 md:w-[85%] lg:gap-20">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
-            <UHeading level={2} color="primary" className="shrink-0">Notre mission</UHeading>
-            <p className="max-w-[564px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right">
+            <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
+              <UHeading level={2} color="primary">Notre mission</UHeading>
+            </div>
+            <p className="max-w-[564px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right" data-aos="fade-left" data-aos-duration="1500">
               Les missions de Alliance Actions Afrique sont d&apos;
               <strong>accompagner et financer des programmes d&apos;éducation</strong>
               {', '}
@@ -114,6 +123,8 @@ export default function Association() {
             rel="noopener noreferrer"
             className="group relative block aspect-video w-full overflow-hidden rounded-[10px]"
             aria-label="Voir la vidéo de présentation sur YouTube"
+            data-aos="zoom-in"
+            data-aos-duration="1200"
           >
             <img
               src="/assets/association/mission-video.png"
@@ -141,25 +152,32 @@ export default function Association() {
       </section>
 
       {/* NOS VALEURS */}
-      <section className="bg-white py-10 lg:py-20">
+      <section className="bg-white py-10 lg:py-20" data-aos="fade-up" data-aos-duration="3000">
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
-            <UHeading level={2} color="primary" className="shrink-0">Nos valeurs</UHeading>
-            <p className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right">
+            <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
+              <UHeading level={2} color="primary">Nos valeurs</UHeading>
+            </div>
+            <p className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right" data-aos="fade-left" data-aos-duration="1500">
               Nos actions s&apos;inscrivent dans une vision durable du développement, portée par des
               valeurs qui guident chacune de nos décisions et de nos engagements sur le terrain.
             </p>
           </div>
 
-          <div className="h-[200px] w-full overflow-hidden rounded-[15px] md:h-[319px]">
-            <img
-              src={values[activeValue].image}
-              alt={values[activeValue].title}
-              className="size-full object-cover"
-            />
+          <div className="relative h-[200px] w-full overflow-hidden rounded-[15px] md:h-[319px]" data-aos="zoom-in" data-aos-duration="1200">
+            {values.map((value, i) => (
+              <img
+                key={value.id}
+                src={value.image}
+                alt={value.title}
+                className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ease-out ${
+                  i === activeValue ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+            ))}
           </div>
 
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between" data-aos="fade-up" data-aos-duration="1000">
             <div className="flex items-center gap-2">
               {values.map((value, i) => (
                 <button
@@ -168,16 +186,21 @@ export default function Association() {
                   className={`rounded-full bg-dark transition-all ${i === activeValue ? 'h-2.5 w-2.5' : 'h-2 w-2'}`}
                   style={{ opacity: i === activeValue ? 1 : Math.max(0.2, 1 - Math.abs(i - activeValue) * 0.3) }}
                   aria-label={`Aller à la valeur ${value.title}`}
-                  onClick={() => setActiveValue(i)}
+                  onClick={() => goToValue(i)}
                 />
               ))}
             </div>
             <div className="flex max-w-[339px] flex-col gap-4 text-left sm:items-end sm:text-right sm:gap-6">
-              <UHeading level={2} color="dark" className="!text-[28px] lg:!text-[32px]">
-                {values[activeValue].title}
+              <UHeading
+                level={2}
+                color="dark"
+                className="!text-[28px] transition-opacity duration-500 lg:!text-[32px]"
+                key={currentValue.id}
+              >
+                {currentValue.title}
               </UHeading>
-              <p className="text-body-md tracking-[-0.48px] text-black">
-                {values[activeValue].content}
+              <p className="text-body-md tracking-[-0.48px] text-black" key={`${currentValue.id}-content`}>
+                {currentValue.content}
               </p>
             </div>
           </div>
@@ -185,11 +208,13 @@ export default function Association() {
       </section>
 
       {/* NOTRE ÉQUIPE */}
-      <section className="bg-white py-10 lg:py-16">
+      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
-            <UHeading level={2} color="primary" className="shrink-0">Notre équipe</UHeading>
-            <p className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right">
+            <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
+              <UHeading level={2} color="primary">Notre équipe</UHeading>
+            </div>
+            <p className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right" data-aos="fade-left" data-aos-duration="1500">
               Alliance Actions Afrique est portée par une équipe franco-béninoise engagée et réunie
               par une volonté commune d&apos;agir concrètement et durablement au service des talents
               locaux.
@@ -197,8 +222,14 @@ export default function Association() {
           </div>
 
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
-            {visibleTeam.map((member) => (
-              <div key={member.id} className="flex flex-col gap-3">
+            {visibleTeam.map((member, i) => (
+              <div
+                key={member.id}
+                className="flex flex-col gap-3"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay={i * 100}
+              >
                 {member.featuredImage?.node?.sourceUrl ? (
                   <div className="aspect-[253/318] w-full overflow-hidden rounded">
                     <img src={member.featuredImage.node.sourceUrl} alt={member.title} className="size-full object-cover" />
@@ -223,7 +254,7 @@ export default function Association() {
             ))}
           </div>
 
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end" data-aos="fade-up" data-aos-duration="800">
             <div className="inline-flex items-center gap-4 rounded-lg border border-primary px-1.5 py-1.5">
               <button
                 type="button"
@@ -273,18 +304,20 @@ export default function Association() {
       </section>
 
       {/* CTA */}
-      <UCta
-        title="Rejoignez-nous !"
-        subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-        image="/assets/association/rejoignez-nous.jpg"
-        imageAlt="Poignée de main professionnelle"
-        actions={
-          <>
-            <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
-            <UButton to="/don" variant="dark">Faire un don</UButton>
-          </>
-        }
-      />
+      <div data-aos="fade-up" data-aos-duration="3000">
+        <UCta
+          title="Rejoignez-nous !"
+          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
+          image="/assets/association/rejoignez-nous.jpg"
+          imageAlt="Poignée de main professionnelle"
+          actions={
+            <>
+              <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
+              <UButton to="/don" variant="dark">Faire un don</UButton>
+            </>
+          }
+        />
+      </div>
     </div>
   )
 }

@@ -42,7 +42,11 @@ function ArticleCard({
   imageRight?: boolean;
 }) {
   const imageBlock = (
-    <div className="w-full overflow-hidden lg:w-1/2 lg:shrink-0">
+    <div
+      className="w-full overflow-hidden lg:w-1/2 lg:shrink-0"
+      data-aos="zoom-in"
+      data-aos-duration="1200"
+    >
       <img
         src={image}
         alt={title}
@@ -52,21 +56,27 @@ function ArticleCard({
   );
 
   const textBlock = (
-    <div className="flex w-full flex-col gap-6 lg:w-1/2 lg:shrink-0 lg:gap-10">
-      <div className="flex flex-col gap-2">
+    <div
+      className="flex w-full flex-col gap-6 lg:w-1/2 lg:shrink-0 lg:gap-10"
+      data-aos={imageRight ? "fade-right" : "fade-left"}
+      data-aos-duration="1500"
+    >
+      <div className="flex flex-col gap-2" data-aos="fade-up" data-aos-duration="1200">
         <h2 className="text-[28px] font-bold leading-tight text-primary lg:text-[32px]">
           {title}
         </h2>
         <p className="text-[16px] font-bold text-dark">Publié le {date}</p>
       </div>
       <p className="text-body-md tracking-[-0.32px] text-body">{excerpt}</p>
-      <UButton
-        to={`/actualites/${slug}`}
-        variant="primary"
-        className="!w-fit !px-4 !py-2.5 text-[18px]"
-      >
-        Lire l&apos;article
-      </UButton>
+      <div data-aos="fade-up" data-aos-duration="800">
+        <UButton
+          to={`/actualites/${slug}`}
+          variant="primary"
+          className="!w-fit !px-4 !py-2.5 text-[18px]"
+        >
+          Lire l&apos;article
+        </UButton>
+      </div>
     </div>
   );
 
@@ -75,6 +85,8 @@ function ArticleCard({
       className={`flex flex-col items-start gap-8 lg:flex-row lg:items-stretch lg:justify-between lg:gap-10 ${
         imageRight ? "lg:flex-row-reverse" : ""
       }`}
+      data-aos="fade-up"
+      data-aos-duration="1000"
     >
       {imageBlock}
       {textBlock}
@@ -90,7 +102,7 @@ export default function News() {
       <PageTitle title="Actualités" />
 
       {/* HERO */}
-      <section className="w-full">
+      <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[280px] w-full overflow-hidden sm:h-[400px] lg:h-[500px]">
           <img
             src="/assets/news/hero.jpg"
@@ -101,13 +113,19 @@ export default function News() {
       </section>
 
       {/* À LA UNE */}
-      <section className="bg-white py-10 lg:py-16">
+      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
-            <UHeading level={2} color="primary" className="shrink-0">
-              À la une :
-            </UHeading>
-            <p className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-primary lg:text-right">
+            <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
+              <UHeading level={2} color="primary">
+                À la une :
+              </UHeading>
+            </div>
+            <p
+              className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-primary lg:text-right"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+            >
               Revivez la soirée des 10 ans de Alliance Actions Afrique sur notre
               chaîne YouTube
             </p>
@@ -119,6 +137,8 @@ export default function News() {
             rel="noopener noreferrer"
             className="group relative block h-[240px] w-full overflow-hidden rounded-[10px] sm:h-[360px] lg:h-[453px]"
             aria-label="Voir la vidéo des 10 ans sur YouTube"
+            data-aos="zoom-in"
+            data-aos-duration="1200"
           >
             <img
               src="/assets/news/video-poster.jpg"
@@ -152,7 +172,7 @@ export default function News() {
       </section>
 
       {/* ARTICLES LIST */}
-      <section className="bg-white py-10 lg:py-12">
+      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="3000">
         <div className="mx-auto flex w-[92%] flex-col gap-16 md:w-[85%] lg:gap-[100px]">
           {posts.map((post, index) => (
             <ArticleCard
@@ -173,22 +193,24 @@ export default function News() {
         </div>
       </section>
 
-      <UCta
-        title="Rejoignez-nous !"
-        subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-        image="/assets/home/rejoignez-nous.jpg"
-        imageAlt="Poignée de main professionnelle"
-        actions={
-          <>
-            <UButton to="/partenariat" variant="primary">
-              Devenir partenaire <PartnerIcon />
-            </UButton>
-            <UButton to="/don" variant="dark">
-              Faire un don
-            </UButton>
-          </>
-        }
-      />
+      <div data-aos="fade-up" data-aos-duration="3000">
+        <UCta
+          title="Rejoignez-nous !"
+          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
+          image="/assets/home/rejoignez-nous.jpg"
+          imageAlt="Poignée de main professionnelle"
+          actions={
+            <>
+              <UButton to="/partenariat" variant="primary">
+                Devenir partenaire <PartnerIcon />
+              </UButton>
+              <UButton to="/don" variant="dark">
+                Faire un don
+              </UButton>
+            </>
+          }
+        />
+      </div>
     </div>
   );
 }

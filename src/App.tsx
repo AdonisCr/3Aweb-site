@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { ApolloProvider } from '@apollo/client/react'
+import AOS from 'aos'
 import { apolloClient } from '@/lib/client'
 import NavBar from '@/components/layout/NavBar'
 import Footer from '@/components/layout/Footer'
@@ -22,6 +23,18 @@ function ScrollToTop() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pathname])
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: false,
+      mirror: true,
+      easing: 'ease-out-cubic',
+      offset: 80,
+    })
+    AOS.refresh()
+  }, [pathname])
+
   return null
 }
 

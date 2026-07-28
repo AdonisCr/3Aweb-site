@@ -21,20 +21,33 @@ export default function Projects() {
       <PageTitle title="Nos projets phares" />
 
       <USection>
-        <div className="space-y-16">
-          {projects.map((project) => (
+        <div className="space-y-16" data-aos="fade-up" data-aos-duration="3000">
+          {projects.map((project, index) => (
             <Link
               key={project.id}
               to={ROUTE_MAP[project.slug] ?? `/projets/${project.slug}`}
               className="flex flex-col items-start gap-6 cursor-pointer group no-underline lg:flex-row lg:items-center lg:gap-12"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay={index * 100}
             >
-              <div className="w-full flex-1 rounded-card overflow-hidden lg:h-[300px]">
+              <div
+                className="w-full flex-1 rounded-card overflow-hidden lg:h-[300px]"
+                data-aos="zoom-in"
+                data-aos-duration="1200"
+              >
                 <img src={project.featuredImage?.node?.sourceUrl ?? '/assets/gallery-13-4246.jpg'} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
-              <div className="w-full flex-1">
-                <UHeading level={2} color="dark" className="mb-4">{project.title}</UHeading>
+              <div
+                className="w-full flex-1"
+                data-aos={index % 2 === 0 ? 'fade-left' : 'fade-right'}
+                data-aos-duration="1500"
+              >
+                <div data-aos="fade-up" data-aos-duration="1200">
+                  <UHeading level={2} color="dark" className="mb-4">{project.title}</UHeading>
+                </div>
                 <p className="mb-6 text-body-md text-body" dangerouslySetInnerHTML={{ __html: project.excerpt }} />
-                <span className="inline-flex items-center text-primary font-semibold">
+                <span className="inline-flex items-center text-primary font-semibold" data-aos="fade-up" data-aos-duration="800">
                   Découvrir
                   <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -46,18 +59,20 @@ export default function Projects() {
         </div>
       </USection>
 
-      <UCta
-        title="Rejoignez-nous !"
-        subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-        image="/assets/home/rejoignez-nous.jpg"
-        imageAlt="Poignée de main professionnelle"
-        actions={
-          <>
-            <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
-            <UButton to="/don" variant="white">Faire un don</UButton>
-          </>
-        }
-      />
+      <div data-aos="fade-up" data-aos-duration="3000">
+        <UCta
+          title="Rejoignez-nous !"
+          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
+          image="/assets/home/rejoignez-nous.jpg"
+          imageAlt="Poignée de main professionnelle"
+          actions={
+            <>
+              <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
+              <UButton to="/don" variant="white">Faire un don</UButton>
+            </>
+          }
+        />
+      </div>
     </div>
   )
 }

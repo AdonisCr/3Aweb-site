@@ -37,11 +37,19 @@ export default function Contact() {
       <PageTitle title="Gardons contact" />
 
       {/* MAP + INFOS + FORM */}
-      <section className="bg-white py-10 lg:py-16">
+      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
         <div className="mx-auto flex w-[92%] max-w-[1001px] flex-col items-center gap-[50px] md:w-[85%]">
           {/* Address card */}
-          <div className="flex w-full flex-col overflow-hidden rounded-[20px] shadow-[0px_4px_12.5px_rgba(0,0,0,0.25)] lg:flex-row lg:rounded-[50px]">
-            <div className="h-[220px] w-full overflow-hidden sm:h-[296px] lg:w-[40%]">
+          <div
+            className="flex w-full flex-col overflow-hidden rounded-[20px] shadow-[0px_4px_12.5px_rgba(0,0,0,0.25)] lg:flex-row lg:rounded-[50px]"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
+            <div
+              className="h-[220px] w-full overflow-hidden sm:h-[296px] lg:w-[40%]"
+              data-aos="zoom-in"
+              data-aos-duration="1200"
+            >
               <img
                 src="/assets/contact/map.jpg"
                 alt="Localisation — 12 rue des Capucins, Lyon"
@@ -49,7 +57,11 @@ export default function Contact() {
               />
             </div>
 
-            <div className="relative flex min-h-[240px] w-full items-center overflow-hidden bg-[#351000] px-6 py-8 sm:px-10 sm:py-10 lg:w-[60%]">
+            <div
+              className="relative flex min-h-[240px] w-full items-center overflow-hidden bg-[#351000] px-6 py-8 sm:px-10 sm:py-10 lg:w-[60%]"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+            >
               <div className="relative z-10 flex w-full flex-col items-start justify-between gap-8 sm:flex-row sm:items-center lg:mx-auto lg:max-w-[440px]">
                 <img
                   src="/assets/contact/logo-white.svg"
@@ -57,8 +69,14 @@ export default function Contact() {
                   className="h-[48px] w-auto object-contain lg:h-[59px]"
                 />
                 <ul className="flex w-full flex-col gap-3.5 sm:max-w-[251px]">
-                  {contactInfos.map((item) => (
-                    <li key={item.label} className="flex items-center gap-3">
+                  {contactInfos.map((item, i) => (
+                    <li
+                      key={item.label}
+                      className="flex items-center gap-3"
+                      data-aos="fade-up"
+                      data-aos-duration="1000"
+                      data-aos-delay={i * 100}
+                    >
                       <span className="flex size-4 shrink-0 items-center justify-center overflow-hidden">
                         <img
                           src={item.icon}
@@ -88,10 +106,17 @@ export default function Contact() {
           <form
             className="flex w-full max-w-[1001px] flex-col items-end gap-10"
             onSubmit={(e) => e.preventDefault()}
+            data-aos="fade-up"
+            data-aos-duration="1000"
           >
             <div className="flex w-full flex-col gap-10">
               <div className="flex w-full flex-col gap-10 lg:flex-row lg:gap-[73px]">
-                <label className="flex w-full flex-col items-start lg:w-1/2">
+                <label
+                  className="flex w-full flex-col items-start lg:w-1/2"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="0"
+                >
                   <span className="px-2.5 py-2.5 text-body-md font-medium text-dark">
                     Nom, prénom et poste*
                   </span>
@@ -103,7 +128,12 @@ export default function Contact() {
                     aria-label="Nom, prénom et poste"
                   />
                 </label>
-                <label className="flex w-full flex-col items-start lg:w-1/2">
+                <label
+                  className="flex w-full flex-col items-start lg:w-1/2"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="100"
+                >
                   <span className="px-2.5 py-2.5 text-body-md font-medium text-dark">
                     Adresse mail*
                   </span>
@@ -117,7 +147,12 @@ export default function Contact() {
                 </label>
               </div>
 
-              <label className="flex w-full flex-col items-start">
+              <label
+                className="flex w-full flex-col items-start"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="200"
+              >
                 <span className="px-2.5 py-2.5 text-body-md font-medium text-dark">Message*</span>
                 <textarea
                   name="message"
@@ -131,6 +166,8 @@ export default function Contact() {
             <button
               type="submit"
               className="inline-flex h-[42px] w-[194px] items-center justify-center rounded-[5px] bg-primary px-4 py-2.5 text-[18px] font-semibold text-white transition-colors hover:bg-primary-hover"
+              data-aos="fade-up"
+              data-aos-duration="800"
             >
               Envoyer
             </button>
@@ -138,18 +175,20 @@ export default function Contact() {
         </div>
       </section>
 
-      <UCta
-        title="Rejoignez-nous !"
-        subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-        image="/assets/home/rejoignez-nous.jpg"
-        imageAlt="Poignée de main professionnelle"
-        actions={
-          <>
-            <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
-            <UButton to="/don" variant="dark">Faire un don</UButton>
-          </>
-        }
-      />
+      <div data-aos="fade-up" data-aos-duration="3000">
+        <UCta
+          title="Rejoignez-nous !"
+          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
+          image="/assets/home/rejoignez-nous.jpg"
+          imageAlt="Poignée de main professionnelle"
+          actions={
+            <>
+              <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
+              <UButton to="/don" variant="dark">Faire un don</UButton>
+            </>
+          }
+        />
+      </div>
     </div>
   )
 }

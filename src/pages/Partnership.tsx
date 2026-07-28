@@ -62,7 +62,11 @@ const partnerSections = [
 
 function SectionTitle({ title }: { title: string }) {
   return (
-    <div className="flex w-full items-center gap-3 sm:gap-4 lg:gap-6">
+    <div
+      className="flex w-full items-center gap-3 sm:gap-4 lg:gap-6"
+      data-aos="fade-up"
+      data-aos-duration="1200"
+    >
       <div className="flex min-w-0 flex-1 items-center gap-1.5">
         <div className="h-px min-w-0 flex-1 bg-dark/25" />
         <span className="size-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
@@ -83,7 +87,7 @@ export default function Partnership() {
     <div className="page pt-28">
       <PageTitle title="Partenaires &amp; sponsors" />
 
-      <section className="w-full">
+      <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
           <img
             src="/assets/partnership/hero.jpg"
@@ -93,12 +97,22 @@ export default function Partnership() {
         </div>
       </section>
 
-      <section className="bg-white py-10 lg:py-20">
+      <section className="bg-white py-10 lg:py-20" data-aos="fade-up" data-aos-duration="3000">
         <div className="mx-auto flex w-[92%] flex-col items-start gap-8 md:w-[85%] lg:flex-row lg:items-start lg:justify-between lg:gap-12">
-          <UButton to="/partenariat" variant="primary" className="w-full sm:w-auto">
-            Devenir partenaire <PartnerIcon />
-          </UButton>
-          <p className="w-full max-w-[468px] text-body-md text-body">
+          <div data-aos="fade-up" data-aos-duration="800">
+            <UButton
+              to="/partenariat"
+              variant="primary"
+              className="w-full sm:w-auto"
+            >
+              Devenir partenaire <PartnerIcon />
+            </UButton>
+          </div>
+          <p
+            className="w-full max-w-[468px] text-body-md text-body"
+            data-aos="fade-left"
+            data-aos-duration="1500"
+          >
             Les actions d&apos;Alliance Actions Afrique s&apos;appuient sur un
             réseau de partenaires engagés, issus du monde économique, éducatif,
             institutionnel et associatif. Entreprises, établissements de
@@ -110,18 +124,27 @@ export default function Partnership() {
         </div>
       </section>
 
-      <section className="bg-white pb-10 lg:pb-16">
+      <section className="bg-white pb-10 lg:pb-16" data-aos="fade-up" data-aos-duration="3000">
         <div className="mx-auto flex w-[92%] flex-col gap-12 md:w-[85%] lg:gap-16">
-          {partnerSections.map((section) => (
-            <div key={section.title} className="flex flex-col items-center gap-8 lg:gap-10">
+          {partnerSections.map((section, sectionIndex) => (
+            <div
+              key={section.title}
+              className="flex flex-col items-center gap-8 lg:gap-10"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay={sectionIndex * 100}
+            >
               <SectionTitle title={section.title} />
               <div className="flex w-full flex-wrap items-center justify-start gap-x-8 gap-y-6 sm:gap-x-12 lg:gap-x-16">
-                {section.logos.map((logo) => (
+                {section.logos.map((logo, logoIndex) => (
                   <img
                     key={`${section.title}-${logo.name}`}
                     src={logo.src}
                     alt={logo.name}
-                    className="h-14 w-auto max-w-[180px] object-contain sm:h-20 lg:h-24"
+                    className="h-14 w-auto cursor-pointer max-w-[180px] object-contain sm:h-20 lg:h-24 hover:grayscale-100 transition-all duration-300"
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                    data-aos-delay={logoIndex * 100}
                   />
                 ))}
               </div>
@@ -130,18 +153,24 @@ export default function Partnership() {
         </div>
       </section>
 
-      <UCta
-        title="Rejoignez-nous !"
-        subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-        image="/assets/association/rejoignez-nous.jpg"
-        imageAlt="Poignée de main professionnelle"
-        actions={
-          <>
-            <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
-            <UButton to="/don" variant="dark">Faire un don</UButton>
-          </>
-        }
-      />
+      <div data-aos="fade-up" data-aos-duration="3000">
+        <UCta
+          title="Rejoignez-nous !"
+          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
+          image="/assets/association/rejoignez-nous.jpg"
+          imageAlt="Poignée de main professionnelle"
+          actions={
+            <>
+              <UButton to="/partenariat" variant="primary">
+                Devenir partenaire <PartnerIcon />
+              </UButton>
+              <UButton to="/don" variant="dark">
+                Faire un don
+              </UButton>
+            </>
+          }
+        />
+      </div>
     </div>
   );
 }
