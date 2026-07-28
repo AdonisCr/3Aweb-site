@@ -6,6 +6,7 @@ import UCta from '@/components/ui/UCta'
 import PartnerIcon from '@/components/ui/PartnerIcon'
 import PageTitle from '@/components/layout/PageTitle'
 import { useSmartProjects } from '@/hooks/useSmartData'
+import { sanitizeHtml } from '@/lib/sanitize'
 
 const ROUTE_MAP: Record<string, string> = {
   'regards-croises': '/projets/regards-croises',
@@ -46,7 +47,7 @@ export default function Projects() {
                 <div data-aos="fade-up" data-aos-duration="1200">
                   <UHeading level={2} color="dark" className="mb-4">{project.title}</UHeading>
                 </div>
-                <p className="mb-6 text-body-md text-body" dangerouslySetInnerHTML={{ __html: project.excerpt }} />
+                <p className="mb-6 text-body-md text-body" dangerouslySetInnerHTML={{ __html: sanitizeHtml(project.excerpt ?? '') }} />
                 <span className="inline-flex items-center text-primary font-semibold" data-aos="fade-up" data-aos-duration="800">
                   Découvrir
                   <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -68,7 +69,7 @@ export default function Projects() {
           actions={
             <>
               <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
-              <UButton to="/don" variant="white">Faire un don</UButton>
+              <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="white">Faire un don</UButton>
             </>
           }
         />

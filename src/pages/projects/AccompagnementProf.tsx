@@ -25,7 +25,7 @@ export default function AccompagnementProf() {
       <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
         <div className="mx-auto flex w-[92%] flex-col items-start justify-between gap-8 md:w-[85%] lg:flex-row lg:gap-12">
           <div data-aos="fade-up" data-aos-duration="800">
-            <UButton to="/don" variant="primary" className="shrink-0 !px-4 !py-2.5 text-[18px]">
+            <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="primary" className="shrink-0 !px-4 !py-2.5 text-[18px]">
               Nous soutenir avec un don
             </UButton>
           </div>
@@ -107,7 +107,7 @@ export default function AccompagnementProf() {
           actions={
             <>
               <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
-              <UButton to="/don" variant="dark">Faire un don</UButton>
+              <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="dark">Faire un don</UButton>
             </>
           }
         />

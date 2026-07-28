@@ -313,7 +313,7 @@ export default function Association() {
           actions={
             <>
               <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
-              <UButton to="/don" variant="dark">Faire un don</UButton>
+              <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="dark">Faire un don</UButton>
             </>
           }
         />
