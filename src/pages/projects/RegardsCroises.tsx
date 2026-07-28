@@ -1,29 +1,17 @@
 import UButton from "@/components/ui/UButton";
 import UHeading from "@/components/ui/UHeading";
-import UCta from "@/components/ui/UCta";
-import PartnerIcon from '@/components/ui/PartnerIcon';
+import CtaSection from "@/components/ui/CtaSection";
+import NextProjectLink from "@/components/ui/NextProjectLink";
 import PageTitle from '@/components/layout/PageTitle';
 
-/** Remplacer par l'URL YouTube réelle dès qu'elle est disponible. */
 const EVENT_VIDEO_URL = "https://www.youtube.com/";
-
 const ASSETS = "/assets/projects/regards-croises";
 
 function YoutubePlay() {
   return (
     <span className="relative h-[45px] w-16 shrink-0">
-      <img
-        src={`${ASSETS}/yt-red.svg`}
-        alt=""
-        aria-hidden
-        className="absolute inset-0 size-full"
-      />
-      <img
-        src={`${ASSETS}/yt-play.svg`}
-        alt=""
-        aria-hidden
-        className="absolute left-[40%] top-[28%] h-[44%] w-[26%]"
-      />
+      <img src={`${ASSETS}/yt-red.svg`} alt="" aria-hidden className="absolute inset-0 size-full" />
+      <img src={`${ASSETS}/yt-play.svg`} alt="" aria-hidden className="absolute left-[40%] top-[28%] h-[44%] w-[26%]" />
     </span>
   );
 }
@@ -36,20 +24,16 @@ export default function RegardsCroises() {
       {/* HERO */}
       <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
-          <img
-            src={`${ASSETS}/hero.jpg`}
-            alt="Tables rondes Regards croisés"
-            className="size-full object-cover"
-          />
+          <img src={`${ASSETS}/hero.jpg`} alt="Tables rondes Regards croisés" loading="lazy" decoding="async" className="size-full object-cover" />
         </div>
       </section>
 
       {/* INTRO */}
-      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col items-start justify-between gap-8 md:w-[85%] lg:flex-row lg:gap-12">
           <div data-aos="fade-up" data-aos-duration="800">
             <UButton
-              to="/partenariat"
+              to="/contact"
               variant="primary"
               className="shrink-0 !px-4 !py-2.5 text-[18px]"
             >
@@ -82,7 +66,7 @@ export default function RegardsCroises() {
       </section>
 
       {/* GALERIE */}
-      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div data-aos="fade-up" data-aos-duration="1200">
             <UHeading level={2} color="primary">
@@ -92,67 +76,30 @@ export default function RegardsCroises() {
 
           <div className="flex flex-col gap-6 lg:flex-row lg:gap-9">
             <div className="flex w-full flex-col gap-6 lg:w-[28%] lg:gap-9">
-              <div className="aspect-[333/304] overflow-hidden" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
-                <img
-                  src={`${ASSETS}/g1.jpg`}
-                  alt=""
-                  className="size-full object-cover"
-                />
-              </div>
-              <div className="aspect-[333/241] overflow-hidden" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                <img
-                  src={`${ASSETS}/g2.jpg`}
-                  alt=""
-                  className="size-full object-cover"
-                />
-              </div>
-              <div className="aspect-[333/371] overflow-hidden" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                <img
-                  src={`${ASSETS}/g3.jpg`}
-                  alt=""
-                  className="size-full object-cover"
-                />
-              </div>
+              {[1,2,3].map((n) => (
+                <div key={n} className={`overflow-hidden ${n === 1 ? 'aspect-[333/304]' : n === 2 ? 'aspect-[333/241]' : 'aspect-[333/371]'}`} data-aos="fade-up" data-aos-duration="1000" data-aos-delay={`${(n - 1) * 100}`}>
+                  <img src={`${ASSETS}/g${n}.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
+                </div>
+              ))}
             </div>
-
             <div className="flex flex-1 flex-col gap-6 lg:gap-8">
               <div className="flex flex-col gap-6 sm:flex-row lg:gap-9">
                 <div className="aspect-[321/383] w-full overflow-hidden sm:w-[38%]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                  <img
-                    src={`${ASSETS}/g4.jpg`}
-                    alt=""
-                    className="size-full object-cover"
-                  />
+                  <img src={`${ASSETS}/g4.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
                 </div>
                 <div className="aspect-[502/383] w-full overflow-hidden sm:flex-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                  <img
-                    src={`${ASSETS}/g5.jpg`}
-                    alt=""
-                    className="size-full object-cover"
-                  />
+                  <img src={`${ASSETS}/g5.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
                 </div>
               </div>
               <div className="aspect-[858/371] w-full overflow-hidden" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                <img
-                  src={`${ASSETS}/g6.jpg`}
-                  alt=""
-                  className="size-full object-cover"
-                />
+                <img src={`${ASSETS}/g6.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
               </div>
               <div className="flex flex-col gap-6 sm:flex-row lg:gap-9">
                 <div className="aspect-[304/166] w-full overflow-hidden sm:w-[36%]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                  <img
-                    src={`${ASSETS}/g7.jpg`}
-                    alt=""
-                    className="size-full object-cover"
-                  />
+                  <img src={`${ASSETS}/g7.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
                 </div>
                 <div className="aspect-[502/166] w-full overflow-hidden sm:flex-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                  <img
-                    src={`${ASSETS}/g8.jpg`}
-                    alt=""
-                    className="size-full object-cover"
-                  />
+                  <img src={`${ASSETS}/g8.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
                 </div>
               </div>
             </div>
@@ -180,11 +127,7 @@ export default function RegardsCroises() {
             data-aos="zoom-in"
             data-aos-duration="1200"
           >
-            <img
-              src={`${ASSETS}/hero.jpg`}
-              alt="Vidéo Regards croisés"
-              className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-            />
+            <img src={`${ASSETS}/hero.jpg`} alt="Vidéo Regards croisés" loading="lazy" decoding="async" className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
             <span className="absolute inset-0 flex items-center justify-center">
               <YoutubePlay />
             </span>
@@ -193,36 +136,9 @@ export default function RegardsCroises() {
       </section>
 
       {/* PROJET SUIVANT */}
-      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
-        <div className="mx-auto flex w-[92%] justify-center md:w-[85%]" data-aos="fade-up" data-aos-duration="800">
-          <UButton
-            to="/projets/parrainage"
-            variant="primary"
-            className="!px-4 !py-2.5 text-[18px]"
-          >
-            Découvrir le projet suivant
-          </UButton>
-        </div>
-      </section>
+      <NextProjectLink to="/projets/parrainage" />
 
-      <div data-aos="fade-up" data-aos-duration="3000">
-      <UCta
-        title="Rejoignez-nous !"
-        subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-        image="/assets/home/rejoignez-nous.jpg"
-        imageAlt="Poignée de main professionnelle"
-        actions={
-          <>
-            <UButton to="/partenariat" variant="primary">
-              Devenir partenaire <PartnerIcon />
-            </UButton>
-            <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="dark">
-              Faire un don
-            </UButton>
-          </>
-        }
-      />
-      </div>
+      <CtaSection />
     </div>
   );
 }

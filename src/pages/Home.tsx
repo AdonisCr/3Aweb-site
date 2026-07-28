@@ -3,6 +3,8 @@ import UButton from "@/components/ui/UButton";
 import UHeading from "@/components/ui/UHeading";
 import UCta from "@/components/ui/UCta";
 import PartnerIcon from "@/components/ui/PartnerIcon";
+import CtaSection from '@/components/ui/CtaSection'
+import ActionButtons from '@/components/ui/ActionButtons'
 import { useSmartPosts } from "@/hooks/useSmartData";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useAutoSlide } from "@/hooks/useAutoSlide";
@@ -105,7 +107,7 @@ function StatItem({
       data-aos-duration="800"
       data-aos-delay={delay}
     >
-      <div className="text-stat text-dark tabular-nums">
+      <div className="text-[32px] leading-[38.7px] text-dark tabular-nums sm:text-stat sm:leading-stat">
         {count}
         {suffix}
       </div>
@@ -158,6 +160,8 @@ export default function Home() {
           <img
             src="/assets/home/hero-bg.jpg"
             alt=""
+            loading="lazy"
+            decoding="async"
             className="size-full object-cover"
           />
           <div
@@ -186,12 +190,7 @@ export default function Home() {
                 formation à l&apos;insertion professionnelle au Bénin.
               </p>
               <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:items-center">
-                <UButton to="/partenariat" variant="primary">
-                  Devenir partenaire <PartnerIcon />
-                </UButton>
-                <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="white">
-                  Faire un don
-                </UButton>
+                <ActionButtons donVariant="white" />
               </div>
             </div>
 
@@ -296,6 +295,8 @@ export default function Home() {
             <img
               src="/assets/home/africa-map.png"
               alt="Carte de l'Afrique, Bénin surligné"
+              loading="lazy"
+              decoding="async"
               className="h-auto w-full object-contain object-bottom"
             />
           </div>
@@ -428,6 +429,8 @@ export default function Home() {
                     "/assets/home/article-featured.png"
                   }
                   alt={featuredPost.title}
+                  loading="lazy"
+                  decoding="async"
                   className="size-full object-cover"
                 />
               </div>
@@ -495,22 +498,7 @@ export default function Home() {
 
       {/* CTA */}
       <div data-aos="fade-up" data-aos-duration="800">
-        <UCta
-          title="Rejoignez-nous !"
-          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-          image="/assets/home/rejoignez-nous.jpg"
-          imageAlt="Poignée de main professionnelle"
-          actions={
-            <>
-              <UButton to="/partenariat" variant="primary">
-                Devenir partenaire <PartnerIcon />
-              </UButton>
-              <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="dark">
-                Faire un don
-              </UButton>
-            </>
-          }
-        />
+        <CtaSection />
       </div>
     </div>
   );

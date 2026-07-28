@@ -1,6 +1,5 @@
 import UButton from "@/components/ui/UButton";
-import UCta from "@/components/ui/UCta";
-import PartnerIcon from '@/components/ui/PartnerIcon';
+import CtaSection from "@/components/ui/CtaSection";
 import PageTitle from '@/components/layout/PageTitle';
 
 const LOGOS = "/assets/partners/Coloured";
@@ -92,20 +91,18 @@ export default function Partnership() {
           <img
             src="/assets/partnership/hero.jpg"
             alt="Groupe de partenaires Alliance Actions Afrique"
+            loading="lazy"
+            decoding="async"
             className="size-full object-cover"
           />
         </div>
       </section>
 
-      <section className="bg-white py-10 lg:py-20" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-20" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col items-start gap-8 md:w-[85%] lg:flex-row lg:items-start lg:justify-between lg:gap-12">
           <div data-aos="fade-up" data-aos-duration="800">
-            <UButton
-              to="/partenariat"
-              variant="primary"
-              className="w-full sm:w-auto"
-            >
-              Devenir partenaire <PartnerIcon />
+            <UButton to="/contact" variant="primary" className="w-full sm:w-auto">
+              Devenir partenaire
             </UButton>
           </div>
           <p
@@ -124,7 +121,7 @@ export default function Partnership() {
         </div>
       </section>
 
-      <section className="bg-white pb-10 lg:pb-16" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white pb-10 lg:pb-16" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col gap-12 md:w-[85%] lg:gap-16">
           {partnerSections.map((section, sectionIndex) => (
             <div
@@ -135,12 +132,14 @@ export default function Partnership() {
               data-aos-delay={sectionIndex * 100}
             >
               <SectionTitle title={section.title} />
-              <div className="flex w-full flex-wrap items-center justify-start gap-x-8 gap-y-6 sm:gap-x-12 lg:gap-x-16">
+              <div className="flex w-full flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:justify-start sm:gap-x-8 sm:gap-y-6 lg:gap-x-16">
                 {section.logos.map((logo, logoIndex) => (
                   <img
                     key={`${section.title}-${logo.name}`}
                     src={logo.src}
                     alt={logo.name}
+                    loading="lazy"
+                    decoding="async"
                     className="h-14 w-auto cursor-pointer max-w-[180px] object-contain sm:h-20 lg:h-24 hover:grayscale-100 transition-all duration-300"
                     data-aos="fade-up"
                     data-aos-duration="1000"
@@ -153,22 +152,7 @@ export default function Partnership() {
         </div>
       </section>
 
-      <div data-aos="fade-up" data-aos-duration="3000">
-        <UCta
-          title="Rejoignez-nous !"
-          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-          image="/assets/association/rejoignez-nous.jpg"
-          imageAlt="Poignée de main professionnelle"
-          actions={
-            <>
-              <UButton to="/partenariat" variant="primary">
-                Devenir partenaire <PartnerIcon />
-              </UButton>
-              <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="dark">Faire un don</UButton>
-            </>
-          }
-        />
-      </div>
+      <CtaSection image="/assets/association/rejoignez-nous.jpg" />
     </div>
   );
 }

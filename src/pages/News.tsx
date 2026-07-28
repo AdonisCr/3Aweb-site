@@ -1,12 +1,12 @@
+import { useState } from 'react'
 import UButton from "@/components/ui/UButton";
 import UHeading from "@/components/ui/UHeading";
-import UCta from "@/components/ui/UCta";
-import { YOUTUBE_10_ANS_URL } from "@/data/articles";
-import PartnerIcon from '@/components/ui/PartnerIcon';
+import CtaSection from "@/components/ui/CtaSection";
 import PageTitle from '@/components/layout/PageTitle';
 import { useSmartPosts } from '@/hooks/useSmartData';
 
 const ASSETS = "/assets/projects/regards-croises";
+
 function YoutubePlay() {
   return (
     <span className="relative h-[45px] w-16 shrink-0">
@@ -50,6 +50,8 @@ function ArticleCard({
       <img
         src={image}
         alt={title}
+        loading="lazy"
+        decoding="async"
         className="aspect-[600/283] w-full object-cover"
       />
     </div>
@@ -95,7 +97,11 @@ function ArticleCard({
 }
 
 export default function News() {
-  const { posts } = useSmartPosts(20)
+  const { posts } = useSmartPosts(20);
+  const INITIAL_COUNT = 3;
+  const [showCount, setShowCount] = useState(INITIAL_COUNT);
+  const visiblePosts = posts.slice(0, showCount);
+  const hasMore = showCount < posts.length;
 
   return (
     <div className="page pt-28">
@@ -107,13 +113,15 @@ export default function News() {
           <img
             src="/assets/news/hero.jpg"
             alt="Événement Alliance Actions Afrique"
+            loading="lazy"
+            decoding="async"
             className="size-full object-cover"
           />
         </div>
       </section>
 
       {/* À LA UNE */}
-      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
             <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
@@ -132,7 +140,7 @@ export default function News() {
           </div>
 
           <a
-            href={YOUTUBE_10_ANS_URL}
+            href="https://www.youtube.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative block h-[240px] w-full overflow-hidden rounded-[10px] sm:h-[360px] lg:h-[453px]"
@@ -143,6 +151,8 @@ export default function News() {
             <img
               src="/assets/news/video-poster.jpg"
               alt="10 ans d'intelligence collective"
+              loading="lazy"
+              decoding="async"
               className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
@@ -172,9 +182,9 @@ export default function News() {
       </section>
 
       {/* ARTICLES LIST */}
-      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col gap-16 md:w-[85%] lg:gap-[100px]">
-          {posts.map((post, index) => (
+          {visiblePosts.map((post, index) => (
             <ArticleCard
               key={post.id}
               slug={post.slug}
@@ -190,26 +200,22 @@ export default function News() {
               Aucun article pour le moment.
             </p>
           )}
+          {hasMore && (
+            <div className="flex justify-center" data-aos="fade-up" data-aos-duration="800">
+              <UButton
+                variant="primary"
+                className="!w-fit !px-6 !py-2.5 text-[18px]"
+                onClick={() => setShowCount(posts.length)}
+              >
+                Voir les précédents
+              </UButton>
+            </div>
+          )}
         </div>
       </section>
 
-      <div data-aos="fade-up" data-aos-duration="3000">
-        <UCta
-          title="Rejoignez-nous !"
-          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-          image="/assets/home/rejoignez-nous.jpg"
-          imageAlt="Poignée de main professionnelle"
-          actions={
-            <>
-              <UButton to="/partenariat" variant="primary">
-                Devenir partenaire <PartnerIcon />
-              </UButton>
-              <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="dark">
-                Faire un don
-              </UButton>
-            </>
-          }
-        />
+      <div data-aos="fade-up" data-aos-duration="800">
+        <CtaSection />
       </div>
     </div>
   );

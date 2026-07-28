@@ -82,12 +82,12 @@ export default function Footer() {
     <footer className="relative text-white pt-16 pb-10 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img src="/assets/footer-bg.png" alt="" className="w-full h-full object-cover" />
+        <img src="/assets/footer-bg.png" alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
       </div>
 
       {/* Foreground group image */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <img src="/assets/footer-group.png" alt="" className="h-full w-auto object-contain" style={{ filter: 'brightness(1.4) opacity(0.5)' }} />
+        <img src="/assets/footer-group.png" alt="" loading="lazy" decoding="async" className="h-full w-auto object-contain" style={{ filter: 'brightness(1.4) opacity(0.5)' }} />
       </div>
 
       {/* Content */}
@@ -95,7 +95,7 @@ export default function Footer() {
         {/* Top row */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-10 mb-14">
           <a href="/" className="inline-block">
-            <img src="/assets/logo.png" alt="Alliance Actions Afrique" className="h-20 w-auto object-contain" />
+            <img src="/assets/logo.png" alt="Alliance Actions Afrique" loading="lazy" decoding="async" className="h-20 w-auto object-contain" />
           </a>
           <ul className="space-y-3">
             {contactItems.map((item) => (
@@ -114,7 +114,7 @@ export default function Footer() {
         </div>
 
         {/* Footer Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-14 pt-10 border-t-2 border-white/40">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14 pt-10 border-t-2 border-white/40">
           {/* Références */}
           <div>
             <h4 className="mb-4 text-body-md font-bold text-white">Références:</h4>

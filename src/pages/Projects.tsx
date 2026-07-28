@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
-import UButton from '@/components/ui/UButton'
 import USection from '@/components/ui/USection'
 import UHeading from '@/components/ui/UHeading'
-import UCta from '@/components/ui/UCta'
-import PartnerIcon from '@/components/ui/PartnerIcon'
+import CtaSection from '@/components/ui/CtaSection'
 import PageTitle from '@/components/layout/PageTitle'
 import { useSmartProjects } from '@/hooks/useSmartData'
 import { sanitizeHtml } from '@/lib/sanitize'
@@ -22,7 +20,7 @@ export default function Projects() {
       <PageTitle title="Nos projets phares" />
 
       <USection>
-        <div className="space-y-16" data-aos="fade-up" data-aos-duration="3000">
+        <div className="space-y-16" data-aos="fade-up" data-aos-duration="800">
           {projects.map((project, index) => (
             <Link
               key={project.id}
@@ -37,7 +35,7 @@ export default function Projects() {
                 data-aos="zoom-in"
                 data-aos-duration="1200"
               >
-                <img src={project.featuredImage?.node?.sourceUrl ?? '/assets/gallery-13-4246.jpg'} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={project.featuredImage?.node?.sourceUrl ?? '/assets/gallery-13-4246.jpg'} alt={project.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div
                 className="w-full flex-1"
@@ -60,20 +58,7 @@ export default function Projects() {
         </div>
       </USection>
 
-      <div data-aos="fade-up" data-aos-duration="3000">
-        <UCta
-          title="Rejoignez-nous !"
-          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-          image="/assets/home/rejoignez-nous.jpg"
-          imageAlt="Poignée de main professionnelle"
-          actions={
-            <>
-              <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
-              <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="white">Faire un don</UButton>
-            </>
-          }
-        />
-      </div>
+      <CtaSection donVariant="white" />
     </div>
   )
 }

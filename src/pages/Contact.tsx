@@ -1,6 +1,4 @@
-import UButton from '@/components/ui/UButton'
-import UCta from '@/components/ui/UCta'
-import PartnerIcon from '@/components/ui/PartnerIcon'
+import CtaSection from '@/components/ui/CtaSection'
 import PageTitle from '@/components/layout/PageTitle'
 import { useSmartContact } from '@/hooks/useSmartData'
 
@@ -19,17 +17,17 @@ export default function Contact() {
     },
     {
       icon: '/assets/contact/icon-phone.svg',
-      label: contact.phoneFr ?? '+33661802724',
+      label: contact.phoneFr ?? '+33 6 61 80 27 24',
       href: `tel:${contact.phoneFr?.replace(/\s/g, '') ?? '+33661802724'}`,
     },
     {
       icon: '/assets/contact/icon-chat.svg',
-      label: contact.phoneBj ?? '+22964684479',
+      label: contact.phoneBj ?? '+229 64 68 44 79',
       href: `tel:${contact.phoneBj?.replace(/\s/g, '') ?? '+22964684479'}`,
     },
     {
       icon: '/assets/contact/icon-location.svg',
-      label: contact.address ?? '12 rue des Capucins – 69001 Lyon',
+      label: contact.address ?? '12 rue des Capucins — 69001 Lyon',
     },
   ]
   return (
@@ -37,72 +35,74 @@ export default function Contact() {
       <PageTitle title="Gardons contact" />
 
       {/* MAP + INFOS + FORM */}
-      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-16 overflow-hidden" data-aos="fade-up">
         <div className="mx-auto flex w-[92%] max-w-[1001px] flex-col items-center gap-[50px] md:w-[85%]">
           {/* Address card */}
-          <div
-            className="flex w-full flex-col overflow-hidden rounded-[20px] shadow-[0px_4px_12.5px_rgba(0,0,0,0.25)] lg:flex-row lg:rounded-[50px]"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
             <div
-              className="h-[220px] w-full overflow-hidden sm:h-[296px] lg:w-[40%]"
-              data-aos="zoom-in"
-              data-aos-duration="1200"
+              className="relative flex min-h-[240px] w-full items-center overflow-hidden rounded-l-[12px] shadow-[0px_4px_12.5px_rgba(0,0,0,0.25)] bg-cover bg-center bg-no-repeat lg:flex-row lg:rounded-l-[24px]"
+              style={{ backgroundImage: 'url(/assets/contact/bg.png)' }}
+              data-aos="fade-up"
+              data-aos-duration="1000"
             >
-              <img
-                src="/assets/contact/map.jpg"
-                alt="Localisation — 12 rue des Capucins, Lyon"
-                className="size-full object-cover"
-              />
-            </div>
-
-            <div
-              className="relative flex min-h-[240px] w-full items-center overflow-hidden bg-[#351000] px-6 py-8 sm:px-10 sm:py-10 lg:w-[60%]"
-              data-aos="fade-left"
-              data-aos-duration="1500"
-            >
-              <div className="relative z-10 flex w-full flex-col items-start justify-between gap-8 sm:flex-row sm:items-center lg:mx-auto lg:max-w-[440px]">
+              <div
+                className="h-[220px] w-full overflow-hidden sm:h-[296px] lg:w-[40%]"
+                data-aos="zoom-in"
+                data-aos-duration="1200"
+              >
                 <img
-                  src="/assets/contact/logo-white.svg"
-                  alt="Alliance Actions Afrique"
-                  className="h-[48px] w-auto object-contain lg:h-[59px]"
+                  src="/assets/contact/map.jpg"
+                  alt="Localisation — 12 rue des Capucins, Lyon"
+                  loading="lazy"
+                  decoding="async"
+                  className="size-full object-cover"
                 />
-                <ul className="flex w-full flex-col gap-3.5 sm:max-w-[251px]">
-                  {contactInfos.map((item, i) => (
-                    <li
-                      key={item.label}
-                      className="flex items-center gap-3"
-                      data-aos="fade-up"
-                      data-aos-duration="1000"
-                      data-aos-delay={i * 100}
-                    >
-                      <span className="flex size-4 shrink-0 items-center justify-center overflow-hidden">
-                        <img
-                          src={item.icon}
-                          alt=""
-                          aria-hidden
-                          className="size-full object-contain brightness-0 invert"
-                        />
-                      </span>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          className={`text-[14px] leading-normal text-white ${item.underline ? 'underline underline-offset-2' : ''}`}
-                        >
-                          {item.label}
-                        </a>
-                      ) : (
-                        <span className="text-[14px] leading-normal text-white">{item.label}</span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+              </div>
+
+              <div
+                className="relative flex min-h-[240px] w-full items-center overflow-hidden px-6 py-8 sm:px-10 sm:py-10 lg:w-[60%]"
+                data-aos="fade-left"
+                data-aos-duration="800"
+              >
+                <div className="relative z-10 flex w-full flex-col items-start justify-between gap-8 sm:flex-row sm:items-center lg:mx-auto lg:max-w-[440px]">
+                  <img
+                    src="/assets/contact/logo.png"
+                    alt="Alliance Actions Afrique"
+                    className="h-[50px] w-auto object-contain lg:h-[64px]"
+                  />
+                  <ul className="flex w-full flex-col gap-3.5 sm:max-w-[251px]">
+                    {contactInfos.map((item, i) => (
+                      <li
+                        key={item.label}
+                        className="flex items-center gap-3"
+                        data-aos="fade-up"
+                        data-aos-duration="1000"
+                        data-aos-delay={i * 100}
+                      >
+                        <span className="flex size-4 shrink-0 items-center justify-center overflow-hidden">
+                          <img
+                            src={item.icon}
+                            alt=""
+                            aria-hidden
+                            className="size-full object-contain brightness-0 invert"
+                          />
+                        </span>
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            className={`text-[14px] leading-normal text-white ${item.underline ? 'underline underline-offset-2' : ''}`}
+                          >
+                            {item.label}
+                          </a>
+                        ) : (
+                          <span className="text-[14px] leading-normal text-white">{item.label}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Form — Figma ~1001px, fields 460px, gap 73px */}
           <form
             className="flex w-full max-w-[1001px] flex-col items-end gap-10"
             onSubmit={(e) => e.preventDefault()}
@@ -175,19 +175,8 @@ export default function Contact() {
         </div>
       </section>
 
-      <div data-aos="fade-up" data-aos-duration="3000">
-        <UCta
-          title="Rejoignez-nous !"
-          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-          image="/assets/home/rejoignez-nous.jpg"
-          imageAlt="Poignée de main professionnelle"
-          actions={
-            <>
-              <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
-              <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="dark">Faire un don</UButton>
-            </>
-          }
-        />
+      <div data-aos="fade-up">
+        <CtaSection />
       </div>
     </div>
   )

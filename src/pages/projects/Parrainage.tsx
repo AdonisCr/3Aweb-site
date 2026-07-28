@@ -1,56 +1,24 @@
 import UButton from "@/components/ui/UButton";
 import UHeading from "@/components/ui/UHeading";
-import UCta from "@/components/ui/UCta";
-import PartnerIcon from '@/components/ui/PartnerIcon';
+import CtaSection from "@/components/ui/CtaSection";
+import NextProjectLink from "@/components/ui/NextProjectLink";
 import PageTitle from '@/components/layout/PageTitle';
 
-/** Remplacer par l'URL YouTube réelle dès qu'elle est disponible. */
 const DEVICE_VIDEO_URL = "https://www.youtube.com/";
-
 const ASSETS = "/assets/projects/parrainage";
 
 const testimonials = [
-  {
-    name: "Adonis Oussou",
-    school: "École 229",
-    image: `${ASSETS}/t2.jpg`,
-    videoUrl: DEVICE_VIDEO_URL,
-  },
-  {
-    name: "Yannick Akoto",
-    school: "Epitech",
-    image: `${ASSETS}/t3.jpg`,
-    videoUrl: DEVICE_VIDEO_URL,
-  },
-  {
-    name: "Hortense Azandosessi",
-    school: "École 229",
-    image: `${ASSETS}/t4.jpg`,
-    videoUrl: DEVICE_VIDEO_URL,
-  },
-  {
-    name: "Ruth Ahoueya",
-    school: "École 229",
-    image: `${ASSETS}/t5.png`,
-    videoUrl: DEVICE_VIDEO_URL,
-  },
+  { name: "Adonis Oussou", school: "École 229", image: `${ASSETS}/t2.jpg`, videoUrl: DEVICE_VIDEO_URL },
+  { name: "Yannick Akoto", school: "Epitech", image: `${ASSETS}/t3.jpg`, videoUrl: DEVICE_VIDEO_URL },
+  { name: "Hortense Azandosessi", school: "École 229", image: `${ASSETS}/t4.jpg`, videoUrl: DEVICE_VIDEO_URL },
+  { name: "Ruth Ahoueya", school: "École 229", image: `${ASSETS}/t5.png`, videoUrl: DEVICE_VIDEO_URL },
 ];
 
 function YoutubePlay() {
   return (
     <span className="relative h-[45px] w-16 shrink-0">
-      <img
-        src={`${ASSETS}/yt-red.svg`}
-        alt=""
-        aria-hidden
-        className="absolute inset-0 size-full"
-      />
-      <img
-        src={`${ASSETS}/yt-play.svg`}
-        alt=""
-        aria-hidden
-        className="absolute left-[40%] top-[28%] h-[44%] w-[26%]"
-      />
+      <img src={`${ASSETS}/yt-red.svg`} alt="" aria-hidden className="absolute inset-0 size-full" />
+      <img src={`${ASSETS}/yt-play.svg`} alt="" aria-hidden className="absolute left-[40%] top-[28%] h-[44%] w-[26%]" />
     </span>
   );
 }
@@ -63,16 +31,12 @@ export default function Parrainage() {
       {/* HERO */}
       <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
-          <img
-            src={`${ASSETS}/hero.jpg`}
-            alt="Programme de parrainage Alliance Actions Afrique"
-            className="size-full object-cover"
-          />
+          <img src={`${ASSETS}/hero.jpg`} alt="Programme de parrainage Alliance Actions Afrique" loading="lazy" decoding="async" className="size-full object-cover" />
         </div>
       </section>
 
       {/* INTRO */}
-      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col items-start justify-between gap-8 md:w-[85%] lg:flex-row lg:gap-12">
           <div data-aos="fade-up" data-aos-duration="800">
             <UButton
@@ -107,7 +71,7 @@ export default function Parrainage() {
       </section>
 
       {/* GALERIE */}
-      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto w-[92%] md:w-[85%]">
           <div className="flex flex-col gap-6 lg:flex-row lg:gap-9">
             <div className="flex w-full flex-col gap-6 lg:w-[26%] lg:gap-9">
@@ -115,6 +79,8 @@ export default function Parrainage() {
                 <img
                   src={`${ASSETS}/g1.jpg`}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   className="size-full object-cover"
                 />
               </div>
@@ -122,17 +88,20 @@ export default function Parrainage() {
                 <img
                   src={`${ASSETS}/g2.jpg`}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   className="size-full object-cover"
                 />
               </div>
             </div>
-
             <div className="flex flex-1 flex-col gap-6 lg:gap-10">
               <div className="flex flex-col gap-6 sm:flex-row lg:gap-9">
                 <div className="aspect-[321/371] w-full overflow-hidden sm:w-[38%]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
                   <img
                     src={`${ASSETS}/g3.jpg`}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     className="size-full object-cover"
                   />
                 </div>
@@ -140,6 +109,8 @@ export default function Parrainage() {
                   <img
                     src={`${ASSETS}/g4.jpg`}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     className="size-full object-cover"
                   />
                 </div>
@@ -149,6 +120,8 @@ export default function Parrainage() {
                   <img
                     src={`${ASSETS}/g5.jpg`}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     className="size-full object-cover"
                   />
                 </div>
@@ -156,6 +129,8 @@ export default function Parrainage() {
                   <img
                     src={`${ASSETS}/g6.jpg`}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     className="size-full object-cover"
                   />
                 </div>
@@ -166,7 +141,7 @@ export default function Parrainage() {
       </section>
 
       {/* DISPOSITIF */}
-      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
             <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
@@ -189,11 +164,7 @@ export default function Parrainage() {
             data-aos="zoom-in"
             data-aos-duration="1200"
           >
-            <img
-              src={`${ASSETS}/t1.jpg`}
-              alt="Le dispositif de parrainage"
-              className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-            />
+            <img src={`${ASSETS}/t1.jpg`} alt="Le dispositif de parrainage" loading="lazy" decoding="async" className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
             <span className="absolute inset-0 flex items-center justify-center">
               <YoutubePlay />
             </span>
@@ -202,7 +173,7 @@ export default function Parrainage() {
       </section>
 
       {/* TÉMOIGNAGES */}
-      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
             <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
@@ -227,11 +198,7 @@ export default function Parrainage() {
                   className="group relative block aspect-[253/318] w-full overflow-hidden rounded"
                   aria-label={`Voir le témoignage de ${t.name}`}
                 >
-                  <img
-                    src={t.image}
-                    alt={t.name}
-                    className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                  />
+                  <img src={t.image} alt={t.name} loading="lazy" decoding="async" className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
                   <span className="absolute inset-0 flex items-center justify-center bg-black/10">
                     <YoutubePlay />
                   </span>
@@ -239,9 +206,7 @@ export default function Parrainage() {
                 <div className="flex flex-col gap-2">
                   <p className="text-[20px] font-bold text-primary">{t.name}</p>
                   <div className="flex items-center justify-between gap-2">
-                    <p className="shrink-0 text-body-md font-bold tracking-[-0.48px] text-body">
-                      {t.school}
-                    </p>
+                    <p className="shrink-0 text-body-md font-bold tracking-[-0.48px] text-body">{t.school}</p>
                     <div className="h-px min-w-0 flex-1 bg-gray-300" />
                   </div>
                 </div>
@@ -252,36 +217,9 @@ export default function Parrainage() {
       </section>
 
       {/* PROJET SUIVANT */}
-      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
-        <div className="mx-auto flex w-[92%] justify-center md:w-[85%]" data-aos="fade-up" data-aos-duration="800">
-          <UButton
-            to="/projets/accompagnement-professionnel"
-            variant="primary"
-            className="!px-4 !py-2.5 text-[18px]"
-          >
-            Découvrir le projet suivant
-          </UButton>
-        </div>
-      </section>
+      <NextProjectLink to="/projets/accompagnement-professionnel" />
 
-      <div data-aos="fade-up" data-aos-duration="3000">
-      <UCta
-        title="Rejoignez-nous !"
-        subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-        image="/assets/home/rejoignez-nous.jpg"
-        imageAlt="Poignée de main professionnelle"
-        actions={
-          <>
-            <UButton to="/partenariat" variant="primary">
-              Devenir partenaire <PartnerIcon />
-            </UButton>
-            <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="dark">
-              Faire un don
-            </UButton>
-          </>
-        }
-      />
-      </div>
+      <CtaSection />
     </div>
   );
 }

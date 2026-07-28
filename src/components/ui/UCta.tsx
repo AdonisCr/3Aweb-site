@@ -33,6 +33,8 @@ export default function UCta({ title, subtitle, actions, image, imageAlt = '', c
               <img
                 src={image}
                 alt={imageAlt}
+                loading="lazy"
+                decoding="async"
                 className="aspect-[636/385] w-full rounded-card object-cover"
               />
             ) : (

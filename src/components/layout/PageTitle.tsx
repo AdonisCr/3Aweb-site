@@ -14,7 +14,7 @@ export default function PageTitle({ title, backTo = '/', backLabel = "Retour à 
         src="/assets/association/Tree stamp.svg"
         alt=""
         aria-hidden
-        className="pointer-events-none absolute right-0 top-0 z-[60] h-auto w-[70%] mr-[100px] object-cover object-right"
+        className="pointer-events-none absolute right-0 top-0 z-[60] h-auto w-[50%] mr-4 object-cover object-right sm:w-[60%] sm:mr-10 lg:w-[70%] lg:mr-[100px]"
       />
       <div className="relative z-0 mx-auto w-[92%] md:w-[85%]">
         <div className="flex items-center gap-4">

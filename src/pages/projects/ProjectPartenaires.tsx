@@ -1,9 +1,6 @@
-import DarkHero from '@/components/layout/DarkHero'
-import UButton from '@/components/ui/UButton'
-import USection from '@/components/ui/USection'
 import UHeading from '@/components/ui/UHeading'
-import UCta from '@/components/ui/UCta'
-import PartnerIcon from '@/components/ui/PartnerIcon'
+import CtaSection from '@/components/ui/CtaSection'
+import PageTitle from '@/components/layout/PageTitle'
 
 const categories = [
   { title: 'Institutions & entreprises', image: '/assets/partners-group-13-2385.png' },
@@ -15,37 +12,24 @@ const categories = [
 export default function ProjectPartenaires() {
   return (
     <div className="page pt-28">
-      <DarkHero
-        title="Tous nos partenaires"
-        breadcrumbs={[
-          { label: 'Partenaires & sponsors', to: '/partenariat' },
-          { label: 'Tous nos partenaires' },
-        ]}
-      />
+      <PageTitle title="Tous nos partenaires" backTo="/partenariat" backLabel="Partenaires & sponsors" />
 
-      <USection>
-        <div className="space-y-12">
-          {categories.map((cat) => (
-            <div key={cat.title}>
-              <UHeading level={2} color="dark" className="mb-8">{cat.title}</UHeading>
-              <div className="flex justify-center">
-                <img src={cat.image} alt={cat.title} className="max-w-full h-auto max-h-[300px] object-contain" />
+      <section className="bg-white py-10 lg:py-16">
+        <div className="mx-auto w-[92%] md:w-[85%]">
+          <div className="space-y-12">
+            {categories.map((cat) => (
+              <div key={cat.title}>
+                <UHeading level={2} color="dark" className="mb-8">{cat.title}</UHeading>
+                <div className="flex justify-center">
+                  <img src={cat.image} alt={cat.title} loading="lazy" decoding="async" className="max-w-full h-auto max-h-[300px] object-contain" />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </USection>
+      </section>
 
-      <UCta
-        title="Rejoignez-nous !"
-        subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-        actions={
-          <>
-            <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
-            <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="white">Faire un don</UButton>
-          </>
-        }
-      />
+      <CtaSection donVariant="white" />
     </div>
   )
 }

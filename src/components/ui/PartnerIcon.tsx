@@ -1,4 +1,6 @@
-export default function PartnerIcon({ className = '' }: { className?: string }) {
+import { memo } from 'react'
+
+export default memo(function PartnerIcon({ className = '' }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,4 +16,4 @@ export default function PartnerIcon({ className = '' }: { className?: string }) 
       />
     </svg>
   )
-}
+})

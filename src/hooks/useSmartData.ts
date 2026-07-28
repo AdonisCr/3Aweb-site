@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { usePosts, useProjects, usePartners, useTeamMembers, useValues, useDonationTiers, useContactInfo } from './useWordPress'
+import { usePosts, usePost, useProjects, usePartners, useTeamMembers, useValues, useDonationTiers, useContactInfo } from './useWordPress'
 import {
   FALLBACK_POSTS,
   FALLBACK_PROJECTS,
@@ -18,6 +18,16 @@ export function useSmartPosts(first = 10) {
     return FALLBACK_POSTS
   }, [wpPosts])
   return { posts, loading, fromApi: wpPosts.length > 0 }
+}
+
+export function useSmartPost(slug: string) {
+  const { post: wpPost, loading } = usePost(slug)
+  const post = useMemo(() => {
+    if (wpPost) return wpPost
+    if (!slug) return null
+    return FALLBACK_POSTS.find((p) => p.slug === slug) ?? null
+  }, [wpPost, slug])
+  return { post, loading, fromApi: !!wpPost }
 }
 
 export function useSmartProjects(first = 10) {

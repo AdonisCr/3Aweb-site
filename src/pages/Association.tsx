@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import UButton from '@/components/ui/UButton'
 import UHeading from '@/components/ui/UHeading'
-import UCta from '@/components/ui/UCta'
+import CtaSection from '@/components/ui/CtaSection'
 import UPlaceholder from '@/components/ui/UPlaceholder'
-import PartnerIcon from '@/components/ui/PartnerIcon'
 import PageTitle from '@/components/layout/PageTitle'
 import { useSmartTeamMembers } from '@/hooks/useSmartData'
 import { useGlobalSettings } from '@/hooks/useWordPress'
@@ -29,7 +27,7 @@ export default function Association() {
 
   const { frMembers, bjMembers } = useSmartTeamMembers(20)
 
-  const filteredTeam = teamRegion === 'fr' ? frMembers : bjMembers
+  const filteredTeam = teamRegion === 'fr' ? [...frMembers].reverse() : [...bjMembers].reverse()
   const teamPageSize = 4
   const teamPageCount = Math.max(1, Math.ceil(filteredTeam.length / teamPageSize))
   const visibleTeam = filteredTeam.slice(teamPage * teamPageSize, teamPage * teamPageSize + teamPageSize)
@@ -58,13 +56,15 @@ export default function Association() {
           <img
             src="/assets/association/hero.jpg"
             alt="Enfants regardant le paysage au Bénin"
+            loading="lazy"
+            decoding="async"
             className="size-full object-cover"
           />
         </div>
       </section>
 
       {/* NOTRE HISTOIRE */}
-      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col items-start justify-between gap-10 md:w-[85%] lg:flex-row lg:gap-16">
           <div className="flex max-w-[564px] flex-col gap-8 lg:gap-10" data-aos="fade-right" data-aos-duration="1500">
             <div data-aos="fade-up" data-aos-duration="1200">
@@ -92,6 +92,8 @@ export default function Association() {
               <img
                 src="/assets/association/histoire.png"
                 alt="Membres de l'association"
+                loading="lazy"
+                decoding="async"
                 className="size-full object-cover"
               />
             </div>
@@ -101,7 +103,7 @@ export default function Association() {
       </section>
 
       {/* NOTRE MISSION */}
-      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col gap-10 md:w-[85%] lg:gap-20">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
             <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
@@ -129,6 +131,8 @@ export default function Association() {
             <img
               src="/assets/association/mission-video.png"
               alt="Présentation Alliance Actions Afrique"
+              loading="lazy"
+              decoding="async"
               className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
             />
             <span className="absolute inset-0 flex items-center justify-center">
@@ -152,7 +156,7 @@ export default function Association() {
       </section>
 
       {/* NOS VALEURS */}
-      <section className="bg-white py-10 lg:py-20" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-20" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
             <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
@@ -208,7 +212,7 @@ export default function Association() {
       </section>
 
       {/* NOTRE ÉQUIPE */}
-      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="3000">
+      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
             <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
@@ -232,7 +236,7 @@ export default function Association() {
               >
                 {member.featuredImage?.node?.sourceUrl ? (
                   <div className="aspect-[253/318] w-full overflow-hidden rounded">
-                    <img src={member.featuredImage.node.sourceUrl} alt={member.title} className="size-full object-cover" />
+                    <img src={member.featuredImage.node.sourceUrl} alt={member.title} loading="lazy" decoding="async" className="size-full object-cover" />
                   </div>
                 ) : (
                   <UPlaceholder
@@ -304,19 +308,8 @@ export default function Association() {
       </section>
 
       {/* CTA */}
-      <div data-aos="fade-up" data-aos-duration="3000">
-        <UCta
-          title="Rejoignez-nous !"
-          subtitle="Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons."
-          image="/assets/association/rejoignez-nous.jpg"
-          imageAlt="Poignée de main professionnelle"
-          actions={
-            <>
-              <UButton to="/partenariat" variant="primary">Devenir partenaire <PartnerIcon /></UButton>
-              <UButton to="https://www.helloasso.com/associations/alliance-actions-afrique/formulaires/1" variant="dark">Faire un don</UButton>
-            </>
-          }
-        />
+      <div data-aos="fade-up" data-aos-duration="800">
+        <CtaSection image="/assets/association/rejoignez-nous.jpg" />
       </div>
     </div>
   )

@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { type ReactNode, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -25,7 +26,7 @@ const sizeClasses: Record<string, string> = {
   lg: 'px-8 py-5 text-body-lg',
 }
 
-export default function UButton({
+export default memo(function UButton({
   children,
   variant = 'primary',
   to,
@@ -56,4 +57,4 @@ export default function UButton({
       {children}
     </button>
   )
-}
+})
