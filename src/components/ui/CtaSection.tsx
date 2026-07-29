@@ -13,7 +13,7 @@ interface CtaSectionProps {
 export default memo(function CtaSection({
   title = 'Rejoignez-nous !',
   subtitle = "Ou partagez notre vision commune en soutenant le développement et l'épanouissement professionnel de nos parrainés et des jeunes que nous accompagnons.",
-  image = '/assets/home/rejoignez-nous.jpg',
+  image = '/assets/home/rejoignez-nous.webp',
   imageAlt = 'Poignée de main professionnelle',
   donVariant = 'dark',
 }: CtaSectionProps) {

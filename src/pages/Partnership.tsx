@@ -89,7 +89,7 @@ export default function Partnership() {
       <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
           <img
-            src="/assets/partnership/hero.jpg"
+            src="/assets/partnership/hero.webp"
             alt="Groupe de partenaires Alliance Actions Afrique"
             loading="lazy"
             decoding="async"
@@ -152,7 +152,7 @@ export default function Partnership() {
         </div>
       </section>
 
-      <CtaSection image="/assets/association/rejoignez-nous.jpg" />
+      <CtaSection image="/assets/association/rejoignez-nous.webp" />
     </div>
   );
 }

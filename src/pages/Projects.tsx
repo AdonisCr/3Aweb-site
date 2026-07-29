@@ -35,7 +35,7 @@ export default function Projects() {
                 data-aos="zoom-in"
                 data-aos-duration="1200"
               >
-                <img src={project.featuredImage?.node?.sourceUrl ?? '/assets/gallery-13-4246.jpg'} alt={project.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={project.featuredImage?.node?.sourceUrl ?? '/assets/gallery-13-4246.webp'} alt={project.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div
                 className="w-full flex-1"

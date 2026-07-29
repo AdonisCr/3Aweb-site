@@ -111,7 +111,7 @@ export default function News() {
       <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[280px] w-full overflow-hidden sm:h-[400px] lg:h-[500px]">
           <img
-            src="/assets/news/hero.jpg"
+            src="/assets/news/hero.webp"
             alt="Événement Alliance Actions Afrique"
             loading="lazy"
             decoding="async"
@@ -149,7 +149,7 @@ export default function News() {
             data-aos-duration="1200"
           >
             <img
-              src="/assets/news/video-poster.jpg"
+              src="/assets/news/video-poster.webp"
               alt="10 ans d'intelligence collective"
               loading="lazy"
               decoding="async"
@@ -191,7 +191,7 @@ export default function News() {
               title={post.title}
               date={post.date}
               excerpt={post.excerpt}
-              image={post.featuredImage?.node?.sourceUrl ?? "/assets/news/hero.jpg"}
+              image={post.featuredImage?.node?.sourceUrl ?? "/assets/news/hero.webp"}
               imageRight={index % 2 === 1}
             />
           ))}

@@ -16,7 +16,7 @@ export const articles: Article[] = [
     title: "Titre de l'article",
     date: '12 juin',
     excerpt: LOREM.slice(0, 220) + '…',
-    image: '/assets/news/article-1.jpg',
+    image: '/assets/news/article-1.webp',
     body: [LOREM, LOREM, LOREM],
   },
   {
@@ -24,7 +24,7 @@ export const articles: Article[] = [
     title: "Titre de l'article",
     date: '12 juin',
     excerpt: LOREM.slice(0, 220) + '…',
-    image: '/assets/news/article-2.jpg',
+    image: '/assets/news/article-2.webp',
     body: [LOREM, LOREM, LOREM],
   },
   {
@@ -32,7 +32,7 @@ export const articles: Article[] = [
     title: "Titre de l'article",
     date: '12 juin',
     excerpt: LOREM.slice(0, 220) + '…',
-    image: '/assets/news/article-3.jpg',
+    image: '/assets/news/article-3.webp',
     body: [LOREM, LOREM, LOREM],
   },
 ]

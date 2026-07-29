@@ -9,7 +9,7 @@ export const FALLBACK_POSTS: WPPost[] = [
       "Alliance Actions Afrique a organisé une séance de formation au sein de l'Université Esperanza à Cotonou, visant à renforcer les compétences professionnelles des étudiants béninois.",
     content: '',
     date: '2025-06-12',
-    featuredImage: { node: { id: '1', sourceUrl: '/assets/gallery-13-4246.jpg', altText: 'Formation Esperanza' } },
+    featuredImage: { node: { id: '1', sourceUrl: '/assets/gallery-13-4246.webp', altText: 'Formation Esperanza' } },
   },
   {
     id: '2',
@@ -19,7 +19,7 @@ export const FALLBACK_POSTS: WPPost[] = [
       "Dans le cadre de notre partenariat avec les écoles locales, nous avons remis du matériel pédagogique pour soutenir les enseignants et les élèves de la commune de Sèmè-Kpodji.",
     content: '',
     date: '2025-06-05',
-    featuredImage: { node: { id: '2', sourceUrl: '/assets/gallery-13-4250.jpg', altText: 'Matériel pédagogique' } },
+    featuredImage: { node: { id: '2', sourceUrl: '/assets/gallery-13-4250.webp', altText: 'Matériel pédagogique' } },
   },
   {
     id: '3',
@@ -29,7 +29,7 @@ export const FALLBACK_POSTS: WPPost[] = [
       "Le programme de parrainage 2025 a été lancé avec succès, connectant pour la première fois 25 étudiants béninois à des mentors professionnels en France.",
     content: '',
     date: '2025-05-20',
-    featuredImage: { node: { id: '3', sourceUrl: '/assets/hero-bg.jpg', altText: 'Parrainage 2025' } },
+    featuredImage: { node: { id: '3', sourceUrl: '/assets/hero-bg.webp', altText: 'Parrainage 2025' } },
   },
 ]
 
@@ -41,7 +41,7 @@ export const FALLBACK_PROJECTS: WPProject[] = [
     excerpt:
       "Ce projet vise à faciliter et à valoriser la compréhension mutuelle entre les cultures française et béninoise en mettant en lumière des initiatives et des acteurs qui œuvrent pour le développement.",
     content: '',
-    featuredImage: { node: { id: 'p1', sourceUrl: '/assets/gallery-13-4246.jpg', altText: 'Regards croisés' } },
+    featuredImage: { node: { id: 'p1', sourceUrl: '/assets/gallery-13-4246.webp', altText: 'Regards croisés' } },
     projectCategories: { nodes: [{ name: 'Projets', slug: 'projets' }] },
   },
   {
@@ -51,7 +51,7 @@ export const FALLBACK_PROJECTS: WPProject[] = [
     excerpt:
       "Le programme de parrainage connecte les étudiants béninois avec des professionnels français pour des échanges réguliers, du mentorat et un soutien personnalisé vers l'autonomie.",
     content: '',
-    featuredImage: { node: { id: 'p2', sourceUrl: '/assets/gallery-13-4250.jpg', altText: 'Parrainage' } },
+    featuredImage: { node: { id: 'p2', sourceUrl: '/assets/gallery-13-4250.webp', altText: 'Parrainage' } },
     projectCategories: { nodes: [{ name: 'Projets', slug: 'projets' }] },
   },
   {
@@ -61,31 +61,31 @@ export const FALLBACK_PROJECTS: WPProject[] = [
     excerpt:
       "Alliance Actions Afrique s'appuie sur un réseau solide de partenaires institutionnels, privés et associatifs pour financer et pérenniser ses projets d'éducation et d'insertion.",
     content: '',
-    featuredImage: { node: { id: 'p3', sourceUrl: '/assets/hero-bg.jpg', altText: 'Partenaires' } },
+    featuredImage: { node: { id: 'p3', sourceUrl: '/assets/hero-bg.webp', altText: 'Partenaires' } },
     projectCategories: { nodes: [{ name: 'Partenariats', slug: 'partenariats' }] },
   },
 ]
 
 export const FALLBACK_PARTNERS: WPPartner[] = [
-  { id: '1', title: "L'Oasis", featuredImage: { node: { id: 'pl1', sourceUrl: '/assets/partners/loasis.png', altText: "L'Oasis" } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '2', title: 'Malia', featuredImage: { node: { id: 'pl2', sourceUrl: '/assets/partners/malia.png', altText: 'Malia' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '3', title: 'Fondation Guy Seb', featuredImage: { node: { id: 'pl3', sourceUrl: '/assets/partners/fondation-guy-seb.png', altText: 'Fondation Guy Seb' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '4', title: 'FormaSup Odyssée', featuredImage: { node: { id: 'pl4', sourceUrl: '/assets/partners/formasup-odyssee.png', altText: 'FormaSup Odyssée' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '5', title: 'Fondation Voltaire', featuredImage: { node: { id: 'pl5', sourceUrl: '/assets/partners/fondation-voltaire.png', altText: 'Fondation Voltaire' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '6', title: '2 Minutes Max', featuredImage: { node: { id: 'pl6', sourceUrl: '/assets/partners/2-minutes-max.png', altText: '2 Minutes Max' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '7', title: 'Générale Société', featuredImage: { node: { id: 'pl7', sourceUrl: '/assets/partners/generale-societe.png', altText: 'Générale Société' } }, partnerFields: { category: 'Ils nous ont fait confiance', website: null } },
-  { id: '8', title: 'AAA', featuredImage: { node: { id: 'pl8', sourceUrl: '/assets/partners/aaa-mark-black.png', altText: 'AAA' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '9', title: 'Sir John Concept Store', featuredImage: { node: { id: 'pl9', sourceUrl: '/assets/partners/sir-john.png', altText: 'Sir John' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '10', title: 'Lillybelle', featuredImage: { node: { id: 'pl10', sourceUrl: '/assets/partners/lillybelle.png', altText: 'Lillybelle' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '11', title: 'Ambassade de France au Bénin', featuredImage: { node: { id: 'pl11', sourceUrl: '/assets/partners/ambassade-france-benin.png', altText: 'Ambassade de France' } }, partnerFields: { category: 'Ils nous ont fait confiance', website: null } },
-  { id: '12', title: 'CPME 69', featuredImage: { node: { id: 'pl12', sourceUrl: '/assets/partners/cpme69.png', altText: 'CPME 69' } }, partnerFields: { category: 'Ils nous ont fait confiance', website: null } },
-  { id: '13', title: 'Métropole Grand Lyon', featuredImage: { node: { id: 'pl13', sourceUrl: '/assets/partners/metropole-grand-lyon.png', altText: 'Métropole Grand Lyon' } }, partnerFields: { category: 'Ils nous ont fait confiance', website: null } },
-  { id: '14', title: 'Ville de Lyon', featuredImage: { node: { id: 'pl14', sourceUrl: '/assets/partners/ville-de-lyon.png', altText: 'Ville de Lyon' } }, partnerFields: { category: 'Ils nous ont fait confiance', website: null } },
-  { id: '15', title: 'AAA (gris)', featuredImage: { node: { id: 'pl15', sourceUrl: '/assets/partners/aaa-mark-gray.png', altText: 'AAA' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '16', title: 'Bulltech', featuredImage: { node: { id: 'pl16', sourceUrl: '/assets/partners/bulltech.png', altText: 'Bulltech' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '17', title: 'Seal Partner', featuredImage: { node: { id: 'pl17', sourceUrl: '/assets/partners/seal-partner.png', altText: 'Seal Partner' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '18', title: 'SSA Ecore', featuredImage: { node: { id: 'pl18', sourceUrl: '/assets/partners/ssa-ecore.png', altText: 'SSA Ecore' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
-  { id: '19', title: 'Design Vebca', featuredImage: { node: { id: 'pl19', sourceUrl: '/assets/partners/design-vebca.png', altText: 'Design Vebca' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '1', title: "L'Oasis", featuredImage: { node: { id: 'pl1', sourceUrl: '/assets/partners/loasis.webp', altText: "L'Oasis" } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '2', title: 'Malia', featuredImage: { node: { id: 'pl2', sourceUrl: '/assets/partners/malia.webp', altText: 'Malia' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '3', title: 'Fondation Guy Seb', featuredImage: { node: { id: 'pl3', sourceUrl: '/assets/partners/fondation-guy-seb.webp', altText: 'Fondation Guy Seb' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '4', title: 'FormaSup Odyssée', featuredImage: { node: { id: 'pl4', sourceUrl: '/assets/partners/formasup-odyssee.webp', altText: 'FormaSup Odyssée' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '5', title: 'Fondation Voltaire', featuredImage: { node: { id: 'pl5', sourceUrl: '/assets/partners/fondation-voltaire.webp', altText: 'Fondation Voltaire' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '6', title: '2 Minutes Max', featuredImage: { node: { id: 'pl6', sourceUrl: '/assets/partners/2-minutes-max.webp', altText: '2 Minutes Max' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '7', title: 'Générale Société', featuredImage: { node: { id: 'pl7', sourceUrl: '/assets/partners/generale-societe.webp', altText: 'Générale Société' } }, partnerFields: { category: 'Ils nous ont fait confiance', website: null } },
+  { id: '8', title: 'AAA', featuredImage: { node: { id: 'pl8', sourceUrl: '/assets/partners/aaa-mark-black.webp', altText: 'AAA' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '9', title: 'Sir John Concept Store', featuredImage: { node: { id: 'pl9', sourceUrl: '/assets/partners/sir-john.webp', altText: 'Sir John' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '10', title: 'Lillybelle', featuredImage: { node: { id: 'pl10', sourceUrl: '/assets/partners/lillybelle.webp', altText: 'Lillybelle' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '11', title: 'Ambassade de France au Bénin', featuredImage: { node: { id: 'pl11', sourceUrl: '/assets/partners/ambassade-france-benin.webp', altText: 'Ambassade de France' } }, partnerFields: { category: 'Ils nous ont fait confiance', website: null } },
+  { id: '12', title: 'CPME 69', featuredImage: { node: { id: 'pl12', sourceUrl: '/assets/partners/cpme69.webp', altText: 'CPME 69' } }, partnerFields: { category: 'Ils nous ont fait confiance', website: null } },
+  { id: '13', title: 'Métropole Grand Lyon', featuredImage: { node: { id: 'pl13', sourceUrl: '/assets/partners/metropole-grand-lyon.webp', altText: 'Métropole Grand Lyon' } }, partnerFields: { category: 'Ils nous ont fait confiance', website: null } },
+  { id: '14', title: 'Ville de Lyon', featuredImage: { node: { id: 'pl14', sourceUrl: '/assets/partners/ville-de-lyon.webp', altText: 'Ville de Lyon' } }, partnerFields: { category: 'Ils nous ont fait confiance', website: null } },
+  { id: '15', title: 'AAA (gris)', featuredImage: { node: { id: 'pl15', sourceUrl: '/assets/partners/aaa-mark-gray.webp', altText: 'AAA' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '16', title: 'Bulltech', featuredImage: { node: { id: 'pl16', sourceUrl: '/assets/partners/bulltech.webp', altText: 'Bulltech' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '17', title: 'Seal Partner', featuredImage: { node: { id: 'pl17', sourceUrl: '/assets/partners/seal-partner.webp', altText: 'Seal Partner' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '18', title: 'SSA Ecore', featuredImage: { node: { id: 'pl18', sourceUrl: '/assets/partners/ssa-ecore.webp', altText: 'SSA Ecore' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
+  { id: '19', title: 'Design Vebca', featuredImage: { node: { id: 'pl19', sourceUrl: '/assets/partners/design-vebca.webp', altText: 'Design Vebca' } }, partnerFields: { category: 'Institutions & entreprises', website: null } },
 ]
 
 export const FALLBACK_TEAM: WPTeamMember[] = [
@@ -104,28 +104,28 @@ export const FALLBACK_VALUES: WPValue[] = [
     id: 'v1',
     title: 'Solidarité',
     content: "Face aux obstacles d'accès à la formation, l'assistanat n'est pas une solution durable. La solidarité, elle, crée du lien et de l'autonomie.",
-    featuredImage: { node: { id: 'vi1', sourceUrl: '/assets/association/valeurs.jpg', altText: 'Solidarité' } },
+    featuredImage: { node: { id: 'vi1', sourceUrl: '/assets/association/valeurs.webp', altText: 'Solidarité' } },
     valueFields: { order: 1 },
   },
   {
     id: 'v2',
     title: 'Engagement',
     content: 'Nous agissons concrètement et durablement pour accompagner les talents locaux vers l autonomie professionnelle.',
-    featuredImage: { node: { id: 'vi2', sourceUrl: '/assets/association/valeurs.jpg', altText: 'Engagement' } },
+    featuredImage: { node: { id: 'vi2', sourceUrl: '/assets/association/valeurs.webp', altText: 'Engagement' } },
     valueFields: { order: 2 },
   },
   {
     id: 'v3',
     title: 'Coopération',
     content: 'Nous favorisons les échanges entre acteurs du Bénin et de France pour créer des ponts durables.',
-    featuredImage: { node: { id: 'vi3', sourceUrl: '/assets/association/valeurs.jpg', altText: 'Coopération' } },
+    featuredImage: { node: { id: 'vi3', sourceUrl: '/assets/association/valeurs.webp', altText: 'Coopération' } },
     valueFields: { order: 3 },
   },
   {
     id: 'v4',
     title: 'Éducation',
     content: "L'éducation est au cœur de notre mission. Nous croyons en son pouvoir transformateur pour les communautés.",
-    featuredImage: { node: { id: 'vi4', sourceUrl: '/assets/association/valeurs.jpg', altText: 'Éducation' } },
+    featuredImage: { node: { id: 'vi4', sourceUrl: '/assets/association/valeurs.webp', altText: 'Éducation' } },
     valueFields: { order: 4 },
   },
 ]

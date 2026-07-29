@@ -40,7 +40,7 @@ export default function Contact() {
           {/* Address card */}
             <div
               className="relative flex min-h-[240px] w-full items-center overflow-hidden rounded-l-[12px] shadow-[0px_4px_12.5px_rgba(0,0,0,0.25)] bg-cover bg-center bg-no-repeat lg:flex-row lg:rounded-l-[24px]"
-              style={{ backgroundImage: 'url(/assets/contact/bg.png)' }}
+              style={{ backgroundImage: 'url(/assets/contact/bg.webp)' }}
               data-aos="fade-up"
               data-aos-duration="1000"
             >
@@ -50,7 +50,7 @@ export default function Contact() {
                 data-aos-duration="1200"
               >
                 <img
-                  src="/assets/contact/map.jpg"
+                  src="/assets/contact/map.webp"
                   alt="Localisation — 12 rue des Capucins, Lyon"
                   loading="lazy"
                   decoding="async"
@@ -65,7 +65,7 @@ export default function Contact() {
               >
                 <div className="relative z-10 flex w-full flex-col items-start justify-between gap-8 sm:flex-row sm:items-center lg:mx-auto lg:max-w-[440px]">
                   <img
-                    src="/assets/contact/logo.png"
+                    src="/assets/contact/logo.webp"
                     alt="Alliance Actions Afrique"
                     className="h-[50px] w-auto object-contain lg:h-[64px]"
                   />

@@ -130,7 +130,7 @@ export default function NavBar() {
             </nav>
 
             <Link to="/" className="shrink-0 mx-8 lg:mx-12">
-              <img src="/assets/logo.png" alt="Alliance Actions Afrique" className="h-12 lg:h-14 w-auto object-contain" />
+              <img src="/assets/logo.webp" alt="Alliance Actions Afrique" className="h-12 lg:h-14 w-auto object-contain" />
             </Link>
 
             <nav className="inline-flex items-center lg:gap-12">
@@ -152,7 +152,7 @@ export default function NavBar() {
           <div className="hidden lg:flex items-center justify-between h-full">
             <div className="flex items-center" style={{ gap: '64px' }}>
               <Link to="/" className="shrink-0">
-                <img src="/assets/logo-dark.png" alt="Alliance Actions Afrique" className="h-12 lg:h-14 w-auto object-contain" />
+                <img src="/assets/logo-dark.webp" alt="Alliance Actions Afrique" className="h-12 lg:h-14 w-auto object-contain" />
               </Link>
               <nav className="inline-flex items-center" style={{ gap: '64px' }}>
                 {navLinks.map((link) => (
@@ -190,7 +190,7 @@ export default function NavBar() {
         {/* ========== MOBILE (shared) ========== */}
         <div className="lg:hidden flex items-center justify-between h-full">
           <Link to="/" className="shrink-0">
-            <img src="/assets/logo.png" alt="Alliance Actions Afrique" className="h-10 md:h-12 w-auto object-contain" />
+            <img src="/assets/logo.webp" alt="Alliance Actions Afrique" className="h-10 md:h-12 w-auto object-contain" />
           </Link>
           <button className="p-2" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? (

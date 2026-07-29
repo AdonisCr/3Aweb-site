@@ -10,10 +10,10 @@ import { useAutoSlide } from '@/hooks/useAutoSlide'
 type TeamRegion = 'fr' | 'bj'
 
 const values = [
-  { id: 'v1', title: 'Solidarité', content: "Face aux obstacles d'accès à la formation, l'assistanat n'est pas une solution durable. La solidarité, elle, crée du lien et de l'autonomie.", image: '/assets/association/valeurs.jpg' },
-  { id: 'v2', title: 'Engagement', content: 'Nous agissons concrètement et durablement pour accompagner les talents locaux vers l\'autonomie professionnelle.', image: '/assets/association/valeurs.jpg' },
-  { id: 'v3', title: 'Coopération', content: 'Nous favorisons les échanges entre acteurs du Bénin et de France pour créer des ponts durables.', image: '/assets/association/valeurs.jpg' },
-  { id: 'v4', title: 'Éducation', content: "L'éducation est au cœur de notre mission. Nous croyons en son pouvoir transformateur pour les communautés.", image: '/assets/association/valeurs.jpg' },
+  { id: 'v1', title: 'Solidarité', content: "Face aux obstacles d'accès à la formation, l'assistanat n'est pas une solution durable. La solidarité, elle, crée du lien et de l'autonomie.", image: '/assets/association/valeurs.webp' },
+  { id: 'v2', title: 'Engagement', content: 'Nous agissons concrètement et durablement pour accompagner les talents locaux vers l\'autonomie professionnelle.', image: '/assets/association/valeurs.webp' },
+  { id: 'v3', title: 'Coopération', content: 'Nous favorisons les échanges entre acteurs du Bénin et de France pour créer des ponts durables.', image: '/assets/association/valeurs.webp' },
+  { id: 'v4', title: 'Éducation', content: "L'éducation est au cœur de notre mission. Nous croyons en son pouvoir transformateur pour les communautés.", image: '/assets/association/valeurs.webp' },
 ]
 
 export default function Association() {
@@ -54,7 +54,7 @@ export default function Association() {
       <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
           <img
-            src="/assets/association/hero.jpg"
+            src="/assets/association/hero.webp"
             alt="Enfants regardant le paysage au Bénin"
             loading="lazy"
             decoding="async"
@@ -90,7 +90,7 @@ export default function Association() {
           <div className="w-full max-w-[352px] shrink-0 self-center lg:self-start" data-aos="fade-left" data-aos-duration="1500">
             <div className="aspect-[352/313] w-full overflow-hidden">
               <img
-                src="/assets/association/histoire.png"
+                src="/assets/association/histoire.webp"
                 alt="Membres de l'association"
                 loading="lazy"
                 decoding="async"
@@ -129,7 +129,7 @@ export default function Association() {
             data-aos-duration="1200"
           >
             <img
-              src="/assets/association/mission-video.png"
+              src="/assets/association/mission-video.webp"
               alt="Présentation Alliance Actions Afrique"
               loading="lazy"
               decoding="async"
@@ -241,7 +241,7 @@ export default function Association() {
                 ) : (
                   <UPlaceholder
                     ratio="253/318"
-                    label="photo.jpg"
+                    label="photo.webp"
                     className="w-full !rounded"
                   />
                 )}
@@ -309,7 +309,7 @@ export default function Association() {
 
       {/* CTA */}
       <div data-aos="fade-up" data-aos-duration="800">
-        <CtaSection image="/assets/association/rejoignez-nous.jpg" />
+        <CtaSection image="/assets/association/rejoignez-nous.webp" />
       </div>
     </div>
   )

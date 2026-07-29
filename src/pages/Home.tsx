@@ -24,48 +24,48 @@ const projects: Project[] = [
   {
     id: "accompagnement",
     title: "Accompagnement professionnel",
-    image: "/assets/home/accomp-pro.png",
+    image: "/assets/home/accomp-pro.webp",
     link: "/projets/accompagnement-professionnel",
   },
   {
     id: "regards-croises",
     title: "Regards croisés",
-    image: "/assets/home/projetmanq1.png",
+    image: "/assets/home/projetmanq1.webp",
     link: "/projets/regards-croises",
   },
   {
     id: "parrainage",
     title: "Parrainage",
-    image: "/assets/home/projetmanq2.png",
+    image: "/assets/home/projetmanq2.webp",
     link: "/projets/parrainage",
   },
 ];
 
 const partnersRow1 = [
-  { name: "Partner 4", logo: "/assets/partners/Coloured/image 28.png" },
-  { name: "Partner 1", logo: "/assets/partners/Coloured/image 25.png" },
-  { name: "Partner 6", logo: "/assets/partners/Coloured/image 30.png" },
-  { name: "Partner 3", logo: "/assets/partners/Coloured/image 27.png" },
-  { name: "Partner 2", logo: "/assets/partners/Coloured/image 26.png" },
-  { name: "Partner 5", logo: "/assets/partners/Coloured/image 29.png" },
-  { name: "Partner 16", logo: "/assets/partners/Coloured/image 40.png" },
-  { name: "Partner 7", logo: "/assets/partners/Coloured/image 31.png" },
-  { name: "Partner 8", logo: "/assets/partners/Coloured/image 32.png" },
-  { name: "Partner 9", logo: "/assets/partners/Coloured/image 33.png" },
-  { name: "Partner 14", logo: "/assets/partners/Coloured/image 38.png" },
+  { name: "Partner 4", logo: "/assets/partners/Coloured/image 28.webp" },
+  { name: "Partner 1", logo: "/assets/partners/Coloured/image 25.webp" },
+  { name: "Partner 6", logo: "/assets/partners/Coloured/image 30.webp" },
+  { name: "Partner 3", logo: "/assets/partners/Coloured/image 27.webp" },
+  { name: "Partner 2", logo: "/assets/partners/Coloured/image 26.webp" },
+  { name: "Partner 5", logo: "/assets/partners/Coloured/image 29.webp" },
+  { name: "Partner 16", logo: "/assets/partners/Coloured/image 40.webp" },
+  { name: "Partner 7", logo: "/assets/partners/Coloured/image 31.webp" },
+  { name: "Partner 8", logo: "/assets/partners/Coloured/image 32.webp" },
+  { name: "Partner 9", logo: "/assets/partners/Coloured/image 33.webp" },
+  { name: "Partner 14", logo: "/assets/partners/Coloured/image 38.webp" },
 ];
 
 const partnersRow2 = [
-  { name: "Partner 18", logo: "/assets/partners/Coloured/image 42.png" },
-  { name: "Partner 17", logo: "/assets/partners/Coloured/image 41.png" },
-  { name: "Partner 20", logo: "/assets/partners/Coloured/image 44.png" },
-  { name: "Partner 19", logo: "/assets/partners/Coloured/image 43.png" },
-  { name: "Partner 21", logo: "/assets/partners/Coloured/image 31.png" },
-  { name: "Partner 11", logo: "/assets/partners/Coloured/image 34.png" },
-  { name: "Partner 10", logo: "/assets/partners/Coloured/image 35.png" },
-  { name: "Partner 12", logo: "/assets/partners/Coloured/image 36.png" },
-  { name: "Partner 13", logo: "/assets/partners/Coloured/image 37.png" },
-  { name: "Partner 15", logo: "/assets/partners/Coloured/image 39.png" },
+  { name: "Partner 18", logo: "/assets/partners/Coloured/image 42.webp" },
+  { name: "Partner 17", logo: "/assets/partners/Coloured/image 41.webp" },
+  { name: "Partner 20", logo: "/assets/partners/Coloured/image 44.webp" },
+  { name: "Partner 19", logo: "/assets/partners/Coloured/image 43.webp" },
+  { name: "Partner 21", logo: "/assets/partners/Coloured/image 31.webp" },
+  { name: "Partner 11", logo: "/assets/partners/Coloured/image 34.webp" },
+  { name: "Partner 10", logo: "/assets/partners/Coloured/image 35.webp" },
+  { name: "Partner 12", logo: "/assets/partners/Coloured/image 36.webp" },
+  { name: "Partner 13", logo: "/assets/partners/Coloured/image 37.webp" },
+  { name: "Partner 15", logo: "/assets/partners/Coloured/image 39.webp" },
 ];
 
 const BackArrow = () => (
@@ -156,7 +156,7 @@ export default function Home() {
       <section className="relative flex min-h-[100svh] items-center">
         <div className="absolute inset-0">
           <img
-            src="/assets/home/hero-bg.jpg"
+            src="/assets/home/hero-bg.webp"
             alt=""
             loading="lazy"
             decoding="async"
@@ -198,17 +198,17 @@ export default function Home() {
             >
               <div className="flex items-center">
                 <img
-                  src="/assets/home/partner-avatar-1.png"
+                  src="/assets/home/partner-avatar-1.webp"
                   alt=""
                   className="relative z-[3] size-[42px] rounded-full bg-white object-cover"
                 />
                 <img
-                  src="/assets/home/partner-avatar-2.png"
+                  src="/assets/home/partner-avatar-2.webp"
                   alt=""
                   className="relative z-[2] -ml-2.5 size-[42px] rounded-full bg-white object-cover"
                 />
                 <img
-                  src="/assets/home/partner-avatar-3.png"
+                  src="/assets/home/partner-avatar-3.webp"
                   alt=""
                   className="relative z-[1] -ml-2.5 size-[42px] rounded-full bg-white object-cover"
                 />
@@ -291,7 +291,7 @@ export default function Home() {
             data-aos-delay="150"
           >
             <img
-              src="/assets/home/africa-map.png"
+              src="/assets/home/africa-map.webp"
               alt="Carte de l'Afrique, Bénin surligné"
               loading="lazy"
               decoding="async"
@@ -424,7 +424,7 @@ export default function Home() {
                 <img
                   src={
                     featuredPost.featuredImage?.node?.sourceUrl ??
-                    "/assets/home/article-featured.png"
+                    "/assets/home/article-featured.webp"
                   }
                   alt={featuredPost.title}
                   loading="lazy"
