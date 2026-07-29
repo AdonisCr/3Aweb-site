@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import UButton from "@/components/ui/UButton";
 import UHeading from "@/components/ui/UHeading";
-import UCta from "@/components/ui/UCta";
-import PartnerIcon from "@/components/ui/PartnerIcon";
 import CtaSection from '@/components/ui/CtaSection'
 import ActionButtons from '@/components/ui/ActionButtons'
 import { useSmartPosts } from "@/hooks/useSmartData";
