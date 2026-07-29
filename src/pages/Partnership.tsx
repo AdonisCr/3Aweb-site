@@ -8,15 +8,15 @@ const partnerSections = [
   {
     title: "Institutions & entreprises",
     logos: [
-      { name: "L'Oasis", src: `${LOGOS}/image 28.png` },
-      { name: "Seal Partner", src: `${LOGOS}/image 25.png` },
-      { name: "Fondation", src: `${LOGOS}/image 30.png` },
-      { name: "FormaSup Odyssée", src: `${LOGOS}/image 27.png` },
-      { name: "Théâtre", src: `${LOGOS}/image 26.png` },
-      { name: "2 Minutes Max", src: `${LOGOS}/image 29.png` },
-      { name: "Mark H", src: `${LOGOS}/image 31.png` },
-      { name: "Sir John Concept Store", src: `${LOGOS}/image 32.png` },
-      { name: "Lillybelle", src: `${LOGOS}/image 33.png` },
+      { name: "L'Oasis", src: `${LOGOS}/image 28.webp` },
+      { name: "Seal Partner", src: `${LOGOS}/image 25.webp` },
+      { name: "Fondation", src: `${LOGOS}/image 30.webp` },
+      { name: "FormaSup Odyssée", src: `${LOGOS}/image 27.webp` },
+      { name: "Théâtre", src: `${LOGOS}/image 26.webp` },
+      { name: "2 Minutes Max", src: `${LOGOS}/image 29.webp` },
+      { name: "Mark H", src: `${LOGOS}/image 31.webp` },
+      { name: "Sir John Concept Store", src: `${LOGOS}/image 32.webp` },
+      { name: "Lillybelle", src: `${LOGOS}/image 33.webp` },
     ],
   },
   {
@@ -24,21 +24,21 @@ const partnerSections = [
     logos: [
       {
         name: "Africa Design School",
-        src: `${LOGOS}/image 37.png`,
+        src: `${LOGOS}/image 37.webp`,
       },
-      { name: "Epitech", src: `${LOGOS}/image 34.png` },
-      { name: "Esperanza Joie", src: `${LOGOS}/image 36.png` },
-      { name: "École 229", src: `${LOGOS}/image 35.png` },
+      { name: "Epitech", src: `${LOGOS}/image 34.webp` },
+      { name: "Esperanza Joie", src: `${LOGOS}/image 36.webp` },
+      { name: "École 229", src: `${LOGOS}/image 35.webp` },
     ],
   },
   {
     title: "Partenaires projets",
     logos: [
-      { name: "Caritas Abomey", src: `${LOGOS}/image 38.png` },
-      { name: "Epitech", src: `${LOGOS}/image 34.png` },
-      { name: "Esperanza Joie", src: `${LOGOS}/image 36.png` },
-      { name: "École 229", src: `${LOGOS}/image 35.png` },
-      { name: "10 000 Codeurs", src: `${LOGOS}/image 39.png` },
+      { name: "Caritas Abomey", src: `${LOGOS}/image 38.webp` },
+      { name: "Epitech", src: `${LOGOS}/image 34.webp` },
+      { name: "Esperanza Joie", src: `${LOGOS}/image 36.webp` },
+      { name: "École 229", src: `${LOGOS}/image 35.webp` },
+      { name: "10 000 Codeurs", src: `${LOGOS}/image 39.webp` },
     ],
   },
   {
@@ -46,15 +46,15 @@ const partnerSections = [
     logos: [
       {
         name: "Ambassade de France au Bénin",
-        src: `${LOGOS}/image 42.png`,
+        src: `${LOGOS}/image 42.webp`,
       },
-      { name: "CPME 69", src: `${LOGOS}/image 41.png` },
-      { name: "Ville de Lyon", src: `${LOGOS}/image 43.png` },
+      { name: "CPME 69", src: `${LOGOS}/image 41.webp` },
+      { name: "Ville de Lyon", src: `${LOGOS}/image 43.webp` },
       {
         name: "Métropole Grand Lyon",
-        src: `${LOGOS}/image 44.png`,
+        src: `${LOGOS}/image 44.webp`,
       },
-      { name: "Société Générale", src: `${LOGOS}/image 40.png` },
+      { name: "Société Générale", src: `${LOGOS}/image 40.webp` },
     ],
   },
 ];
