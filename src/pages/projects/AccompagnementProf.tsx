@@ -13,7 +13,7 @@ export default function AccompagnementProf() {
       {/* HERO */}
       <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
-          <img src={`${ASSETS}/hero.jpg`} alt="Accompagnement professionnel des jeunes" loading="lazy" decoding="async" className="size-full object-cover" />
+          <img src={`${ASSETS}/hero.webp`} alt="Accompagnement professionnel des jeunes" loading="lazy" decoding="async" className="size-full object-cover" />
         </div>
       </section>
 
@@ -51,28 +51,28 @@ export default function AccompagnementProf() {
             <div className="flex w-full flex-col gap-6 lg:w-[28%] lg:gap-9">
               {[1,2,3].map((n) => (
                 <div key={n} className={`overflow-hidden ${n === 1 ? 'aspect-[316/304]' : n === 2 ? 'aspect-[316/241]' : 'aspect-[316/371]'}`} data-aos="fade-up" data-aos-duration="1000" data-aos-delay={`${(n - 1) * 100}`}>
-                  <img src={`${ASSETS}/g${n}.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
+                  <img src={`${ASSETS}/g${n}.webp`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
                 </div>
               ))}
             </div>
             <div className="flex flex-1 flex-col gap-6 lg:gap-8">
               <div className="flex flex-col gap-6 sm:flex-row lg:gap-9">
                 <div className="aspect-[321/383] w-full overflow-hidden sm:w-[38%]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                  <img src={`${ASSETS}/g4.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
+                  <img src={`${ASSETS}/g4.webp`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
                 </div>
                 <div className="aspect-[502/383] w-full overflow-hidden sm:flex-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                  <img src={`${ASSETS}/g5.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
+                  <img src={`${ASSETS}/g5.webp`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
                 </div>
               </div>
               <div className="aspect-[858/371] w-full overflow-hidden" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                <img src={`${ASSETS}/g6.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
+                <img src={`${ASSETS}/g6.webp`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
               </div>
               <div className="flex flex-col gap-6 sm:flex-row lg:gap-[52px]">
                 <div className="aspect-[304/166] w-full overflow-hidden sm:w-[36%]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                  <img src={`${ASSETS}/g7.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
+                  <img src={`${ASSETS}/g7.webp`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
                 </div>
                 <div className="aspect-[502/166] w-full overflow-hidden sm:flex-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                  <img src={`${ASSETS}/g8.jpg`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
+                  <img src={`${ASSETS}/g8.webp`} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
                 </div>
               </div>
             </div>

@@ -8,10 +8,10 @@ const DEVICE_VIDEO_URL = "https://www.youtube.com/";
 const ASSETS = "/assets/projects/parrainage";
 
 const testimonials = [
-  { name: "Adonis Oussou", school: "École 229", image: `${ASSETS}/t2.jpg`, videoUrl: DEVICE_VIDEO_URL },
-  { name: "Yannick Akoto", school: "Epitech", image: `${ASSETS}/t3.jpg`, videoUrl: DEVICE_VIDEO_URL },
-  { name: "Hortense Azandosessi", school: "École 229", image: `${ASSETS}/t4.jpg`, videoUrl: DEVICE_VIDEO_URL },
-  { name: "Ruth Ahoueya", school: "École 229", image: `${ASSETS}/t5.png`, videoUrl: DEVICE_VIDEO_URL },
+  { name: "Adonis Oussou", school: "École 229", image: `${ASSETS}/t2.webp`, videoUrl: DEVICE_VIDEO_URL },
+  { name: "Yannick Akoto", school: "Epitech", image: `${ASSETS}/t3.webp`, videoUrl: DEVICE_VIDEO_URL },
+  { name: "Hortense Azandosessi", school: "École 229", image: `${ASSETS}/t4.webp`, videoUrl: DEVICE_VIDEO_URL },
+  { name: "Ruth Ahoueya", school: "École 229", image: `${ASSETS}/t5.webp`, videoUrl: DEVICE_VIDEO_URL },
 ];
 
 function YoutubePlay() {
@@ -31,7 +31,7 @@ export default function Parrainage() {
       {/* HERO */}
       <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
-          <img src={`${ASSETS}/hero.jpg`} alt="Programme de parrainage Alliance Actions Afrique" loading="lazy" decoding="async" className="size-full object-cover" />
+          <img src={`${ASSETS}/hero.webp`} alt="Programme de parrainage Alliance Actions Afrique" loading="lazy" decoding="async" className="size-full object-cover" />
         </div>
       </section>
 
@@ -77,7 +77,7 @@ export default function Parrainage() {
             <div className="flex w-full flex-col gap-6 lg:w-[26%] lg:gap-9">
               <div className="aspect-square overflow-hidden" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
                 <img
-                  src={`${ASSETS}/g1.jpg`}
+                  src={`${ASSETS}/g1.webp`}
                   alt=""
                   loading="lazy"
                   decoding="async"
@@ -86,7 +86,7 @@ export default function Parrainage() {
               </div>
               <div className="aspect-[304/241] overflow-hidden" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
                 <img
-                  src={`${ASSETS}/g2.jpg`}
+                  src={`${ASSETS}/g2.webp`}
                   alt=""
                   loading="lazy"
                   decoding="async"
@@ -98,7 +98,7 @@ export default function Parrainage() {
               <div className="flex flex-col gap-6 sm:flex-row lg:gap-9">
                 <div className="aspect-[321/371] w-full overflow-hidden sm:w-[38%]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
                   <img
-                    src={`${ASSETS}/g3.jpg`}
+                    src={`${ASSETS}/g3.webp`}
                     alt=""
                     loading="lazy"
                     decoding="async"
@@ -107,7 +107,7 @@ export default function Parrainage() {
                 </div>
                 <div className="aspect-[502/371] w-full overflow-hidden sm:flex-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                   <img
-                    src={`${ASSETS}/g4.jpg`}
+                    src={`${ASSETS}/g4.webp`}
                     alt=""
                     loading="lazy"
                     decoding="async"
@@ -118,7 +118,7 @@ export default function Parrainage() {
               <div className="flex flex-col gap-6 sm:flex-row lg:gap-9">
                 <div className="aspect-[304/168] w-full overflow-hidden sm:w-[36%]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
                   <img
-                    src={`${ASSETS}/g5.jpg`}
+                    src={`${ASSETS}/g5.webp`}
                     alt=""
                     loading="lazy"
                     decoding="async"
@@ -127,7 +127,7 @@ export default function Parrainage() {
                 </div>
                 <div className="aspect-[519/166] w-full overflow-hidden sm:flex-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                   <img
-                    src={`${ASSETS}/g6.jpg`}
+                    src={`${ASSETS}/g6.webp`}
                     alt=""
                     loading="lazy"
                     decoding="async"
@@ -164,7 +164,7 @@ export default function Parrainage() {
             data-aos="zoom-in"
             data-aos-duration="1200"
           >
-            <img src={`${ASSETS}/t1.jpg`} alt="Le dispositif de parrainage" loading="lazy" decoding="async" className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+            <img src={`${ASSETS}/t1.webp`} alt="Le dispositif de parrainage" loading="lazy" decoding="async" className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
             <span className="absolute inset-0 flex items-center justify-center">
               <YoutubePlay />
             </span>
