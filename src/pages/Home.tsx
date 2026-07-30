@@ -24,19 +24,19 @@ const projects: Project[] = [
   {
     id: "accompagnement",
     title: "Accompagnement professionnel",
-    image: "/assets/home/accomp-pro.webp",
+    image: "/assets/projects/accompagnement/hero.webp",
     link: "/projets/accompagnement-professionnel",
   },
   {
     id: "regards-croises",
     title: "Regards croisés",
-    image: "/assets/home/projetmanq1.webp",
+    image: "/assets/projects/regards-croises/hero.webp",
     link: "/projets/regards-croises",
   },
   {
     id: "parrainage",
     title: "Parrainage",
-    image: "/assets/home/projetmanq2.webp",
+    image: "/assets/projects/parrainage/hero.webp",
     link: "/projets/parrainage",
   },
 ];
