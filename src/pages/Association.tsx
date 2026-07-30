@@ -10,10 +10,11 @@ import { useAutoSlide } from '@/hooks/useAutoSlide'
 type TeamRegion = 'fr' | 'bj'
 
 const values = [
-  { id: 'v1', title: 'Solidarité', content: "Face aux obstacles d'accès à la formation, l'assistanat n'est pas une solution durable. La solidarité, elle, crée du lien et de l'autonomie.", image: '/assets/association/valeurs.jpg' },
-  { id: 'v2', title: 'Engagement', content: 'Nous agissons concrètement et durablement pour accompagner les talents locaux vers l\'autonomie professionnelle.', image: '/assets/association/valeurs.jpg' },
-  { id: 'v3', title: 'Coopération', content: 'Nous favorisons les échanges entre acteurs du Bénin et de France pour créer des ponts durables.', image: '/assets/association/valeurs.jpg' },
-  { id: 'v4', title: 'Éducation', content: "L'éducation est au cœur de notre mission. Nous croyons en son pouvoir transformateur pour les communautés.", image: '/assets/association/valeurs.jpg' },
+  { id: 'v1', title: 'Solidarité', content: "Face aux obstacles d'accès à la formation, l'assistanat n'est pas une solution durable. La solidarité, elle, crée du lien et de l'autonomie.", image: '/assets/association/valeurs.webp' },
+  { id: 'v2', title: 'Action', content: 'Faire de chaque engagement une action concrète au service des bénéficiaires.', image: '/assets/association/action.webp' },
+  { id: 'v3', title: 'Proximité', content: 'Construire des relations humaines fondées sur l\'écoute et la confiance.', image: '/assets/association/proximite.webp' },
+  { id: 'v4', title: 'Transparence', content: 'Garantir et installer une communication claire, honnête et responsable.', image: '/assets/association/transparence.webp' },
+  { id: 'v5', title: 'Partage', content: 'Favoriser la transmission des connaissances, des expériences et des opportunités.', image: '/assets/association/partage.webp' },
 ]
 
 export default function Association() {

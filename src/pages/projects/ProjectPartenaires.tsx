@@ -3,10 +3,9 @@ import CtaSection from '@/components/ui/CtaSection'
 import PageTitle from '@/components/layout/PageTitle'
 
 const categories = [
-  { title: 'Institutions & entreprises', image: '/assets/partners-group-13-2385.png' },
-  { title: 'Écoles & centres de formation', image: '/assets/partners-group-13-2401.png' },
-  { title: 'Partenaires projets', image: '/assets/partners-group-13-2411.png' },
-  { title: 'Ils nous ont fait confiance', image: '/assets/partners-group-13-2422.png' },
+  { title: 'Institutions & entreprises', image: '/assets/partners-group-13-2385.webp' },
+  { title: 'Écoles & Partenaires projet', image: '/assets/partners-group-13-2401.webp' },
+  { title: 'Ils nous ont fait confiance', image: '/assets/partners-group-13-2422.webp' },
 ]
 
 export default function ProjectPartenaires() {
