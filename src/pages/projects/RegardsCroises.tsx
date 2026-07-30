@@ -24,7 +24,7 @@ export default function RegardsCroises() {
       {/* HERO */}
       <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
-          <img src="/assets/home/projetmanq1.webp" alt="Tables rondes Regards croisés" loading="lazy" decoding="async" className="size-full object-cover" />
+          <img src={`${ASSETS}/hero.webp`} alt="Tables rondes Regards croisés" loading="lazy" decoding="async" className="size-full object-cover" />
         </div>
       </section>
 
@@ -127,7 +127,7 @@ export default function RegardsCroises() {
             data-aos="zoom-in"
             data-aos-duration="1200"
           >
-            <img src="/assets/home/projetmanq1.webp" alt="Vidéo Regards croisés" loading="lazy" decoding="async" className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+            <img src={`${ASSETS}/hero.webp`} alt="Vidéo Regards croisés" loading="lazy" decoding="async" className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
             <span className="absolute inset-0 flex items-center justify-center">
               <YoutubePlay />
             </span>

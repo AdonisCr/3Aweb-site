@@ -13,7 +13,7 @@ export default function AccompagnementProf() {
       {/* HERO */}
       <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
-          <img src="/assets/home/accomp-pro.webp" alt="Accompagnement professionnel des jeunes" loading="lazy" decoding="async" className="size-full object-cover" />
+          <img src={`${ASSETS}/hero.webp`} alt="Accompagnement professionnel des jeunes" loading="lazy" decoding="async" className="size-full object-cover" />
         </div>
       </section>
 
