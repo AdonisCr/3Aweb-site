@@ -4,8 +4,7 @@ import PageTitle from '@/components/layout/PageTitle'
 
 const categories = [
   { title: 'Institutions & entreprises', image: '/assets/partners-group-13-2385.webp' },
-  { title: 'Écoles & centres de formation', image: '/assets/partners-group-13-2401.webp' },
-  { title: 'Partenaires projets', image: '/assets/partners-group-13-2411.webp' },
+  { title: 'Écoles & Partenaires projet', image: '/assets/partners-group-13-2401.webp' },
   { title: 'Ils nous ont fait confiance', image: '/assets/partners-group-13-2422.webp' },
 ]
 

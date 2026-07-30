@@ -20,7 +20,7 @@ const partnerSections = [
     ],
   },
   {
-    title: "Écoles & centres de formation",
+    title: "Écoles & Partenaires projet",
     logos: [
       {
         name: "Africa Design School",
@@ -29,15 +29,7 @@ const partnerSections = [
       { name: "Epitech", src: `${LOGOS}/image 34.webp` },
       { name: "Esperanza Joie", src: `${LOGOS}/image 36.webp` },
       { name: "École 229", src: `${LOGOS}/image 35.webp` },
-    ],
-  },
-  {
-    title: "Partenaires projets",
-    logos: [
       { name: "Caritas Abomey", src: `${LOGOS}/image 38.webp` },
-      { name: "Epitech", src: `${LOGOS}/image 34.webp` },
-      { name: "Esperanza Joie", src: `${LOGOS}/image 36.webp` },
-      { name: "École 229", src: `${LOGOS}/image 35.webp` },
       { name: "10 000 Codeurs", src: `${LOGOS}/image 39.webp` },
     ],
   },
