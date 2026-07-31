@@ -15,19 +15,27 @@ export function useCountUp({
   enabled = true,
 }: UseCountUpOptions) {
   const [count, setCount] = useState(start)
-  const [started, setStarted] = useState(false)
+  const [active, setActive] = useState(false)
   const ref = useRef<HTMLDivElement | null>(null)
+  const wasIntersecting = useRef(false)
 
   useEffect(() => {
-    if (!enabled || started) return
+    if (!enabled) return
     const el = ref.current
     if (!el) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setStarted(true)
-          observer.disconnect()
+          if (!wasIntersecting.current) {
+            wasIntersecting.current = true
+            setCount(start)
+            setActive(true)
+          }
+        } else if (wasIntersecting.current) {
+          wasIntersecting.current = false
+          setActive(false)
+          setCount(start)
         }
       },
       { threshold: 0.35 },
@@ -35,10 +43,10 @@ export function useCountUp({
 
     observer.observe(el)
     return () => observer.disconnect()
-  }, [enabled, started])
+  }, [enabled, start])
 
   useEffect(() => {
-    if (!started) return
+    if (!active) return
 
     const from = Math.min(start, target)
     const to = target
@@ -58,7 +66,7 @@ export function useCountUp({
 
     frame = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(frame)
-  }, [started, start, target, durationMs])
+  }, [active, start, target, durationMs])
 
   return { count, ref }
 }
