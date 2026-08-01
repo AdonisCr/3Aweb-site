@@ -47,18 +47,6 @@ export interface WPProject {
   }
 }
 
-export interface WPPartner {
-  id: string
-  title: string
-  featuredImage?: {
-    node: WPMediaItem
-  } | null
-  partnerFields?: {
-    category: string
-    website: string | null
-  }
-}
-
 export interface WPTeamMember {
   id: string
   title: string
@@ -69,31 +57,6 @@ export interface WPTeamMember {
     role: string
     region: 'fr' | 'bj' | string[]
     order: number
-  }
-}
-
-export interface WPValue {
-  id: string
-  title: string
-  content: string
-  featuredImage?: {
-    node: WPMediaItem
-  } | null
-  valueFields?: {
-    order: number
-    description?: string
-    image?: {
-      node: WPMediaItem
-    } | null
-  }
-}
-
-export interface WPDonationTier {
-  id: string
-  title: string
-  donationTierFields?: {
-    amount: number
-    description: string
   }
 }
 
@@ -136,9 +99,4 @@ export interface WPMenu {
       order: number
     }>
   }
-}
-
-export interface PartnerGroup {
-  title: string
-  logos: Array<{ name: string; src: string }>
 }

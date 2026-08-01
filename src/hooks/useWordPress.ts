@@ -4,10 +4,7 @@ import {
   GET_POST_BY_SLUG,
   GET_ALL_PROJECTS,
   GET_PROJECT_BY_SLUG,
-  GET_ALL_PARTNERS,
   GET_ALL_TEAM_MEMBERS,
-  GET_ALL_VALUES,
-  GET_ALL_DONATION_TIERS,
   GET_CONTACT_INFO,
   GET_GLOBAL_SETTINGS,
   GET_HOME_PAGE,
@@ -15,10 +12,7 @@ import {
 import type {
   WPPost,
   WPProject,
-  WPPartner,
   WPTeamMember,
-  WPValue,
-  WPDonationTier,
   WPContactInfo,
   WPPage,
 } from '@/lib/types'
@@ -81,29 +75,6 @@ export function useProject(slug: string) {
   }
 }
 
-export function usePartners(first = 50) {
-  const { data, loading, error } = useQuery<{ partners: PaginatedResult<WPPartner> }>(
-    GET_ALL_PARTNERS,
-    { variables: { first } }
-  )
-
-  const partners = data?.partners?.nodes ?? []
-
-  const grouped = partners.reduce<Record<string, WPPartner[]>>((acc, partner) => {
-    const category = partner.partnerFields?.category ?? 'Autre'
-    if (!acc[category]) acc[category] = []
-    acc[category].push(partner)
-    return acc
-  }, {})
-
-  return {
-    partners,
-    grouped,
-    loading,
-    error,
-  }
-}
-
 export function useTeamMembers(first = 20) {
   const { data, loading, error } = useQuery<{ teamMembers: PaginatedResult<WPTeamMember> }>(
     GET_ALL_TEAM_MEMBERS,
@@ -124,29 +95,6 @@ export function useTeamMembers(first = 20) {
     members,
     frMembers,
     bjMembers,
-    loading,
-    error,
-  }
-}
-
-export function useValues(first = 10) {
-  const { data, loading, error } = useQuery<{ values: PaginatedResult<WPValue> }>(
-    GET_ALL_VALUES,
-    { variables: { first } }
-  )
-  return {
-    values: data?.values?.nodes ?? [],
-    loading,
-    error,
-  }
-}
-
-export function useDonationTiers(first = 10) {
-  const { data, loading, error } = useQuery<{
-    donationTiers: PaginatedResult<WPDonationTier>
-  }>(GET_ALL_DONATION_TIERS, { variables: { first } })
-  return {
-    tiers: data?.donationTiers?.nodes ?? [],
     loading,
     error,
   }
