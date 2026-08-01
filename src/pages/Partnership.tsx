@@ -93,7 +93,7 @@ export default function Partnership() {
       <section className="bg-white py-10 lg:py-20" data-aos="fade-up" data-aos-duration="800">
         <div className="mx-auto flex w-[92%] flex-col items-start gap-8 md:w-[85%] lg:flex-row lg:items-start lg:justify-between lg:gap-12">
           <div data-aos="fade-up" data-aos-duration="800">
-            <UButton to="/contact" variant="primary" className="w-full sm:w-auto">
+            <UButton to="/devenir-partenaire" variant="primary" className="w-full sm:w-auto">
               Devenir partenaire
             </UButton>
           </div>

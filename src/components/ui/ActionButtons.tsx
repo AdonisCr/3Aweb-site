@@ -15,7 +15,7 @@ export default memo(function ActionButtons({
 }: ActionButtonsProps) {
   return (
     <div className={`flex flex-wrap items-center gap-6 ${className}`}>
-      <UButton to="/contact" variant="primary">
+      <UButton to="/devenir-partenaire" variant="primary">
         Devenir partenaire {showPartnerIcon && <PartnerIcon />}
       </UButton>
       <UButton

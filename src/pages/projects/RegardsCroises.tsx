@@ -40,7 +40,7 @@ export default function RegardsCroises() {
         <div className="mx-auto flex w-[92%] flex-col items-start justify-between gap-8 md:w-[85%] lg:flex-row lg:gap-12">
           <div data-aos="fade-up" data-aos-duration="800">
             <UButton
-              to="/contact"
+              to="/devenir-partenaire"
               variant="primary"
               className="shrink-0 !px-4 !py-2.5 text-[18px]"
             >

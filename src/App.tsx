@@ -19,6 +19,8 @@ const Partnership = lazy(() => import('@/pages/Partnership'))
 const News = lazy(() => import('@/pages/News'))
 const ArticleDetail = lazy(() => import('@/pages/ArticleDetail'))
 const Contact = lazy(() => import('@/pages/Contact'))
+const DevenirPartenaire = lazy(() => import('@/pages/DevenirPartenaire'))
+const PolitiqueConfidentialite = lazy(() => import('@/pages/PolitiqueConfidentialite'))
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -59,6 +61,8 @@ function AppLayout() {
               <Route path="/actualites" element={<News />} />
               <Route path="/actualites/:slug" element={<ArticleDetail />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/devenir-partenaire" element={<DevenirPartenaire />} />
+              <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
             </Routes>
           </Suspense>
         </ErrorBoundary>
