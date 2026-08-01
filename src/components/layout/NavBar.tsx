@@ -179,7 +179,7 @@ export default function NavBar() {
               </nav>
             </div>
             <Link
-              to="/contact"
+              to="/devenir-partenaire"
               className="relative z-[70] inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-[15px] font-semibold text-white hover:bg-primary/90 transition-colors"
             >
               Devenir partenaire <PartnerIcon />
@@ -232,7 +232,7 @@ export default function NavBar() {
               </div>
             ))}
             <Link
-              to="/contact"
+              to="/devenir-partenaire"
               className="flex items-center justify-center gap-2 mt-4 w-full rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-white hover:bg-primary/90 transition-colors"
               onClick={() => setMenuOpen(false)}
             >

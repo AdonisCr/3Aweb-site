@@ -6,6 +6,7 @@ import ActionButtons from '@/components/ui/ActionButtons'
 import { useSmartPosts } from "@/hooks/useSmartData";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useAutoSlide } from "@/hooks/useAutoSlide";
+import { formatDate } from "@/lib/formatDate";
 
 const stats = [
   { target: 500, suffix: "+", label: "De bénéficiaires" },
@@ -429,7 +430,7 @@ export default function Home() {
                   alt={featuredPost.title}
                   loading="lazy"
                   decoding="async"
-                  className="size-full object-cover"
+                  className="size-full cursor-pointer object-cover transition-transform duration-500 hover:scale-110"
                 />
               </div>
               <div
@@ -443,11 +444,14 @@ export default function Home() {
                     {featuredPost.title}
                   </h3>
                   <p className="text-body-md font-bold text-dark">
-                    Publié le {featuredPost.date}
+                    Publié le {formatDate(featuredPost.date)}
                   </p>
                 </div>
-                <p className="text-body-md tracking-[-0.32px] text-body">
-                  {featuredPost.excerpt}
+                <p
+                  className="text-body-md tracking-[-0.32px] text-body"
+                  dangerouslySetInnerHTML={{ __html: featuredPost.excerpt }}
+                >
+                  {/* {featuredPost.excerpt} */}
                 </p>
                 <UButton
                   to={`/actualites/${featuredPost.slug}`}

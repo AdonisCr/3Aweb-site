@@ -28,14 +28,14 @@ export default function UCta({ title, subtitle, actions, image, imageAlt = '', c
             )}
           </div>
 
-          <div className="w-full flex-1 md:max-w-[636px]">
+          <div className="w-full flex-1 overflow-hidden rounded-card md:max-w-[636px]">
             {image ? (
               <img
                 src={image}
                 alt={imageAlt}
                 loading="lazy"
                 decoding="async"
-                className="aspect-[636/385] w-full rounded-card object-cover"
+                className="aspect-[636/385] w-full cursor-pointer object-cover transition-transform duration-500 hover:scale-110"
               />
             ) : (
               <UPlaceholder ratio="636/385" label="rejoignez-nous.png" className="w-full" />
