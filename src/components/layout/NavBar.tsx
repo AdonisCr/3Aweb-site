@@ -100,7 +100,7 @@ export default function NavBar() {
         : 'bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm'
       }`}
     >
-      <div className="mx-auto h-28" style={{ width: '85%' }}>
+      <div className="mx-auto h-20 md:h-24 lg:h-28" style={{ width: '85%' }}>
 
         {/* ========== HERO LAYOUT (home, not scrolled) — desktop ========== */}
         {isHeroStyle && (
@@ -190,7 +190,7 @@ export default function NavBar() {
         {/* ========== MOBILE (shared) ========== */}
         <div className="lg:hidden flex items-center justify-between h-full">
           <Link to="/" className="shrink-0">
-            <img src="/assets/logo.webp" alt="Alliance Actions Afrique" className="h-10 md:h-12 w-auto object-contain" />
+            <img src={isHeroStyle ? '/assets/logo.webp' : '/assets/logo-dark.webp'} alt="Alliance Actions Afrique" className="h-10 md:h-12 w-auto object-contain" />
           </Link>
           <button className="p-2" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? (

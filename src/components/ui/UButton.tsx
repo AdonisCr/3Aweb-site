@@ -21,9 +21,9 @@ const variantClasses: Record<string, string> = {
 }
 
 const sizeClasses: Record<string, string> = {
-  sm: 'px-3 py-2 text-body-sm',
-  md: 'px-6 py-4 text-body-lg',
-  lg: 'px-8 py-5 text-body-lg',
+  sm: 'px-3 py-2 text-body-sm sm:px-4 sm:py-2.5',
+  md: 'px-4 py-3 text-body-lg sm:px-6 sm:py-4',
+  lg: 'px-5 py-3.5 text-body-lg sm:px-8 sm:py-5',
 }
 
 export default memo(function UButton({
