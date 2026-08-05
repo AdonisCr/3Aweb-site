@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client/core'
 
 const httpLink = new HttpLink({
-  uri: import.meta.env.VITE_WPGRAPHQL_ENDPOINT || 'https://3a.aime-project.site/graphql',
+  uri: import.meta.env.VITE_WPGRAPHQL_ENDPOINT || '/graphql',
   fetch: (uri, options) => {
     const controller = new AbortController()
     const timeout = setTimeout(() => controller.abort(), 3000)

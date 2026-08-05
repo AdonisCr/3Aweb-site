@@ -11,4 +11,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    proxy: {
+      '/graphql': {
+        target: 'https://admin.allianceactionsafrique.com',
+        changeOrigin: true,
+        secure: true,
+      },
+    },
+  },
 })
