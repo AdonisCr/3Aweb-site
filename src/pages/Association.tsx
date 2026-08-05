@@ -6,6 +6,7 @@ import PageTitle from '@/components/layout/PageTitle'
 import { useSmartTeamMembers } from '@/hooks/useSmartData'
 import { useGlobalSettings } from '@/hooks/useWordPress'
 import { useAutoSlide } from '@/hooks/useAutoSlide'
+import { safeHttpUrl } from '@/lib/safeUrl'
 
 type TeamRegion = 'fr' | 'bj'
 
@@ -121,7 +122,7 @@ export default function Association() {
           </div>
 
           <a
-            href={missionVideoUrl ?? 'https://www.youtube.com/'}
+            href={safeHttpUrl(missionVideoUrl, 'https://www.youtube.com/')}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative block aspect-video w-full overflow-hidden rounded-[10px]"

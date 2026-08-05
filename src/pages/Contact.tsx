@@ -1,6 +1,7 @@
 import CtaSection from '@/components/ui/CtaSection'
 import PageTitle from '@/components/layout/PageTitle'
 import { useSmartContact } from '@/hooks/useSmartData'
+import { sanitizeMailto, sanitizeTel } from '@/lib/safeUrl'
 
 const inputClass =
   'h-[42px] w-full border-0 border-b border-black bg-transparent px-2.5 py-2.5 text-body-md text-dark outline-none transition-colors placeholder:text-dark/40 focus:border-primary'
@@ -12,18 +13,18 @@ export default function Contact() {
     {
       icon: '/assets/contact/icon-mail.svg',
       label: contact.email ?? 'alliance.actions.afrique@gmail.com',
-      href: `mailto:${contact.email ?? 'alliance.actions.afrique@gmail.com'}`,
+      href: sanitizeMailto(contact.email, 'mailto:alliance.actions.afrique@gmail.com'),
       underline: true,
     },
     {
       icon: '/assets/contact/icon-phone.svg',
       label: contact.phoneFr ?? '+33 6 61 80 27 24',
-      href: `tel:${contact.phoneFr?.replace(/\s/g, '') ?? '+33661802724'}`,
+      href: sanitizeTel(contact.phoneFr, 'tel:+33661802724'),
     },
     {
       icon: '/assets/contact/icon-chat.svg',
       label: contact.phoneBj ?? '+229 64 68 44 79',
-      href: `tel:${contact.phoneBj?.replace(/\s/g, '') ?? '+22964684479'}`,
+      href: sanitizeTel(contact.phoneBj, 'tel:+22964684479'),
     },
     {
       icon: '/assets/contact/icon-location.svg',
