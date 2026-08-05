@@ -1,42 +1,69 @@
 import UButton from "@/components/ui/UButton";
 import UHeading from "@/components/ui/UHeading";
 import CtaSection from "@/components/ui/CtaSection";
+import YoutubeEmbed from "@/components/ui/YoutubeEmbed";
 import NextProjectLink from "@/components/ui/NextProjectLink";
 import PageTitle from '@/components/layout/PageTitle';
 
-const DEVICE_VIDEO_URL = "https://www.youtube.com/";
 const ASSETS = "/assets/projects/parrainage";
 
-const testimonials = [
-  { name: "Adonis Oussou", school: "École 229", image: `${ASSETS}/t2.jpg`, videoUrl: DEVICE_VIDEO_URL },
-  { name: "Yannick Akoto", school: "Epitech", image: `${ASSETS}/t3.jpg`, videoUrl: DEVICE_VIDEO_URL },
-  { name: "Hortense Azandosessi", school: "École 229", image: `${ASSETS}/t4.jpg`, videoUrl: DEVICE_VIDEO_URL },
-  { name: "Ruth Ahoueya", school: "École 229", image: `${ASSETS}/t5.png`, videoUrl: DEVICE_VIDEO_URL },
-];
+const ZOOM_IMG = "size-full cursor-pointer object-cover transition-transform duration-500 hover:scale-110";
 
-function YoutubePlay() {
-  return (
-    <span className="relative h-[45px] w-16 shrink-0">
-      <img src={`${ASSETS}/yt-red.svg`} alt="" aria-hidden className="absolute inset-0 size-full" />
-      <img src={`${ASSETS}/yt-play.svg`} alt="" aria-hidden className="absolute left-[40%] top-[28%] h-[44%] w-[26%]" />
-    </span>
-  );
-}
+const testimonials = [
+  {
+    name: "Adonis Oussou",
+    school: "École 229",
+    image: `${ASSETS}/t2.webp`,
+    videoUrl: "https://www.youtube.com/shorts/SzeBU--ZKZw",
+  },
+  {
+    name: "Yannick Akoto",
+    school: "Epitech",
+    image: `${ASSETS}/t3.webp`,
+    videoUrl: "https://www.youtube.com/shorts/dQvuu3DIoX0",
+  },
+  {
+    name: "Hortense Azandosessi",
+    school: "École 229",
+    image: `${ASSETS}/t4.webp`,
+    videoUrl: "https://www.youtube.com/shorts/Ip4AkIABEXI",
+  },
+  {
+    name: "Ruth Ahoueya",
+    school: "École 229",
+    image: `${ASSETS}/t5.webp`,
+    videoUrl: "https://www.youtube.com/shorts/Oxbj_3wTC0E",
+  },
+];
 
 export default function Parrainage() {
   return (
     <div className="page pt-28">
-      <PageTitle title="Parrainage" backTo="/projets" backLabel="Retour aux projets" />
+      <PageTitle
+        title="Parrainage"
+        backTo="/projets"
+        backLabel="Retour aux projets"
+      />
 
       {/* HERO */}
       <section className="w-full" data-aos="zoom-in" data-aos-duration="1200">
         <div className="h-[240px] w-full overflow-hidden sm:h-[360px] lg:h-[500px]">
-          <img src={`${ASSETS}/hero.jpg`} alt="Programme de parrainage Alliance Actions Afrique" loading="lazy" decoding="async" className="size-full object-cover" />
+          <img
+            src={`${ASSETS}/hero.webp`}
+            alt="Programme de parrainage Alliance Actions Afrique"
+            loading="lazy"
+            decoding="async"
+            className="size-full object-cover"
+          />
         </div>
       </section>
 
       {/* INTRO */}
-      <section className="bg-white py-10 lg:py-16" data-aos="fade-up" data-aos-duration="800">
+      <section
+        className="bg-white py-10 lg:py-16"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <div className="mx-auto flex w-[92%] flex-col items-start justify-between gap-8 md:w-[85%] lg:flex-row lg:gap-12">
           <div data-aos="fade-up" data-aos-duration="800">
             <UButton
@@ -48,7 +75,11 @@ export default function Parrainage() {
             </UButton>
           </div>
           <div className="flex w-full max-w-[780px] flex-col gap-6 text-body-md tracking-[-0.32px] text-body sm:flex-row sm:gap-10">
-            <p className="flex-1" data-aos="fade-right" data-aos-duration="1500">
+            <p
+              className="flex-1"
+              data-aos="fade-right"
+              data-aos-duration="1500"
+            >
               Le programme de parrainage d&apos;Alliance Actions Afrique repose
               sur une relation d&apos;engagement et de confiance entre un
               parrain et un étudiant accompagné par l&apos;association. Le
@@ -71,67 +102,101 @@ export default function Parrainage() {
       </section>
 
       {/* GALERIE */}
-      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="800">
+      <section
+        className="bg-white py-10 lg:py-12"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <div className="mx-auto w-[92%] md:w-[85%]">
           <div className="flex flex-col gap-6 lg:flex-row lg:gap-9">
             <div className="flex w-full flex-col gap-6 lg:w-[26%] lg:gap-9">
-              <div className="aspect-square overflow-hidden" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
+              <div
+                className="aspect-square overflow-hidden"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="0"
+              >
                 <img
-                  src={`${ASSETS}/g1.jpg`}
+                  src={`${ASSETS}/g1.webp`}
                   alt=""
                   loading="lazy"
                   decoding="async"
-                  className="size-full object-cover"
+                  className={ZOOM_IMG}
                 />
               </div>
-              <div className="aspect-[304/241] overflow-hidden" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+              <div
+                className="aspect-[304/241] overflow-hidden"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="100"
+              >
                 <img
-                  src={`${ASSETS}/g2.jpg`}
+                  src={`${ASSETS}/g2.webp`}
                   alt=""
                   loading="lazy"
                   decoding="async"
-                  className="size-full object-cover"
+                  className={ZOOM_IMG}
                 />
               </div>
             </div>
             <div className="flex flex-1 flex-col gap-6 lg:gap-10">
               <div className="flex flex-col gap-6 sm:flex-row lg:gap-9">
-                <div className="aspect-[321/371] w-full overflow-hidden sm:w-[38%]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                <div
+                  className="aspect-[321/371] w-full overflow-hidden sm:w-[38%]"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="100"
+                >
                   <img
-                    src={`${ASSETS}/g3.jpg`}
+                    src={`${ASSETS}/g3.webp`}
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    className="size-full object-cover"
+                    className={ZOOM_IMG}
                   />
                 </div>
-                <div className="aspect-[502/371] w-full overflow-hidden sm:flex-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <div
+                  className="aspect-[502/371] w-full overflow-hidden sm:flex-1"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="200"
+                >
                   <img
-                    src={`${ASSETS}/g4.jpg`}
+                    src={`${ASSETS}/g4.webp`}
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    className="size-full object-cover"
+                    className={ZOOM_IMG}
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-6 sm:flex-row lg:gap-9">
-                <div className="aspect-[304/168] w-full overflow-hidden sm:w-[36%]" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <div
+                  className="aspect-[304/168] w-full overflow-hidden sm:w-[36%]"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="300"
+                >
                   <img
-                    src={`${ASSETS}/g5.jpg`}
+                    src={`${ASSETS}/g5.webp`}
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    className="size-full object-cover"
+                    className={ZOOM_IMG}
                   />
                 </div>
-                <div className="aspect-[519/166] w-full overflow-hidden sm:flex-1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <div
+                  className="aspect-[519/166] w-full overflow-hidden sm:flex-1"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="400"
+                >
                   <img
-                    src={`${ASSETS}/g6.jpg`}
+                    src={`${ASSETS}/g6.webp`}
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    className="size-full object-cover"
+                    className={ZOOM_IMG}
                   />
                 </div>
               </div>
@@ -141,47 +206,66 @@ export default function Parrainage() {
       </section>
 
       {/* DISPOSITIF */}
-      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="800">
+      <section
+        className="bg-white py-10 lg:py-12"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
-            <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
+            <div
+              className="shrink-0"
+              data-aos="fade-up"
+              data-aos-duration="1200"
+            >
               <UHeading level={2} color="primary">
                 Le dispositif expliqué :
               </UHeading>
             </div>
-            <p className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right" data-aos="fade-left" data-aos-duration="1500">
+            <p
+              className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+            >
               Découvrez en quoi consiste le programme de parrainage de Alliance
               Actions Afrique
             </p>
           </div>
 
-          <a
-            href={DEVICE_VIDEO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative block aspect-video w-full overflow-hidden rounded-[10px]"
-            aria-label="Voir la vidéo du dispositif de parrainage sur YouTube"
-            data-aos="zoom-in"
-            data-aos-duration="1200"
-          >
-            <img src={`${ASSETS}/t1.jpg`} alt="Le dispositif de parrainage" loading="lazy" decoding="async" className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
-            <span className="absolute inset-0 flex items-center justify-center">
-              <YoutubePlay />
-            </span>
-          </a>
+          <div data-aos="zoom-in" data-aos-duration="1200">
+            <YoutubeEmbed
+              url="https://www.youtube.com/watch?v=lq7rpsNcfGY"
+              title="Le dispositif de parrainage"
+              poster={`${ASSETS}/t1.webp`}
+              playIconSrc={`${ASSETS}/yt-red.svg`}
+              playSrc={`${ASSETS}/yt-play.svg`}
+            />
+          </div>
         </div>
       </section>
 
       {/* TÉMOIGNAGES */}
-      <section className="bg-white py-10 lg:py-12" data-aos="fade-up" data-aos-duration="800">
+      <section
+        className="bg-white py-10 lg:py-12"
+        data-aos="fade-up"
+        data-aos-duration="800"
+      >
         <div className="mx-auto flex w-[92%] flex-col gap-8 md:w-[85%] lg:gap-10">
           <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
-            <div className="shrink-0" data-aos="fade-up" data-aos-duration="1200">
+            <div
+              className="shrink-0"
+              data-aos="fade-up"
+              data-aos-duration="1200"
+            >
               <UHeading level={2} color="primary">
                 Témoignages de nos parrainés
               </UHeading>
             </div>
-            <p className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right" data-aos="fade-left" data-aos-duration="1500">
+            <p
+              className="max-w-[453px] text-left text-body-md tracking-[-0.32px] text-body lg:text-right"
+              data-aos="fade-left"
+              data-aos-duration="1500"
+            >
               Ils sont aujourd&apos;hui plusieurs étudiants dont les parcours
               ont été grandement influencés par Alliance Actions Afrique. Ils
               nous font part de leur expérience avec nous :
@@ -190,23 +274,27 @@ export default function Parrainage() {
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
             {testimonials.map((t, i) => (
-              <div key={t.name} className="flex flex-col gap-3.5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay={i * 100}>
-                <a
-                  href={t.videoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block aspect-[253/318] w-full overflow-hidden rounded"
-                  aria-label={`Voir le témoignage de ${t.name}`}
-                >
-                  <img src={t.image} alt={t.name} loading="lazy" decoding="async" className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
-                  <span className="absolute inset-0 flex items-center justify-center bg-black/10">
-                    <YoutubePlay />
-                  </span>
-                </a>
+              <div
+                key={t.name}
+                className="flex flex-col gap-3.5"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay={i * 100}
+              >
+                <YoutubeEmbed
+                  url={t.videoUrl}
+                  title={`Témoignage de ${t.name}`}
+                  poster={t.image}
+                  className="aspect-[253/318] rounded"
+                  playIconSrc={`${ASSETS}/yt-red.svg`}
+                  playSrc={`${ASSETS}/yt-play.svg`}
+                />
                 <div className="flex flex-col gap-2">
                   <p className="text-[20px] font-bold text-primary">{t.name}</p>
                   <div className="flex items-center justify-between gap-2">
-                    <p className="shrink-0 text-body-md font-bold tracking-[-0.48px] text-body">{t.school}</p>
+                    <p className="shrink-0 text-body-md font-bold tracking-[-0.48px] text-body">
+                      {t.school}
+                    </p>
                     <div className="h-px min-w-0 flex-1 bg-gray-300" />
                   </div>
                 </div>

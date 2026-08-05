@@ -100,7 +100,7 @@ export default function NavBar() {
         : 'bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm'
       }`}
     >
-      <div className="mx-auto h-28" style={{ width: '85%' }}>
+      <div className="mx-auto h-20 md:h-24 lg:h-28" style={{ width: '85%' }}>
 
         {/* ========== HERO LAYOUT (home, not scrolled) — desktop ========== */}
         {isHeroStyle && (
@@ -130,7 +130,7 @@ export default function NavBar() {
             </nav>
 
             <Link to="/" className="shrink-0 mx-8 lg:mx-12">
-              <img src="/assets/logo.png" alt="Alliance Actions Afrique" className="h-12 lg:h-14 w-auto object-contain" />
+              <img src="/assets/logo.webp" alt="Alliance Actions Afrique" className="h-12 lg:h-14 w-auto object-contain" />
             </Link>
 
             <nav className="inline-flex items-center lg:gap-12">
@@ -152,7 +152,7 @@ export default function NavBar() {
           <div className="hidden lg:flex items-center justify-between h-full">
             <div className="flex items-center" style={{ gap: '64px' }}>
               <Link to="/" className="shrink-0">
-                <img src="/assets/logo-dark.png" alt="Alliance Actions Afrique" className="h-12 lg:h-14 w-auto object-contain" />
+                <img src="/assets/logo-dark.webp" alt="Alliance Actions Afrique" className="h-12 lg:h-14 w-auto object-contain" />
               </Link>
               <nav className="inline-flex items-center" style={{ gap: '64px' }}>
                 {navLinks.map((link) => (
@@ -179,7 +179,7 @@ export default function NavBar() {
               </nav>
             </div>
             <Link
-              to="/contact"
+              to="/devenir-partenaire"
               className="relative z-[70] inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-[15px] font-semibold text-white hover:bg-primary/90 transition-colors"
             >
               Devenir partenaire <PartnerIcon />
@@ -190,7 +190,7 @@ export default function NavBar() {
         {/* ========== MOBILE (shared) ========== */}
         <div className="lg:hidden flex items-center justify-between h-full">
           <Link to="/" className="shrink-0">
-            <img src="/assets/logo.png" alt="Alliance Actions Afrique" className="h-10 md:h-12 w-auto object-contain" />
+            <img src={isHeroStyle ? '/assets/logo.webp' : '/assets/logo-dark.webp'} alt="Alliance Actions Afrique" className="h-10 md:h-12 w-auto object-contain" />
           </Link>
           <button className="p-2" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? (
@@ -232,7 +232,7 @@ export default function NavBar() {
               </div>
             ))}
             <Link
-              to="/contact"
+              to="/devenir-partenaire"
               className="flex items-center justify-center gap-2 mt-4 w-full rounded-lg bg-primary px-5 py-3 text-[15px] font-semibold text-white hover:bg-primary/90 transition-colors"
               onClick={() => setMenuOpen(false)}
             >

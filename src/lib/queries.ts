@@ -106,27 +106,6 @@ export const GET_PROJECT_BY_SLUG = gql`
   }
 `
 
-export const GET_ALL_PARTNERS = gql`
-  ${MEDIA_FIELDS}
-  query GetAllPartners($first: Int = 50) {
-    partners(first: $first) {
-      nodes {
-        id
-        title
-        featuredImage {
-          node {
-            ...MediaFields
-          }
-        }
-        partnerFields {
-          category
-          website
-        }
-      }
-    }
-  }
-`
-
 export const GET_ALL_TEAM_MEMBERS = gql`
   ${MEDIA_FIELDS}
   query GetAllTeamMembers($first: Int = 20) {
@@ -143,42 +122,6 @@ export const GET_ALL_TEAM_MEMBERS = gql`
           role
           region
           order
-        }
-      }
-    }
-  }
-`
-
-export const GET_ALL_VALUES = gql`
-  ${MEDIA_FIELDS}
-  query GetAllValues($first: Int = 10) {
-    values(first: $first, where: { orderby: { field: MENU_ORDER, order: ASC } }) {
-      nodes {
-        id
-        title
-        content
-        featuredImage {
-          node {
-            ...MediaFields
-          }
-        }
-        valueFields {
-          order
-        }
-      }
-    }
-  }
-`
-
-export const GET_ALL_DONATION_TIERS = gql`
-  query GetAllDonationTiers($first: Int = 10) {
-    donationTiers(first: $first, where: { orderby: { field: MENU_ORDER, order: ASC } }) {
-      nodes {
-        id
-        title
-        donationTierFields {
-          amount
-          description
         }
       }
     }

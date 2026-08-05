@@ -4,6 +4,7 @@ import LoadingSpinner from '@/components/ui/LoadingSpinner'
 import CtaSection from '@/components/ui/CtaSection'
 import { useSmartPost, useSmartPosts } from '@/hooks/useSmartData'
 import { sanitizeHtml } from '@/lib/sanitize'
+import { formatDate } from '@/lib/formatDate'
 import PageTitle from '@/components/layout/PageTitle'
 
 export default function ArticleDetail() {
@@ -33,7 +34,7 @@ export default function ArticleDetail() {
       <section className="bg-white py-10 lg:py-16">
         <div className="mx-auto flex w-[92%] flex-col gap-12 md:w-[85%] lg:gap-20">
           <p className="text-body-sm font-bold text-dark">
-            Publié le {new Date(article.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+            Publié le {formatDate(article.date)}
           </p>
 
           <div className="flex flex-col items-start gap-8 lg:flex-row lg:gap-[80px] xl:gap-[127px]">
@@ -44,7 +45,7 @@ export default function ArticleDetail() {
                   alt={article.title}
                   loading="lazy"
                   decoding="async"
-                  className="aspect-[778/453] w-full object-cover"
+                  className="aspect-[778/453] w-full cursor-pointer object-cover transition-transform duration-500 hover:scale-110"
                 />
               ) : (
                 <div className="aspect-[778/453] w-full bg-gray-100 flex items-center justify-center text-muted text-sm">Image non disponible</div>
