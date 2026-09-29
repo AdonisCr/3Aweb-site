@@ -31,8 +31,8 @@ function ScrollToTop() {
   useEffect(() => {
     AOS.init({
       duration: 800,
-      once: true,
-      mirror: false,
+      once: false,
+      mirror: true,
       easing: 'ease-out-cubic',
       offset: 80,
       disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
