@@ -40,13 +40,13 @@ export default function Contact() {
         <div className="mx-auto flex w-[92%] max-w-[1001px] flex-col items-center gap-[50px] md:w-[85%]">
           {/* Address card */}
             <div
-              className="relative flex min-h-[240px] w-full items-center overflow-hidden rounded-l-[12px] shadow-[0px_4px_12.5px_rgba(0,0,0,0.25)] bg-cover bg-center bg-no-repeat lg:flex-row lg:rounded-l-[24px]"
+              className="relative flex min-h-[240px] w-full flex-col items-center overflow-hidden rounded-l-[12px] shadow-[0px_4px_12.5px_rgba(0,0,0,0.25)] bg-cover bg-center bg-no-repeat md:flex-row md:rounded-l-[24px]"
               style={{ backgroundImage: 'url(/assets/contact/bg.webp)' }}
               data-aos="fade-up"
               data-aos-duration="1000"
             >
               <div
-                className="h-[220px] w-full overflow-hidden sm:h-[296px] lg:w-[40%]"
+                className="h-[220px] w-full overflow-hidden sm:h-[296px] md:w-[40%]"
                 data-aos="zoom-in"
                 data-aos-duration="1200"
               >
@@ -60,15 +60,15 @@ export default function Contact() {
               </div>
 
               <div
-                className="relative flex min-h-[240px] w-full items-center overflow-hidden px-6 py-8 sm:px-10 sm:py-10 lg:w-[60%]"
+                className="relative flex min-h-[240px] w-full items-center overflow-hidden px-6 py-8 sm:px-10 sm:py-10 md:w-[60%]"
                 data-aos="fade-left"
                 data-aos-duration="800"
               >
-                <div className="relative z-10 flex w-full flex-col items-start justify-between gap-8 sm:flex-row sm:items-center lg:mx-auto lg:max-w-[440px]">
+                <div className="relative z-10 flex w-full flex-col items-start justify-between gap-8 sm:flex-row sm:items-center md:mx-auto md:max-w-[440px]">
                   <img
                     src="/assets/contact/logo.webp"
                     alt="Alliance Actions Afrique"
-                    className="h-[50px] w-auto object-contain lg:h-[64px]"
+                    className="h-[50px] w-auto object-contain md:h-[64px]"
                   />
                   <ul className="flex w-full flex-col gap-3.5 sm:max-w-[251px]">
                     {contactInfos.map((item, i) => (

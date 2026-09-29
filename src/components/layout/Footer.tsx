@@ -96,7 +96,7 @@ const references = [
   { label: 'FormaSup ARL' },
   { label: 'Société Générale du Bénin' },
   { label: 'Sir John' },
-  { label: 'metropolegrandlyon.com', href: 'https://metropolegrandlyon.com' },
+    { label: 'grandlyon.com', href: 'https://www.grandlyon.com/' },
   { label: 'bj.ambafrance.org', href: 'https://bj.ambafrance.org' },
   { label: 'if-benin.com', href: 'https://if-benin.com' },
   { label: 'resacoop.org', href: 'https://resacoop.org' },
@@ -106,7 +106,7 @@ const references = [
 ]
 
 const partnerProjects = [
-  { label: 'Esperanza-Benin.org', href: 'https://esperanza-benin.org' },
+    { label: 'esperanzabenin.com', href: 'https://esperanzabenin.com/' },
   { label: 'ECOLE 229', href: '#' },
   { label: 'Caritas.org', href: 'https://caritas.org' },
   { label: 'Epitech Bénin', href: '#' },
