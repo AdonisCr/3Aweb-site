@@ -124,12 +124,20 @@ export default function Footer() {
     <footer className="relative text-white pt-16 pb-10 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img src="/assets/footer-bg.webp" alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+        <img
+          src="/assets/footer-bg.webp"
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          width={1440}
+          height={560}
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Foreground group image */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <img src="/assets/footer-group.webp" alt="" loading="lazy" decoding="async" className="h-full w-auto object-contain" style={{ filter: 'brightness(1.4) opacity(0.5)' }} />
+        <img src="/assets/footer-group.webp" alt="" loading="lazy" decoding="async" width={912} height={560} className="h-full w-auto object-contain" style={{ filter: 'brightness(1.4) opacity(0.5)' }} />
       </div>
 
       {/* Content */}

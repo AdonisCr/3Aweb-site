@@ -6,6 +6,7 @@ import YoutubeEmbed from "@/components/ui/YoutubeEmbed";
 import PageTitle from '@/components/layout/PageTitle';
 import { useSmartPosts } from '@/hooks/useSmartData';
 import { formatDate } from '@/lib/formatDate';
+import { sanitizeHtml } from '@/lib/sanitize';
 
 const ASSETS = "/assets/projects/regards-croises";
 
@@ -58,7 +59,7 @@ function ArticleCard({
       </div>
       <p
         className="text-body-md tracking-[-0.32px] text-body"
-        dangerouslySetInnerHTML={{ __html: excerpt }}
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(excerpt) }}
       ></p>
       <div data-aos="fade-up" data-aos-duration="800">
         <UButton

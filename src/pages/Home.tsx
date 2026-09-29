@@ -7,6 +7,7 @@ import { useSmartPosts } from "@/hooks/useSmartData";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useAutoSlide } from "@/hooks/useAutoSlide";
 import { formatDate } from "@/lib/formatDate";
+import { sanitizeHtml } from '@/lib/sanitize';
 
 const stats = [
   { target: 500, suffix: "+", label: "De bénéficiaires" },
@@ -296,6 +297,8 @@ export default function Home() {
               alt="Carte de l'Afrique, Bénin surligné"
               loading="lazy"
               decoding="async"
+              width={1024}
+              height={777}
               className="h-auto w-full object-contain object-bottom"
             />
           </div>
@@ -449,7 +452,7 @@ export default function Home() {
                 </div>
                 <p
                   className="text-body-md tracking-[-0.32px] text-body"
-                  dangerouslySetInnerHTML={{ __html: featuredPost.excerpt }}
+                  dangerouslySetInnerHTML={{ __html: sanitizeHtml(featuredPost.excerpt) }}
                 >
                   {/* {featuredPost.excerpt} */}
                 </p>

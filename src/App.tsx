@@ -31,12 +31,16 @@ function ScrollToTop() {
   useEffect(() => {
     AOS.init({
       duration: 800,
-      once: false,
-      mirror: true,
+      once: true,
+      mirror: false,
       easing: 'ease-out-cubic',
       offset: 80,
+      disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     })
-    AOS.refresh()
+    // refresh() mesure les positions et force un recalcul de mise en page.
+    // Différé d'un frame pour éviter un layout synchrone pendant le commit React (CLS).
+    const id = requestAnimationFrame(() => AOS.refresh())
+    return () => cancelAnimationFrame(id)
   }, [pathname])
 
   return null
