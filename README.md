@@ -41,3 +41,80 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+---
+
+## ⚠️ Point de vigilance : le proxy `/graphql`
+
+`vercel.json` réécrit `/graphql` vers `https://admin.allianceactionsafrique.com/graphql`.
+
+**Cet enregistrement DNS n'existe pas encore** (NXDOMAIN confirmé). Le proxy renvoie donc `502 Bad Gateway`.
+
+### Règle à respecter
+
+Tant que `admin.allianceactionsafrique.com` n'est pas configuré chez Wix :
+
+- ❌ **NE PAS** définir `VITE_WPGRAPHQL_ENDPOINT=/graphql` dans Vercel → le site perdrait toutes ses données (502)
+- ✅ Laisser `VITE_WPGRAPHQL_ENDPOINT=https://allianceactionsafrique.com/graphql` (URL absolue, fonctionnelle aujourd'hui)
+
+### Séquence de mise en service (dans cet ordre)
+
+1. Récupérer l'accès au compte **Wix propriétaire** du domaine (registrar = Wix, `ns12/13.wixdns.net`).
+   Le compte Wix accessible actuellement ne liste pas ce domaine.
+2. Créer l'enregistrement `A` : `admin` → `35.214.176.215` (IP SiteGround).
+3. Activer le certificat SSL pour `admin.allianceactionsafrique.com` (Let's Encrypt chez SiteGround).
+4. Vérifier : `curl https://admin.allianceactionsafrique.com/graphql` doit répondre `200` (pas `502`).
+5. Seulement ensuite, basculer `VITE_WPGRAPHQL_ENDPOINT` sur `/graphql`.
+
+Tant que l'étape 4 n'est pas validée, le proxy doit être considéré comme inactif.
+
+---
+
+## 🔐 En-têtes de sécurité
+
+Vercel applique via `vercel.json` : CSP, X-Frame-Options (DENY), X-Content-Type-Options,
+Referrer-Policy, Permissions-Policy, HSTS (`max-age=63072000`).
+
+> HSTS volontairement **sans** `includeSubDomains` ni `preload` : le sous-domaine `admin`
+> doit rester accessible en HTTP pendant la phase de bascule DNS.
+
+Le site WordPress de production (`allianceactionsafrique.com`, nginx/SiteGround)
+ne renvoie **aucun** de ces en-têtes. À corriger côté SiteGround (`.htaccess` ou
+`wp-config.php`) — voir la section « WordPress » ci-dessus.
+
+## 🔒 WordPress — en-têtes de sécurité à ajouter (SiteGround)
+
+`allianceactionsafrique.com` est servi par nginx (SiteGround) et ne renvoie
+**aucun** en-tête de sécurité. Le plus simple est un fichier `.htaccess`
+à la racine WordPress (à faire via le File Manager de SiteGround) :
+
+```apache
+# --- En-têtes de sécurité ---
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set Strict-Transport-Security "max-age=63072000"
+</IfModule>
+
+# --- Forcer le HTTPS ---
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+```
+
+⚠️ **Ne pas** ajouter de `Content-Security-Policy` côté WordPress tant que
+`wp-admin` n'est pas testé : une CSP trop stricte peut casser l'éditeur
+(Inline Scripts, TinyMCE, jQuery).
+
+Pour une CSP « report-only » d'abord (aucun risque de casser le site) :
+
+```apache
+Header always set Content-Security-Policy-Report-Only "default-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'"
+```
+
+> `X-Frame-Options: SAMEORIGIN` (et non `DENY` comme sur Vercel) car WordPress
+> a besoin d'afficher son propre contenu en iframe (prévisualisation, etc.).
