@@ -17,6 +17,7 @@ const partnerSections = [
       { name: "Mark H", src: `${LOGOS}/image 31.webp` },
       { name: "Sir John Concept Store", src: `${LOGOS}/image 32.webp` },
       { name: "Lillybelle", src: `${LOGOS}/image 33.webp` },
+      { name: "Africa Mobile", src: `${LOGOS}/image 45.webp` },
     ],
   },
   {
